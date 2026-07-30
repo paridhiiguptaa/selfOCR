@@ -43,8 +43,9 @@ export async function processOcr(
   formData.append('enable_deskew', settings.enable_deskew.toString());
   formData.append('enable_perspective_correction', settings.enable_perspective_correction.toString());
   formData.append('enable_quality_enhancement', settings.enable_quality_enhancement.toString());
-  formData.append('min_confidence_threshold', settings.min_confidence_threshold.toString());
-  formData.append('trocr_model_name', settings.trocr_model_name);
+  if (settings.trocr_model_name) {
+    formData.append('trocr_model_name', settings.trocr_model_name);
+  }
 
   // Simulate real-time progress stage steps while fetch is in progress
   const stages = [

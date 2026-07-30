@@ -70,6 +70,7 @@ export interface DeveloperTelemetry {
   device: string;
   qwen_vlm_model?: string;
   got_fallback_model?: string;
+  trocr_model?: string;
   confidence_threshold: number;
   stages_executed: StageTelemetry[];
 }
@@ -96,4 +97,34 @@ export interface PipelineSettings {
   enable_quality_enhancement: boolean;
   min_confidence_threshold: number;
   developer_mode: boolean;
+  trocr_model_name?: string;
 }
+
+export interface CorrectionSuggestionData {
+  suggestion_id: string;
+  original_text: string;
+  proposed_correction: string;
+  category: 'Spelling Correction' | 'Grammar Correction' | 'Missing Word' | 'Punctuation Improvement' | 'Capitalization' | 'OCR Confidence Recovery' | 'Sentence Structure' | 'Style Suggestion' | string;
+  confidence_score: number;
+  explanation: string;
+  start_offset: number;
+  end_offset: number;
+  line_number: number;
+}
+
+export interface CorrectionQualityMetrics {
+  spelling_errors: number;
+  grammar_errors: number;
+  missing_words: number;
+  punctuation_corrections: number;
+  total_suggestions: number;
+}
+
+export interface CorrectionResponse {
+  original_text: string;
+  corrected_text: string;
+  suggestions: CorrectionSuggestionData[];
+  quality_metrics: CorrectionQualityMetrics;
+  processing_time_sec: number;
+}
+

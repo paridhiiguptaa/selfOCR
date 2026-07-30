@@ -218,3 +218,63 @@ async def process_batch_ocr(files: List[UploadFile] = File(...)):
                 })
 
     return {"batch_size": len(files), "results": batch_results}
+
+from pydantic import BaseModel, Field
+from .modules.text_corrector import TextCorrectionEngine
+
+correction_engine = TextCorrectionEngine()
+
+class TextCorrectionRequest(BaseModel):
+    text: str = Field(..., description="OCR extracted text or plain text to be proofread")
+    language: Optional[str] = Field("en", description="Language code")
+
+class ApplyCorrectionsRequest(BaseModel):
+    original_text: str = Field(..., description="Original text string")
+    accepted_suggestion_ids: List[str] = Field(..., description="List of suggestion_ids accepted by user")
+    suggestions: List[Dict[str, Any]] = Field(..., description="List of suggestion dict objects")
+
+@app.post("/api/correct-text")
+async def correct_text(payload: TextCorrectionRequest):
+    """
+    Analyze OCR text output and generate structured correction suggestions.
+    Identifies spelling errors, grammar mistakes, missing words, punctuation issues,
+    and OCR artifacts with exact character offsets for frontend highlighting.
+    """
+    try:
+        res = correction_engine.analyze_text(payload.text)
+        return JSONResponse(content=res.to_dict())
+    except Exception as e:
+        logger.error(f"API correct_text error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/api/apply-corrections")
+async def apply_corrections(payload: ApplyCorrectionsRequest):
+    """
+    Apply user-accepted suggestion IDs to original text while preserving document structure.
+    """
+    try:
+        from .models import CorrectionSuggestion
+        sug_objs = [
+            CorrectionSuggestion(
+                suggestion_id=s["suggestion_id"],
+                original_text=s["original_text"],
+                proposed_correction=s["proposed_correction"],
+                category=s.get("category", "Grammar Correction"),
+                confidence_score=s.get("confidence_score", 0.90),
+                explanation=s.get("explanation", ""),
+                start_offset=s["start_offset"],
+                end_offset=s["end_offset"],
+                line_number=s.get("line_number", 1)
+            )
+            for s in payload.suggestions
+        ]
+        corrected = correction_engine.apply_suggestions(
+            text=payload.original_text,
+            accepted_ids=payload.accepted_suggestion_ids,
+            suggestions=sug_objs
+        )
+        return JSONResponse(content={"corrected_text": corrected})
+    except Exception as e:
+        logger.error(f"API apply_corrections error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+

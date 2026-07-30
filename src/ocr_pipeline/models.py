@@ -62,3 +62,48 @@ class OCRResult:
     pages: List[Dict[str, Any]]
     telemetry: Dict[str, Any]
     export_paths: Dict[str, str] = field(default_factory=dict)
+
+@dataclass
+class CorrectionSuggestion:
+    """Structure representing a single AI text correction suggestion."""
+    suggestion_id: str
+    original_text: str
+    proposed_correction: str
+    category: str  # 'Spelling Correction', 'Grammar Correction', 'Missing Word', 'Punctuation Improvement', 'Capitalization', 'OCR Confidence Recovery', 'Sentence Structure', 'Style Suggestion'
+    confidence_score: float
+    explanation: str
+    start_offset: int
+    end_offset: int
+    line_number: int = 1
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "suggestion_id": self.suggestion_id,
+            "original_text": self.original_text,
+            "proposed_correction": self.proposed_correction,
+            "category": self.category,
+            "confidence_score": round(self.confidence_score, 4),
+            "explanation": self.explanation,
+            "start_offset": self.start_offset,
+            "end_offset": self.end_offset,
+            "line_number": self.line_number
+        }
+
+@dataclass
+class CorrectionResult:
+    """Structure representing complete text correction analysis output."""
+    original_text: str
+    corrected_text: str
+    suggestions: List[CorrectionSuggestion]
+    quality_metrics: Dict[str, int]
+    processing_time_sec: float
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "original_text": self.original_text,
+            "corrected_text": self.corrected_text,
+            "suggestions": [s.to_dict() for s in self.suggestions],
+            "quality_metrics": self.quality_metrics,
+            "processing_time_sec": round(self.processing_time_sec, 3)
+        }
+
