@@ -94,3 +94,82 @@ export async function processOcr(
     throw error;
   }
 }
+
+import type {
+  FlashcardGenerateResponse,
+  FlashcardDeckData,
+  FlashcardDeckMetadata,
+  CorrectionSuggestionData
+} from '../types/ocr';
+
+export async function generateFlashcards(
+  exportedText: string,
+  acceptedSuggestions: CorrectionSuggestionData[],
+  documentTitle?: string,
+  documentId?: string,
+  includeRejected?: boolean,
+  allSuggestions?: CorrectionSuggestionData[]
+): Promise<FlashcardGenerateResponse> {
+  const res = await fetch(`${API_BASE_URL}/api/flashcards/generate`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      exported_text: exportedText,
+      accepted_suggestions: acceptedSuggestions,
+      document_title: documentTitle || 'Untitled Document',
+      document_id: documentId,
+      include_rejected: includeRejected || false,
+      all_suggestions: allSuggestions,
+    }),
+  });
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: 'Failed to generate flashcards' }));
+    throw new Error(err.detail || 'Failed to generate flashcards');
+  }
+
+  return res.json();
+}
+
+export async function listFlashcardDecks(): Promise<{ decks: FlashcardDeckMetadata[] }> {
+  const res = await fetch(`${API_BASE_URL}/api/flashcards/decks`);
+  if (!res.ok) {
+    throw new Error('Failed to fetch learning library decks');
+  }
+  return res.json();
+}
+
+export async function getFlashcardDeck(deckId: string): Promise<FlashcardDeckData> {
+  const res = await fetch(`${API_BASE_URL}/api/flashcards/decks/${deckId}`);
+  if (!res.ok) {
+    throw new Error(`Failed to load flashcard deck ${deckId}`);
+  }
+  return res.json();
+}
+
+export async function updateDeckProgress(
+  deckId: string,
+  cardUpdates: Array<{ id: string; is_mastered?: boolean; is_bookmarked?: boolean; needs_review?: boolean }>
+): Promise<FlashcardDeckData> {
+  const res = await fetch(`${API_BASE_URL}/api/flashcards/decks/${deckId}/progress`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ card_updates: cardUpdates }),
+  });
+
+  if (!res.ok) {
+    throw new Error('Failed to update deck progress');
+  }
+
+  return res.json();
+}
+
+export async function deleteFlashcardDeck(deckId: string): Promise<void> {
+  const res = await fetch(`${API_BASE_URL}/api/flashcards/decks/${deckId}`, {
+    method: 'DELETE',
+  });
+  if (!res.ok) {
+    throw new Error('Failed to delete deck');
+  }
+}
+

@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import type { PageMetadata, OCRResponse } from '../types/ocr';
+import type { PageMetadata, OCRResponse, CorrectionSuggestionData } from '../types/ocr';
 import { SideBySideSlider } from './SideBySideSlider';
 import { BoundingBoxViewer } from './BoundingBoxViewer';
 import { RegionTable } from './RegionTable';
 import { TextEditor } from './TextEditor';
 import { DownloadManager } from './DownloadManager';
 import { ProofreadingView } from './proofreading/ProofreadingView';
-import { Image as ImageIcon, Sliders, Box, Table, FileText, Sparkles } from 'lucide-react';
+import { FlashcardHub } from './flashcards/FlashcardHub';
+import { Image as ImageIcon, Sliders, Box, Table, FileText, Sparkles, GraduationCap } from 'lucide-react';
 
 interface TabbedResultsViewerProps {
   pageMeta: PageMetadata;
@@ -19,16 +20,27 @@ export const TabbedResultsViewer: React.FC<TabbedResultsViewerProps> = ({
   ocrResult,
   onTextChange,
 }) => {
-  const [activeTab, setActiveTab] = useState<'proofreading' | 'transcription' | 'side-by-side' | 'boxes' | 'table' | 'original'>('proofreading');
+  const [activeTab, setActiveTab] = useState<
+    'proofreading' | 'flashcards' | 'transcription' | 'side-by-side' | 'boxes' | 'table' | 'original'
+  >('proofreading');
+
+  const [isDocumentExported, setIsDocumentExported] = useState<boolean>(false);
+  const [acceptedSuggestions, setAcceptedSuggestions] = useState<CorrectionSuggestionData[]>([]);
 
   const tabs = [
     { id: 'proofreading', label: 'AI Proofreading & Corrections', icon: Sparkles, primary: true },
-    { id: 'transcription', label: 'Final Transcription', icon: FileText },
+    { id: 'flashcards', label: '🎓 AI Learning Flashcards', icon: GraduationCap, primary: true },
+    { id: 'transcription', label: 'Final Transcription & Export', icon: FileText },
     { id: 'boxes', label: 'Detected Regions', icon: Box },
     { id: 'side-by-side', label: 'Preprocessed Comparison', icon: Sliders },
     { id: 'table', label: 'Recognition Results', icon: Table },
     { id: 'original', label: 'Original Document', icon: ImageIcon },
   ];
+
+  const handleExportTrigger = () => {
+    setIsDocumentExported(true);
+    setActiveTab('transcription');
+  };
 
   return (
     <div className="w-full flex flex-col space-y-6">
@@ -63,10 +75,24 @@ export const TabbedResultsViewer: React.FC<TabbedResultsViewerProps> = ({
           <ProofreadingView
             ocrPlainText={ocrResult.transcription.plain_text}
             onTextUpdate={onTextChange}
+            onSuggestionsChange={(accepted) => {
+              setAcceptedSuggestions(accepted);
+            }}
           />
         )}
 
-        {/* Tab 2: Original Document */}
+        {/* Tab 2: AI Flashcards Learning Module */}
+        {activeTab === 'flashcards' && (
+          <FlashcardHub
+            exportedText={ocrResult.transcription.plain_text}
+            acceptedSuggestions={acceptedSuggestions}
+            documentTitle={ocrResult.document_name}
+            isDocumentExported={isDocumentExported}
+            onTriggerExport={handleExportTrigger}
+          />
+        )}
+
+        {/* Tab 3: Original Document */}
         {activeTab === 'original' && (
           <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800 flex items-center justify-center min-h-[500px]">
             <img
@@ -77,7 +103,7 @@ export const TabbedResultsViewer: React.FC<TabbedResultsViewerProps> = ({
           </div>
         )}
 
-        {/* Tab 3: Preprocessed Side-by-Side Comparison */}
+        {/* Tab 4: Preprocessed Side-by-Side Comparison */}
         {activeTab === 'side-by-side' && (
           <SideBySideSlider
             originalImage={pageMeta.original_image_base64}
@@ -88,7 +114,7 @@ export const TabbedResultsViewer: React.FC<TabbedResultsViewerProps> = ({
           />
         )}
 
-        {/* Tab 4: Detected Text Regions (Interactive Bounding Boxes) */}
+        {/* Tab 5: Detected Text Regions (Interactive Bounding Boxes) */}
         {activeTab === 'boxes' && (
           <BoundingBoxViewer
             annotatedImage={pageMeta.annotated_image_base64}
@@ -96,10 +122,10 @@ export const TabbedResultsViewer: React.FC<TabbedResultsViewerProps> = ({
           />
         )}
 
-        {/* Tab 5: Recognition Results Table */}
+        {/* Tab 6: Recognition Results Table */}
         {activeTab === 'table' && <RegionTable regions={pageMeta.regions} />}
 
-        {/* Tab 6: Final Transcription (Plain/Markdown Editor & Exporter) */}
+        {/* Tab 7: Final Transcription (Plain/Markdown Editor & Exporter) */}
         {activeTab === 'transcription' && (
           <div className="flex flex-col space-y-6">
             <TextEditor
@@ -107,10 +133,14 @@ export const TabbedResultsViewer: React.FC<TabbedResultsViewerProps> = ({
               markdownText={ocrResult.transcription.markdown}
               onTextChange={onTextChange}
             />
-            <DownloadManager ocrResult={ocrResult} />
+            <DownloadManager
+              ocrResult={ocrResult}
+              onExportDocument={() => setIsDocumentExported(true)}
+            />
           </div>
         )}
       </div>
     </div>
   );
 };
+

@@ -4,9 +4,10 @@ import type { OCRResponse } from '../types/ocr';
 
 interface DownloadManagerProps {
   ocrResult: OCRResponse;
+  onExportDocument?: () => void;
 }
 
-export const DownloadManager: React.FC<DownloadManagerProps> = ({ ocrResult }) => {
+export const DownloadManager: React.FC<DownloadManagerProps> = ({ ocrResult, onExportDocument }) => {
   const baseName = ocrResult.document_name || 'transcription';
 
   const downloadFile = (content: string, filename: string, mimeType: string) => {
@@ -19,6 +20,10 @@ export const DownloadManager: React.FC<DownloadManagerProps> = ({ ocrResult }) =
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
+
+    if (onExportDocument) {
+      onExportDocument();
+    }
   };
 
   const handleDownloadTxt = () => {
@@ -69,3 +74,4 @@ export const DownloadManager: React.FC<DownloadManagerProps> = ({ ocrResult }) =
     </div>
   );
 };
+

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import type { CorrectionResponse } from '../../types/ocr';
+import type { CorrectionResponse, CorrectionSuggestionData } from '../../types/ocr';
 import { ProofreadingDashboard } from './ProofreadingDashboard';
 import { FilterToolbar } from './FilterToolbar';
 import { ProofreadingEditor } from './ProofreadingEditor';
@@ -11,11 +11,13 @@ import { X, HelpCircle, AlertCircle } from 'lucide-react';
 interface ProofreadingViewProps {
   ocrPlainText: string;
   onTextUpdate?: (newText: string) => void;
+  onSuggestionsChange?: (accepted: CorrectionSuggestionData[], all: CorrectionSuggestionData[]) => void;
 }
 
 export const ProofreadingView: React.FC<ProofreadingViewProps> = ({
   ocrPlainText,
   onTextUpdate,
+  onSuggestionsChange,
 }) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -26,6 +28,15 @@ export const ProofreadingView: React.FC<ProofreadingViewProps> = ({
   const [rejectedIds, setRejectedIds] = useState<string[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [selectedSuggestionId, setSelectedSuggestionId] = useState<string | null>(null);
+
+  // Notify parent of accepted suggestions whenever acceptedIds or correctionData change
+  useEffect(() => {
+    if (correctionData && onSuggestionsChange) {
+      const acceptedSuggs = correctionData.suggestions.filter((s) => acceptedIds.includes(s.suggestion_id));
+      onSuggestionsChange(acceptedSuggs, correctionData.suggestions);
+    }
+  }, [acceptedIds, correctionData, onSuggestionsChange]);
+
   
   // Sidebar & Modals
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);

@@ -40,7 +40,7 @@ class CropOCREngine:
             return False
 
     def _init_trocr(self) -> bool:
-        """Lazily initialize TrOCR Base Handwritten model."""
+        """Lazily initialize TrOCR Small Handwritten model."""
         if self._initialized_trocr:
             return self._trocr_model is not None
 
@@ -48,24 +48,24 @@ class CropOCREngine:
         try:
             import torch
             from transformers import RobertaTokenizer, ViTImageProcessor, VisionEncoderDecoderModel
-            
-            model_name = "microsoft/trocr-base-handwritten"
+
+            model_name = "microsoft/trocr-small-handwritten"
             logger.info(f"Initializing TrOCR Engine ({model_name})...")
             self._trocr_tokenizer = RobertaTokenizer.from_pretrained(model_name)
             self._trocr_feature_extractor = ViTImageProcessor.from_pretrained(model_name)
             self._trocr_model = VisionEncoderDecoderModel.from_pretrained(model_name)
             self._trocr_model.eval()
-            logger.info("TrOCR Base Handwritten loaded successfully.")
+            logger.info("TrOCR Small Handwritten loaded successfully.")
             return True
         except Exception as e:
-            logger.warning(f"TrOCR initialization failed: {e}")
+            logger.warning(f"TrOCR model initialization notice: {e}. Utilizing fast EasyOCR engine.")
             self._trocr_model = None
             return False
 
     def recognize_crop(self, crop: np.ndarray) -> Tuple[str, float]:
         """
         Recognize text in a line crop. Uses EasyOCR first for printed text sentences,
-        and TrOCR Base Handwritten for cursive/notebook lines.
+        and TrOCR Small Handwritten for cursive/notebook lines.
         Returns (extracted_text, confidence_score).
         """
         if crop is None or crop.size == 0:
@@ -79,6 +79,7 @@ class CropOCREngine:
         clean_crop = self.line_remover.remove_lines(crop)
 
         # Step 2: Try EasyOCR first for printed sentence lines (fast line-level recognition)
+        easyocr_result = None
         if self._init_easyocr() and self._easyocr_reader is not None:
             try:
                 results = self._easyocr_reader.readtext(clean_crop)
@@ -88,14 +89,15 @@ class CropOCREngine:
                     if texts:
                         avg_conf = sum(confs) / len(confs)
                         raw_line = " ".join(texts)
-                        # If EasyOCR extracts a clean multi-word line with high confidence, return directly
-                        if avg_conf > 0.60 and len(raw_line.split()) >= 2:
-                            corrected_line = self.post_corrector.correct(raw_line)
-                            return corrected_line, max(0.85, min(0.98, avg_conf))
+                        corrected_line = self.post_corrector.correct(raw_line)
+                        easyocr_result = (corrected_line, max(0.70, min(0.98, avg_conf)))
+                        # If EasyOCR extracts a clean line with decent confidence, return directly
+                        if avg_conf > 0.40 or len(raw_line.split()) >= 2:
+                            return easyocr_result
             except Exception as e:
                 logger.warning(f"EasyOCR crop recognition error: {e}")
 
-        # Step 3: Try TrOCR Base Handwritten for handwritten or low-confidence lines
+        # Step 3: Try TrOCR Small Handwritten for handwritten or low-confidence lines
         if self._init_trocr() and self._trocr_model is not None:
             try:
                 pil_crop = Image.fromarray(clean_crop).convert("RGB")
@@ -104,26 +106,19 @@ class CropOCREngine:
                 with torch.no_grad():
                     generated_ids = self._trocr_model.generate(pixel_values, max_new_tokens=128)
                 raw_text = self._trocr_tokenizer.batch_decode(generated_ids, skip_special_tokens=True)[0]
-                
+
                 corrected_text = self.post_corrector.correct(raw_text)
                 if corrected_text.strip():
                     return corrected_text.strip(), 0.94
             except Exception as e:
                 logger.warning(f"TrOCR crop recognition error: {e}")
 
-        # Step 4: Fallback to single-word EasyOCR result if any
-        if self._init_easyocr() and self._easyocr_reader is not None:
-            try:
-                results = self._easyocr_reader.readtext(clean_crop)
-                if results:
-                    texts = [r[1] for r in results if r[1].strip()]
-                    if texts:
-                        raw_combined = " ".join(texts)
-                        return self.post_corrector.correct(raw_combined), 0.70
-            except Exception as e:
-                pass
+        # Step 4: Fallback to EasyOCR result if any
+        if easyocr_result is not None and easyocr_result[0].strip():
+            return easyocr_result
 
         return "", 0.0
+
 
     def recognize_page_crops(self, image: np.ndarray, bboxes: List[Tuple[int, int, int, int]]) -> List[Tuple[str, float]]:
         """Recognize text across all layout bounding boxes on a page."""

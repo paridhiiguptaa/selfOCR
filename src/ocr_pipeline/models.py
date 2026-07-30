@@ -107,3 +107,116 @@ class CorrectionResult:
             "processing_time_sec": round(self.processing_time_sec, 3)
         }
 
+@dataclass
+class Flashcard:
+    """Structure representing an educational AI-generated flashcard."""
+    id: str
+    category: str
+    card_style: str  # 'spelling', 'fill_in_blank', 'grammar_explanation', 'punctuation_practice', 'capitalization_rule', 'vocabulary', 'sentence_reconstruction'
+    original_sentence: str
+    corrected_sentence: str
+    front: Dict[str, Any]
+    back: Dict[str, Any]
+    accepted_correction: Dict[str, str]  # {"original": "...", "proposed": "..."}
+    explanation: str
+    rule: str
+    learning_objective: str
+    difficulty: str  # 'Easy', 'Medium', 'Hard'
+    confidence_score: float
+    source_document_id: str
+    source_document_title: str
+    created_at: str
+    tags: List[str]
+    child_friendly_definition: str = ""
+    dictionary_meaning: str = ""
+    contextual_meaning: str = ""
+    example_sentence: str = ""
+    part_of_speech: str = ""
+    synonyms: List[str] = field(default_factory=list)
+    antonyms: List[str] = field(default_factory=list)
+    difficulty_level: str = "Medium"
+    pronunciation: str = ""
+    detected_pos: str = ""
+    identified_word_sense: str = ""
+    official_dictionary_definition: str = ""
+    simplified_child_definition: str = ""
+    generated_example_sentence: str = ""
+    dictionary_source: str = ""
+    requires_manual_verification: bool = False
+    is_mastered: bool = False
+    is_bookmarked: bool = False
+    needs_review: bool = False
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "id": self.id,
+            "category": self.category,
+            "card_style": self.card_style,
+            "original_sentence": self.original_sentence,
+            "corrected_sentence": self.corrected_sentence,
+            "front": self.front,
+            "back": self.back,
+            "accepted_correction": self.accepted_correction,
+            "explanation": self.explanation,
+            "rule": self.rule,
+            "learning_objective": self.learning_objective,
+            "difficulty": self.difficulty,
+            "confidence_score": round(self.confidence_score, 4),
+            "source_document_id": self.source_document_id,
+            "source_document_title": self.source_document_title,
+            "created_at": self.created_at,
+            "tags": self.tags,
+            "child_friendly_definition": self.child_friendly_definition,
+            "dictionary_meaning": self.dictionary_meaning,
+            "contextual_meaning": self.contextual_meaning,
+            "example_sentence": self.example_sentence,
+            "part_of_speech": self.part_of_speech,
+            "synonyms": self.synonyms,
+            "antonyms": self.antonyms,
+            "difficulty_level": self.difficulty_level,
+            "pronunciation": self.pronunciation,
+            "detected_pos": self.detected_pos,
+            "identified_word_sense": self.identified_word_sense,
+            "official_dictionary_definition": self.official_dictionary_definition,
+            "simplified_child_definition": self.simplified_child_definition,
+            "generated_example_sentence": self.generated_example_sentence,
+            "dictionary_source": self.dictionary_source,
+            "requires_manual_verification": self.requires_manual_verification,
+            "is_mastered": self.is_mastered,
+            "is_bookmarked": self.is_bookmarked,
+            "needs_review": self.needs_review
+        }
+
+@dataclass
+class FlashcardDeck:
+    """Structure representing a complete generated flashcard deck inside the learning library."""
+    deck_id: str
+    source_document_id: str
+    source_document_title: str
+    exported_document_text: str
+    created_at: str
+    total_flashcards: int
+    categories_distribution: Dict[str, int]
+    difficulty_distribution: Dict[str, int]
+    estimated_study_time_min: int
+    mastery_percentage: float
+    study_progress: Dict[str, Any]
+    cards: List[Flashcard]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "deck_id": self.deck_id,
+            "source_document_id": self.source_document_id,
+            "source_document_title": self.source_document_title,
+            "exported_document_text": self.exported_document_text,
+            "created_at": self.created_at,
+            "total_flashcards": self.total_flashcards,
+            "categories_distribution": self.categories_distribution,
+            "difficulty_distribution": self.difficulty_distribution,
+            "estimated_study_time_min": self.estimated_study_time_min,
+            "mastery_percentage": round(self.mastery_percentage, 1),
+            "study_progress": self.study_progress,
+            "cards": [c.to_dict() for c in self.cards]
+        }
+
+

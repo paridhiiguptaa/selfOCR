@@ -278,3 +278,81 @@ async def apply_corrections(payload: ApplyCorrectionsRequest):
         logger.error(f"API apply_corrections error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
+from .modules.flashcard_generator import FlashcardGeneratorEngine
+
+flashcard_engine = FlashcardGeneratorEngine()
+
+class FlashcardGenerateRequest(BaseModel):
+    exported_text: str = Field(..., description="Final exported corrected document text")
+    accepted_suggestions: List[Dict[str, Any]] = Field(..., description="List of accepted proofreading suggestions")
+    document_title: Optional[str] = Field("Untitled Document", description="Source document title")
+    document_id: Optional[str] = Field(None, description="Source document ID")
+    include_rejected: Optional[bool] = Field(False, description="Optionally include unaccepted suggestions")
+    all_suggestions: Optional[List[Dict[str, Any]]] = Field(None, description="Full list of all suggestions")
+
+class UpdateDeckProgressRequest(BaseModel):
+    card_updates: List[Dict[str, Any]] = Field(..., description="List of card progress updates (id, is_mastered, is_bookmarked, needs_review)")
+
+@app.post("/api/flashcards/generate")
+async def generate_flashcard_deck(payload: FlashcardGenerateRequest):
+    """
+    Generate an AI-powered Flashcard Deck from exported corrected document and accepted proofreading history.
+    Exclusively processes text without invoking OCR or model pipelines again.
+    """
+    try:
+        res = flashcard_engine.generate_deck(
+            exported_text=payload.exported_text,
+            accepted_suggestions=payload.accepted_suggestions,
+            document_title=payload.document_title or "Untitled Document",
+            document_id=payload.document_id,
+            include_rejected=payload.include_rejected or False,
+            all_suggestions=payload.all_suggestions
+        )
+        return JSONResponse(content=res)
+    except Exception as e:
+        logger.error(f"API generate_flashcard_deck error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/flashcards/decks")
+async def list_flashcard_decks():
+    """
+    Retrieve all saved flashcard decks metadata from user's personal learning library.
+    """
+    try:
+        decks = flashcard_engine.list_decks()
+        return JSONResponse(content={"decks": decks})
+    except Exception as e:
+        logger.error(f"API list_flashcard_decks error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/flashcards/decks/{deck_id}")
+async def get_flashcard_deck(deck_id: str):
+    """
+    Get full details and flashcards for a specific deck.
+    """
+    deck = flashcard_engine.get_deck(deck_id)
+    if not deck:
+        raise HTTPException(status_code=404, detail=f"Deck '{deck_id}' not found in learning library.")
+    return JSONResponse(content=deck)
+
+@app.patch("/api/flashcards/decks/{deck_id}/progress")
+async def update_deck_progress(deck_id: str, payload: UpdateDeckProgressRequest):
+    """
+    Update mastery status and study progress for flashcards in a deck.
+    """
+    updated_deck = flashcard_engine.update_deck_progress(deck_id, payload.card_updates)
+    if not updated_deck:
+        raise HTTPException(status_code=404, detail=f"Deck '{deck_id}' not found in learning library.")
+    return JSONResponse(content=updated_deck)
+
+@app.delete("/api/flashcards/decks/{deck_id}")
+async def delete_flashcard_deck(deck_id: str):
+    """
+    Delete a flashcard deck from the personal learning library.
+    """
+    success = flashcard_engine.delete_deck(deck_id)
+    if not success:
+        raise HTTPException(status_code=404, detail=f"Deck '{deck_id}' not found.")
+    return JSONResponse(content={"status": "success", "deleted_deck_id": deck_id})
+
+

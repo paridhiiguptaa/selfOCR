@@ -1,0 +1,2195 @@
+{
+  "deck_id": "deck_15f2e07b01",
+  "source_document_id": "doc_cbdb5e60",
+  "source_document_title": "Untitled document",
+  "exported_document_text": "My Fnvironment.\n\nMv environment is very nice and like it very much. Environment means ever think around us.\n\nlike trees plants animals birds rivers sky and people. We all live in the environment and if it.\n\nbecome dirty then it is not good for anyone. Mv teacher tell us that we should always keep our.\n\nenvironment clean because it help us to live happy and healthy:\n\nIn mv house there are man plants. Mv mother put water to them ever morning and sometime.\n\nalso help her: like the green leaves because they look fresh and pretty. We also have small.\n\nflowers the smell very good. When butterfly come on the flowers feel happy and like to watch.\n\nthem for long time.\n\nNear my school there is a big park Many children come there to play football cricket and.\n\nrunning. There are many big trees in the park. When I sit under the tree it is cool and nice.\n\nbecause the tree give us shade: Many birds sit on the branches and make sweet sound: like.\n\nhearing them because it make me smile:\n\nOne day was walking with my father and we saw many plastic bottles on the road. It was.\n\nlooking very dirty. We pick up some of the bottles and put them in the dustbin. was feeling.\n\nproud because helped to clean the place. My father said even if one person do small things it.\n\ncan make a bia difference.\n\nSometimes people throw garbage on the road and in the river: This is not good because animals.\n\ncan get hurt and the water become dirty. Fish and other water animals need clean water tO live.\n\nIf we cut too many trees then birds and animals will not have homes. This make me sad.\n\nbecause Iove animals very much.\n\nAt my school we celebrated Environment Day. We planted small trees and our teacher told us.\n\nnot to waste water and electricity. We also made posters with crayons: My poster said save.\n\ntrees save earth: was very happy because my friends liked my poster even if it was not the.\n\nbest onc.\n\nalways trv to switch off the lights when nobody is in the room also close the tap after washing.\n\nmv hands. tell mv little brother not to throw wrappers on the around Sometimes he forget but.\n\nthen remind him again. We both want our place to be clean and beautiful:\n\nthink every person should love the environment because it give uS air water food and many.\n\nother things: If we take care of nature then nature will take care of US: love my environment.\n\nvery much and want it to stay clean Green and happy forever:",
+  "created_at": "2026-07-30T21:38:02.942375Z",
+  "total_flashcards": 28,
+  "categories_distribution": {
+    "Spelling Correction": 27,
+    "Capitalization": 1
+  },
+  "difficulty_distribution": {
+    "Easy": 19,
+    "Medium": 9,
+    "Hard": 0
+  },
+  "estimated_study_time_min": 42,
+  "mastery_percentage": 0.0,
+  "study_progress": {
+    "cards_completed": 0,
+    "cards_mastered": 0,
+    "cards_bookmarked": 0,
+    "last_studied_at": null
+  },
+  "cards": [
+    {
+      "id": "fc_766603b7",
+      "category": "Spelling Correction",
+      "card_style": "spelling",
+      "original_sentence": "Mv environment is very nice and like it very much",
+      "corrected_sentence": "Mv environment is very y nice and like it very much",
+      "front": {
+        "title": "Spelling Challenge",
+        "prompt": "Identify or type the correct spelling for the highlighted word in context:",
+        "context_sentence": "Mv environment is very nice and like it very much",
+        "target_word": "verv",
+        "options": [
+          "very",
+          "verv"
+        ],
+        "study_type": "spelling_choice_or_input"
+      },
+      "back": {
+        "correct_answer": "very",
+        "part_of_speech": "adverb",
+        "detected_pos": "adverb",
+        "child_friendly_definition": "In a very manner: used as intensifiers; `real' is sometimes used informally for `really'; `rattling' is informal.",
+        "official_dictionary_definition": "used as intensifiers; `real' is sometimes used informally for `really'; `rattling' is informal",
+        "dictionary_meaning": "used as intensifiers; `real' is sometimes used informally for `really'; `rattling' is informal",
+        "dictionary_source": "WordNet (NLTK)",
+        "identified_word_sense": "very.r.01",
+        "usage_example": "The children worked very to finish their creative writing project on time.",
+        "example_sentence": "The children worked very to finish their creative writing project on time.",
+        "phonetic_hint": "/ˈvɛɹi/",
+        "synonyms": [
+          "really",
+          "real",
+          "rattling"
+        ],
+        "antonyms": [],
+        "explanation": "Suspected spelling mistake in \"verv\". Suggested correction is \"very\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'very'.",
+        "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'very'.",
+        "original_sentence": "Mv environment is very nice and like it very much",
+        "corrected_sentence": "Mv environment is very y nice and like it very much",
+        "extra_examples": [
+          "Mv environment is very nice and like it very y much",
+          "flowers the smel very ry good",
+          "l very ng very dirty",
+          "because Io very nimals very much",
+          "other things: If we take care of nature then nature will take care of US: lov very environment"
+        ],
+        "tip": "Remember: 'very' (adverb) is spelled correctly here."
+      },
+      "accepted_correction": {
+        "original": "verv",
+        "proposed": "very"
+      },
+      "explanation": "Suspected spelling mistake in \"verv\". Suggested correction is \"very\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'very'.",
+      "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'very'.",
+      "learning_objective": "Master accurate spelling of 'very' and avoid common typos.",
+      "difficulty": "Easy",
+      "confidence_score": 0.82,
+      "source_document_id": "doc_cbdb5e60",
+      "source_document_title": "Untitled document",
+      "created_at": "2026-07-30T21:37:33.671877Z",
+      "tags": [
+        "Spelling Correction"
+      ],
+      "child_friendly_definition": "In a very manner: used as intensifiers; `real' is sometimes used informally for `really'; `rattling' is informal.",
+      "dictionary_meaning": "used as intensifiers; `real' is sometimes used informally for `really'; `rattling' is informal",
+      "contextual_meaning": "In context (adverb): In a very manner: used as intensifiers; `real' is sometimes used informally for `really'; `rattling' is informal.",
+      "example_sentence": "The children worked very to finish their creative writing project on time.",
+      "part_of_speech": "adverb",
+      "synonyms": [
+        "really",
+        "real",
+        "rattling"
+      ],
+      "antonyms": [],
+      "difficulty_level": "Easy",
+      "pronunciation": "/ˈvɛɹi/",
+      "detected_pos": "adverb",
+      "identified_word_sense": "very.r.01",
+      "official_dictionary_definition": "used as intensifiers; `real' is sometimes used informally for `really'; `rattling' is informal",
+      "simplified_child_definition": "In a very manner: used as intensifiers; `real' is sometimes used informally for `really'; `rattling' is informal.",
+      "generated_example_sentence": "The children worked very to finish their creative writing project on time.",
+      "dictionary_source": "WordNet (NLTK)",
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    },
+    {
+      "id": "fc_c9bc0640",
+      "category": "Spelling Correction",
+      "card_style": "spelling",
+      "original_sentence": "Environment means ever think around us",
+      "corrected_sentence": "Environment means ever think around us",
+      "front": {
+        "title": "Spelling Challenge",
+        "prompt": "Identify or type the correct spelling for the highlighted word in context:",
+        "context_sentence": "Environment means ever think around us",
+        "target_word": "everv",
+        "options": [
+          "ever",
+          "everv"
+        ],
+        "study_type": "spelling_choice_or_input"
+      },
+      "back": {
+        "correct_answer": "ever",
+        "part_of_speech": "adverb",
+        "detected_pos": "adverb",
+        "child_friendly_definition": "In a ever manner: at any time.",
+        "official_dictionary_definition": "at any time",
+        "dictionary_meaning": "at any time",
+        "dictionary_source": "WordNet (NLTK)",
+        "identified_word_sense": "ever.r.01",
+        "usage_example": "The children worked ever to finish their creative writing project on time.",
+        "example_sentence": "The children worked ever to finish their creative writing project on time.",
+        "phonetic_hint": "/ˈɛvə/",
+        "synonyms": [
+          "of all time"
+        ],
+        "antonyms": [],
+        "explanation": "Suspected spelling mistake in \"everv\". Suggested correction is \"ever\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'ever'.",
+        "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'ever'.",
+        "original_sentence": "Environment means ever think around us",
+        "corrected_sentence": "Environment means ever think around us",
+        "extra_examples": [
+          "Mv mother put water to the ever r morning and sometime"
+        ],
+        "tip": "Remember: 'ever' (adverb) is spelled correctly here."
+      },
+      "accepted_correction": {
+        "original": "everv",
+        "proposed": "ever"
+      },
+      "explanation": "Suspected spelling mistake in \"everv\". Suggested correction is \"ever\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'ever'.",
+      "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'ever'.",
+      "learning_objective": "Master accurate spelling of 'ever' and avoid common typos.",
+      "difficulty": "Easy",
+      "confidence_score": 0.82,
+      "source_document_id": "doc_cbdb5e60",
+      "source_document_title": "Untitled document",
+      "created_at": "2026-07-30T21:37:35.085969Z",
+      "tags": [
+        "Spelling Correction"
+      ],
+      "child_friendly_definition": "In a ever manner: at any time.",
+      "dictionary_meaning": "at any time",
+      "contextual_meaning": "In context (adverb): In a ever manner: at any time.",
+      "example_sentence": "The children worked ever to finish their creative writing project on time.",
+      "part_of_speech": "adverb",
+      "synonyms": [
+        "of all time"
+      ],
+      "antonyms": [],
+      "difficulty_level": "Easy",
+      "pronunciation": "/ˈɛvə/",
+      "detected_pos": "adverb",
+      "identified_word_sense": "ever.r.01",
+      "official_dictionary_definition": "at any time",
+      "simplified_child_definition": "In a ever manner: at any time.",
+      "generated_example_sentence": "The children worked ever to finish their creative writing project on time.",
+      "dictionary_source": "WordNet (NLTK)",
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    },
+    {
+      "id": "fc_bd2e67cd",
+      "category": "Spelling Correction",
+      "card_style": "spelling",
+      "original_sentence": "Environment means ever think around us",
+      "corrected_sentence": "Environment means ever think around us",
+      "front": {
+        "title": "Spelling Challenge",
+        "prompt": "Identify or type the correct spelling for the highlighted word in context:",
+        "context_sentence": "Environment means ever think around us",
+        "target_word": "thina",
+        "options": [
+          "think",
+          "thina"
+        ],
+        "study_type": "spelling_choice_or_input"
+      },
+      "back": {
+        "correct_answer": "think",
+        "part_of_speech": "verb",
+        "detected_pos": "verb",
+        "child_friendly_definition": "To think: judge or regard; look upon; judge.",
+        "official_dictionary_definition": "judge or regard; look upon; judge",
+        "dictionary_meaning": "judge or regard; look upon; judge",
+        "dictionary_source": "WordNet (NLTK)",
+        "identified_word_sense": "think.v.01",
+        "usage_example": "We decided to think together after completing our morning school assignments.",
+        "example_sentence": "We decided to think together after completing our morning school assignments.",
+        "phonetic_hint": "/θɪŋk/",
+        "synonyms": [
+          "believe",
+          "consider",
+          "conceive"
+        ],
+        "antonyms": [],
+        "explanation": "Suspected spelling mistake in \"thina\". Suggested correction is \"think\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'think'.",
+        "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'think'.",
+        "original_sentence": "Environment means ever think around us",
+        "corrected_sentence": "Environment means ever think around us",
+        "extra_examples": [],
+        "tip": "Remember: 'think' (verb) is spelled correctly here."
+      },
+      "accepted_correction": {
+        "original": "thina",
+        "proposed": "think"
+      },
+      "explanation": "Suspected spelling mistake in \"thina\". Suggested correction is \"think\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'think'.",
+      "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'think'.",
+      "learning_objective": "Master accurate spelling of 'think' and avoid common typos.",
+      "difficulty": "Easy",
+      "confidence_score": 0.82,
+      "source_document_id": "doc_cbdb5e60",
+      "source_document_title": "Untitled document",
+      "created_at": "2026-07-30T21:37:36.041036Z",
+      "tags": [
+        "Spelling Correction"
+      ],
+      "child_friendly_definition": "To think: judge or regard; look upon; judge.",
+      "dictionary_meaning": "judge or regard; look upon; judge",
+      "contextual_meaning": "In context (verb): To think: judge or regard; look upon; judge.",
+      "example_sentence": "We decided to think together after completing our morning school assignments.",
+      "part_of_speech": "verb",
+      "synonyms": [
+        "believe",
+        "consider",
+        "conceive"
+      ],
+      "antonyms": [],
+      "difficulty_level": "Easy",
+      "pronunciation": "/θɪŋk/",
+      "detected_pos": "verb",
+      "identified_word_sense": "think.v.01",
+      "official_dictionary_definition": "judge or regard; look upon; judge",
+      "simplified_child_definition": "To think: judge or regard; look upon; judge.",
+      "generated_example_sentence": "We decided to think together after completing our morning school assignments.",
+      "dictionary_source": "WordNet (NLTK)",
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    },
+    {
+      "id": "fc_d1663fa1",
+      "category": "Spelling Correction",
+      "card_style": "spelling",
+      "original_sentence": "become dirty then it is not good for anyone",
+      "corrected_sentence": "becom dirty ty then it is not good for anyone",
+      "front": {
+        "title": "Spelling Challenge",
+        "prompt": "Identify or type the correct spelling for the highlighted word in context:",
+        "context_sentence": "become dirty then it is not good for anyone",
+        "target_word": "dirtv",
+        "options": [
+          "dirty",
+          "dirtv"
+        ],
+        "study_type": "spelling_choice_or_input"
+      },
+      "back": {
+        "correct_answer": "dirty",
+        "part_of_speech": "noun",
+        "detected_pos": "noun",
+        "child_friendly_definition": "A dirty: To make dirty.",
+        "official_dictionary_definition": "To make (something) dirty.",
+        "dictionary_meaning": "To make (something) dirty.",
+        "dictionary_source": "Free Dictionary API",
+        "identified_word_sense": "dirty.noun.01",
+        "usage_example": "The student noticed a interesting dirty during the afternoon science lesson.",
+        "example_sentence": "The student noticed a interesting dirty during the afternoon science lesson.",
+        "phonetic_hint": "/ˈdɜːti/",
+        "synonyms": [
+          "soil",
+          "taint",
+          "sully"
+        ],
+        "antonyms": [],
+        "explanation": "Suspected spelling mistake in \"dirtv\". Suggested correction is \"dirty\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'dirty'.",
+        "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'dirty'.",
+        "original_sentence": "become dirty then it is not good for anyone",
+        "corrected_sentence": "becom dirty ty then it is not good for anyone",
+        "extra_examples": [
+          "lookin dirty y dirty"
+        ],
+        "tip": "Remember: 'dirty' (noun) is spelled correctly here."
+      },
+      "accepted_correction": {
+        "original": "dirtv",
+        "proposed": "dirty"
+      },
+      "explanation": "Suspected spelling mistake in \"dirtv\". Suggested correction is \"dirty\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'dirty'.",
+      "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'dirty'.",
+      "learning_objective": "Master accurate spelling of 'dirty' and avoid common typos.",
+      "difficulty": "Easy",
+      "confidence_score": 0.82,
+      "source_document_id": "doc_cbdb5e60",
+      "source_document_title": "Untitled document",
+      "created_at": "2026-07-30T21:37:37.451215Z",
+      "tags": [
+        "Spelling Correction"
+      ],
+      "child_friendly_definition": "A dirty: To make dirty.",
+      "dictionary_meaning": "To make (something) dirty.",
+      "contextual_meaning": "In context (noun): A dirty: To make dirty.",
+      "example_sentence": "The student noticed a interesting dirty during the afternoon science lesson.",
+      "part_of_speech": "noun",
+      "synonyms": [
+        "soil",
+        "taint",
+        "sully"
+      ],
+      "antonyms": [],
+      "difficulty_level": "Easy",
+      "pronunciation": "/ˈdɜːti/",
+      "detected_pos": "noun",
+      "identified_word_sense": "dirty.noun.01",
+      "official_dictionary_definition": "To make (something) dirty.",
+      "simplified_child_definition": "A dirty: To make dirty.",
+      "generated_example_sentence": "The student noticed a interesting dirty during the afternoon science lesson.",
+      "dictionary_source": "Free Dictionary API",
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    },
+    {
+      "id": "fc_cf60c51d",
+      "category": "Spelling Correction",
+      "card_style": "spelling",
+      "original_sentence": "become dirty then it is not good for anyone",
+      "corrected_sentence": "become dirty then it is no good od for anyone",
+      "front": {
+        "title": "Spelling Challenge",
+        "prompt": "Identify or type the correct spelling for the highlighted word in context:",
+        "context_sentence": "become dirty then it is not good for anyone",
+        "target_word": "aood",
+        "options": [
+          "good",
+          "aood"
+        ],
+        "study_type": "spelling_choice_or_input"
+      },
+      "back": {
+        "correct_answer": "good",
+        "part_of_speech": "adjective",
+        "detected_pos": "adjective",
+        "child_friendly_definition": "Describes something that is good: having desirable or positive qualities especially those suitable for a thing specified.",
+        "official_dictionary_definition": "having desirable or positive qualities especially those suitable for a thing specified",
+        "dictionary_meaning": "having desirable or positive qualities especially those suitable for a thing specified",
+        "dictionary_source": "WordNet (NLTK)",
+        "identified_word_sense": "good.a.01",
+        "usage_example": "The teacher shared a very good example with the whole classroom today.",
+        "example_sentence": "The teacher shared a very good example with the whole classroom today.",
+        "phonetic_hint": "/ɡʊ(d)/",
+        "synonyms": [],
+        "antonyms": [
+          "bad"
+        ],
+        "explanation": "Suspected spelling mistake in \"aood\". Suggested correction is \"good\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'good'.",
+        "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'good'.",
+        "original_sentence": "become dirty then it is not good for anyone",
+        "corrected_sentence": "become dirty then it is no good od for anyone",
+        "extra_examples": [
+          "flowers the smell ver good od"
+        ],
+        "tip": "Remember: 'good' (adjective) is spelled correctly here."
+      },
+      "accepted_correction": {
+        "original": "aood",
+        "proposed": "good"
+      },
+      "explanation": "Suspected spelling mistake in \"aood\". Suggested correction is \"good\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'good'.",
+      "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'good'.",
+      "learning_objective": "Master accurate spelling of 'good' and avoid common typos.",
+      "difficulty": "Easy",
+      "confidence_score": 0.82,
+      "source_document_id": "doc_cbdb5e60",
+      "source_document_title": "Untitled document",
+      "created_at": "2026-07-30T21:37:38.413501Z",
+      "tags": [
+        "Spelling Correction"
+      ],
+      "child_friendly_definition": "Describes something that is good: having desirable or positive qualities especially those suitable for a thing specified.",
+      "dictionary_meaning": "having desirable or positive qualities especially those suitable for a thing specified",
+      "contextual_meaning": "In context (adjective): Describes something that is good: having desirable or positive qualities especially those suitable for a thing specified.",
+      "example_sentence": "The teacher shared a very good example with the whole classroom today.",
+      "part_of_speech": "adjective",
+      "synonyms": [],
+      "antonyms": [
+        "bad"
+      ],
+      "difficulty_level": "Easy",
+      "pronunciation": "/ɡʊ(d)/",
+      "detected_pos": "adjective",
+      "identified_word_sense": "good.a.01",
+      "official_dictionary_definition": "having desirable or positive qualities especially those suitable for a thing specified",
+      "simplified_child_definition": "Describes something that is good: having desirable or positive qualities especially those suitable for a thing specified.",
+      "generated_example_sentence": "The teacher shared a very good example with the whole classroom today.",
+      "dictionary_source": "WordNet (NLTK)",
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    },
+    {
+      "id": "fc_eb78946a",
+      "category": "Spelling Correction",
+      "card_style": "spelling",
+      "original_sentence": "become dirty then it is not good for anyone",
+      "corrected_sentence": "become dirty then it is not good fo anyone ne",
+      "front": {
+        "title": "Spelling Challenge",
+        "prompt": "Identify or type the correct spelling for the highlighted word in context:",
+        "context_sentence": "become dirty then it is not good for anyone",
+        "target_word": "anvone",
+        "options": [
+          "anyone",
+          "anvone"
+        ],
+        "study_type": "spelling_choice_or_input"
+      },
+      "back": {
+        "correct_answer": "anyone",
+        "part_of_speech": "noun",
+        "detected_pos": "noun",
+        "child_friendly_definition": "A anyone: Any person; anybody.",
+        "official_dictionary_definition": "Any person; anybody.",
+        "dictionary_meaning": "Any person; anybody.",
+        "dictionary_source": "Free Dictionary API",
+        "identified_word_sense": "anyone.noun.01",
+        "usage_example": "The student noticed a interesting anyone during the afternoon science lesson.",
+        "example_sentence": "The student noticed a interesting anyone during the afternoon science lesson.",
+        "phonetic_hint": "/ˈæniˌwʌn/",
+        "synonyms": [
+          "anybody"
+        ],
+        "antonyms": [],
+        "explanation": "Suspected spelling mistake in \"anvone\". Suggested correction is \"anyone\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'anyone'.",
+        "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'anyone'.",
+        "original_sentence": "become dirty then it is not good for anyone",
+        "corrected_sentence": "become dirty then it is not good fo anyone ne",
+        "extra_examples": [],
+        "tip": "Remember: 'anyone' (noun) is spelled correctly here."
+      },
+      "accepted_correction": {
+        "original": "anvone",
+        "proposed": "anyone"
+      },
+      "explanation": "Suspected spelling mistake in \"anvone\". Suggested correction is \"anyone\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'anyone'.",
+      "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'anyone'.",
+      "learning_objective": "Master accurate spelling of 'anyone' and avoid common typos.",
+      "difficulty": "Easy",
+      "confidence_score": 0.82,
+      "source_document_id": "doc_cbdb5e60",
+      "source_document_title": "Untitled document",
+      "created_at": "2026-07-30T21:37:39.814790Z",
+      "tags": [
+        "Spelling Correction"
+      ],
+      "child_friendly_definition": "A anyone: Any person; anybody.",
+      "dictionary_meaning": "Any person; anybody.",
+      "contextual_meaning": "In context (noun): A anyone: Any person; anybody.",
+      "example_sentence": "The student noticed a interesting anyone during the afternoon science lesson.",
+      "part_of_speech": "noun",
+      "synonyms": [
+        "anybody"
+      ],
+      "antonyms": [],
+      "difficulty_level": "Easy",
+      "pronunciation": "/ˈæniˌwʌn/",
+      "detected_pos": "noun",
+      "identified_word_sense": "anyone.noun.01",
+      "official_dictionary_definition": "Any person; anybody.",
+      "simplified_child_definition": "A anyone: Any person; anybody.",
+      "generated_example_sentence": "The student noticed a interesting anyone during the afternoon science lesson.",
+      "dictionary_source": "Free Dictionary API",
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    },
+    {
+      "id": "fc_c8dd6817",
+      "category": "Spelling Correction",
+      "card_style": "spelling",
+      "original_sentence": "Mv teacher tell us that we should always keep our",
+      "corrected_sentence": "Mv teacher tell us that we shoul always ys keep our",
+      "front": {
+        "title": "Spelling Challenge",
+        "prompt": "Identify or type the correct spelling for the highlighted word in context:",
+        "context_sentence": "Mv teacher tell us that we should always keep our",
+        "target_word": "alwavs",
+        "options": [
+          "always",
+          "alwavs"
+        ],
+        "study_type": "spelling_choice_or_input"
+      },
+      "back": {
+        "correct_answer": "always",
+        "part_of_speech": "adverb",
+        "detected_pos": "adverb",
+        "child_friendly_definition": "At all times; continuously or on every occasion without stopping.",
+        "official_dictionary_definition": "at all times; all the time and on every occasion",
+        "dictionary_meaning": "at all times; all the time and on every occasion",
+        "dictionary_source": "WordNet (NLTK)",
+        "identified_word_sense": "always.r.01",
+        "usage_example": "She always smiles and says good morning when arriving at school.",
+        "example_sentence": "She always smiles and says good morning when arriving at school.",
+        "phonetic_hint": "/ˈɔː(l).weɪz/",
+        "synonyms": [
+          "ever",
+          "e'er"
+        ],
+        "antonyms": [
+          "never"
+        ],
+        "explanation": "Suspected spelling mistake in \"alwavs\". Suggested correction is \"always\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'always'.",
+        "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'always'.",
+        "original_sentence": "Mv teacher tell us that we should always keep our",
+        "corrected_sentence": "Mv teacher tell us that we shoul always ys keep our",
+        "extra_examples": [
+          "trees save earth: was very happy because my friends liked my poster even if it was not th always st onc"
+        ],
+        "tip": "Remember: 'always' (adverb) is spelled correctly here."
+      },
+      "accepted_correction": {
+        "original": "alwavs",
+        "proposed": "always"
+      },
+      "explanation": "Suspected spelling mistake in \"alwavs\". Suggested correction is \"always\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'always'.",
+      "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'always'.",
+      "learning_objective": "Master accurate spelling of 'always' and avoid common typos.",
+      "difficulty": "Easy",
+      "confidence_score": 0.82,
+      "source_document_id": "doc_cbdb5e60",
+      "source_document_title": "Untitled document",
+      "created_at": "2026-07-30T21:37:41.169302Z",
+      "tags": [
+        "Spelling Correction"
+      ],
+      "child_friendly_definition": "At all times; continuously or on every occasion without stopping.",
+      "dictionary_meaning": "at all times; all the time and on every occasion",
+      "contextual_meaning": "In context (adverb): At all times; continuously or on every occasion without stopping.",
+      "example_sentence": "She always smiles and says good morning when arriving at school.",
+      "part_of_speech": "adverb",
+      "synonyms": [
+        "ever",
+        "e'er"
+      ],
+      "antonyms": [
+        "never"
+      ],
+      "difficulty_level": "Easy",
+      "pronunciation": "/ˈɔː(l).weɪz/",
+      "detected_pos": "adverb",
+      "identified_word_sense": "always.r.01",
+      "official_dictionary_definition": "at all times; all the time and on every occasion",
+      "simplified_child_definition": "At all times; continuously or on every occasion without stopping.",
+      "generated_example_sentence": "She always smiles and says good morning when arriving at school.",
+      "dictionary_source": "WordNet (NLTK)",
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    },
+    {
+      "id": "fc_b5166508",
+      "category": "Spelling Correction",
+      "card_style": "spelling",
+      "original_sentence": "In mv house there are man plants",
+      "corrected_sentence": "In mv house there a man an plants",
+      "front": {
+        "title": "Spelling Challenge",
+        "prompt": "Identify or type the correct spelling for the highlighted word in context:",
+        "context_sentence": "In mv house there are man plants",
+        "target_word": "manv",
+        "options": [
+          "man",
+          "manv"
+        ],
+        "study_type": "spelling_choice_or_input"
+      },
+      "back": {
+        "correct_answer": "man",
+        "part_of_speech": "noun",
+        "detected_pos": "noun",
+        "child_friendly_definition": "A man: an adult person who is male.",
+        "official_dictionary_definition": "an adult person who is male (as opposed to a woman)",
+        "dictionary_meaning": "an adult person who is male (as opposed to a woman)",
+        "dictionary_source": "WordNet (NLTK)",
+        "identified_word_sense": "man.n.01",
+        "usage_example": "The student noticed a interesting man during the afternoon science lesson.",
+        "example_sentence": "The student noticed a interesting man during the afternoon science lesson.",
+        "phonetic_hint": "[mɛn]",
+        "synonyms": [
+          "adult male"
+        ],
+        "antonyms": [
+          "woman"
+        ],
+        "explanation": "Suspected spelling mistake in \"manv\". Suggested correction is \"man\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'man'.",
+        "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'man'.",
+        "original_sentence": "In mv house there are man plants",
+        "corrected_sentence": "In mv house there a man an plants",
+        "extra_examples": [],
+        "tip": "Remember: 'man' (noun) is spelled correctly here."
+      },
+      "accepted_correction": {
+        "original": "manv",
+        "proposed": "man"
+      },
+      "explanation": "Suspected spelling mistake in \"manv\". Suggested correction is \"man\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'man'.",
+      "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'man'.",
+      "learning_objective": "Master accurate spelling of 'man' and avoid common typos.",
+      "difficulty": "Easy",
+      "confidence_score": 0.82,
+      "source_document_id": "doc_cbdb5e60",
+      "source_document_title": "Untitled document",
+      "created_at": "2026-07-30T21:37:41.900536Z",
+      "tags": [
+        "Spelling Correction"
+      ],
+      "child_friendly_definition": "A man: an adult person who is male.",
+      "dictionary_meaning": "an adult person who is male (as opposed to a woman)",
+      "contextual_meaning": "In context (noun): A man: an adult person who is male.",
+      "example_sentence": "The student noticed a interesting man during the afternoon science lesson.",
+      "part_of_speech": "noun",
+      "synonyms": [
+        "adult male"
+      ],
+      "antonyms": [
+        "woman"
+      ],
+      "difficulty_level": "Easy",
+      "pronunciation": "[mɛn]",
+      "detected_pos": "noun",
+      "identified_word_sense": "man.n.01",
+      "official_dictionary_definition": "an adult person who is male (as opposed to a woman)",
+      "simplified_child_definition": "A man: an adult person who is male.",
+      "generated_example_sentence": "The student noticed a interesting man during the afternoon science lesson.",
+      "dictionary_source": "WordNet (NLTK)",
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    },
+    {
+      "id": "fc_aa63e8b1",
+      "category": "Spelling Correction",
+      "card_style": "spelling",
+      "original_sentence": "Mv mother put water to them ever morning and sometime",
+      "corrected_sentence": "Mv mother put water to them ever morning g and sometime",
+      "front": {
+        "title": "Spelling Challenge",
+        "prompt": "Identify or type the correct spelling for the highlighted word in context:",
+        "context_sentence": "Mv mother put water to them ever morning and sometime",
+        "target_word": "mornina",
+        "options": [
+          "morning",
+          "mornina"
+        ],
+        "study_type": "spelling_choice_or_input"
+      },
+      "back": {
+        "correct_answer": "morning",
+        "part_of_speech": "noun",
+        "detected_pos": "noun",
+        "child_friendly_definition": "A morning: the time period between dawn and noon.",
+        "official_dictionary_definition": "the time period between dawn and noon",
+        "dictionary_meaning": "the time period between dawn and noon",
+        "dictionary_source": "WordNet (NLTK)",
+        "identified_word_sense": "morning.n.01",
+        "usage_example": "The student noticed a interesting morning during the afternoon science lesson.",
+        "example_sentence": "The student noticed a interesting morning during the afternoon science lesson.",
+        "phonetic_hint": "/ˈmɔːnɪŋ/",
+        "synonyms": [
+          "morn",
+          "morning time",
+          "forenoon"
+        ],
+        "antonyms": [],
+        "explanation": "Suspected spelling mistake in \"mornina\". Suggested correction is \"morning\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'morning'.",
+        "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'morning'.",
+        "original_sentence": "Mv mother put water to them ever morning and sometime",
+        "corrected_sentence": "Mv mother put water to them ever morning g and sometime",
+        "extra_examples": [],
+        "tip": "Remember: 'morning' (noun) is spelled correctly here."
+      },
+      "accepted_correction": {
+        "original": "mornina",
+        "proposed": "morning"
+      },
+      "explanation": "Suspected spelling mistake in \"mornina\". Suggested correction is \"morning\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'morning'.",
+      "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'morning'.",
+      "learning_objective": "Master accurate spelling of 'morning' and avoid common typos.",
+      "difficulty": "Medium",
+      "confidence_score": 0.82,
+      "source_document_id": "doc_cbdb5e60",
+      "source_document_title": "Untitled document",
+      "created_at": "2026-07-30T21:37:42.610406Z",
+      "tags": [
+        "Spelling Correction"
+      ],
+      "child_friendly_definition": "A morning: the time period between dawn and noon.",
+      "dictionary_meaning": "the time period between dawn and noon",
+      "contextual_meaning": "In context (noun): A morning: the time period between dawn and noon.",
+      "example_sentence": "The student noticed a interesting morning during the afternoon science lesson.",
+      "part_of_speech": "noun",
+      "synonyms": [
+        "morn",
+        "morning time",
+        "forenoon"
+      ],
+      "antonyms": [],
+      "difficulty_level": "Medium",
+      "pronunciation": "/ˈmɔːnɪŋ/",
+      "detected_pos": "noun",
+      "identified_word_sense": "morning.n.01",
+      "official_dictionary_definition": "the time period between dawn and noon",
+      "simplified_child_definition": "A morning: the time period between dawn and noon.",
+      "generated_example_sentence": "The student noticed a interesting morning during the afternoon science lesson.",
+      "dictionary_source": "WordNet (NLTK)",
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    },
+    {
+      "id": "fc_0007ff38",
+      "category": "Spelling Correction",
+      "card_style": "spelling",
+      "original_sentence": "flowers the smell very good",
+      "corrected_sentence": "flowe the he smell very good",
+      "front": {
+        "title": "Spelling Challenge",
+        "prompt": "Identify or type the correct spelling for the highlighted word in context:",
+        "context_sentence": "flowers the smell very good",
+        "target_word": "thev",
+        "options": [
+          "the",
+          "thev"
+        ],
+        "study_type": "spelling_choice_or_input"
+      },
+      "back": {
+        "correct_answer": "the",
+        "part_of_speech": "determiner",
+        "detected_pos": "determiner",
+        "child_friendly_definition": "",
+        "official_dictionary_definition": "",
+        "dictionary_meaning": "",
+        "dictionary_source": "Grammar Engine Rule",
+        "identified_word_sense": "grammar_rule",
+        "usage_example": "",
+        "example_sentence": "",
+        "phonetic_hint": "",
+        "synonyms": [],
+        "antonyms": [],
+        "explanation": "Suspected spelling mistake in \"thev\". Suggested correction is \"the\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'the'.",
+        "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'the'.",
+        "original_sentence": "flowers the smell very good",
+        "corrected_sentence": "flowe the he smell very good",
+        "extra_examples": [],
+        "tip": "Remember: 'the' (determiner) is spelled correctly here."
+      },
+      "accepted_correction": {
+        "original": "thev",
+        "proposed": "the"
+      },
+      "explanation": "Suspected spelling mistake in \"thev\". Suggested correction is \"the\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'the'.",
+      "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'the'.",
+      "learning_objective": "Master accurate spelling of 'the' and avoid common typos.",
+      "difficulty": "Easy",
+      "confidence_score": 0.82,
+      "source_document_id": "doc_cbdb5e60",
+      "source_document_title": "Untitled document",
+      "created_at": "2026-07-30T21:37:42.611402Z",
+      "tags": [
+        "Spelling Correction"
+      ],
+      "child_friendly_definition": "",
+      "dictionary_meaning": "",
+      "contextual_meaning": "In context (determiner): ",
+      "example_sentence": "",
+      "part_of_speech": "determiner",
+      "synonyms": [],
+      "antonyms": [],
+      "difficulty_level": "Easy",
+      "pronunciation": "",
+      "detected_pos": "determiner",
+      "identified_word_sense": "grammar_rule",
+      "official_dictionary_definition": "",
+      "simplified_child_definition": "",
+      "generated_example_sentence": "",
+      "dictionary_source": "Grammar Engine Rule",
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    },
+    {
+      "id": "fc_3e1cdaa7",
+      "category": "Spelling Correction",
+      "card_style": "spelling",
+      "original_sentence": "When butterfly come on the flowers feel happy and like to watch",
+      "corrected_sentence": "Whe butterfly ly come on the flowers feel happy and like to watch",
+      "front": {
+        "title": "Spelling Challenge",
+        "prompt": "Identify or type the correct spelling for the highlighted word in context:",
+        "context_sentence": "When butterfly come on the flowers feel happy and like to watch",
+        "target_word": "butterflv",
+        "options": [
+          "butterfly",
+          "butterflv"
+        ],
+        "study_type": "spelling_choice_or_input"
+      },
+      "back": {
+        "correct_answer": "butterfly",
+        "part_of_speech": "noun",
+        "detected_pos": "noun",
+        "child_friendly_definition": "A flying insect with four large, brightly colored wings.",
+        "official_dictionary_definition": "a swimming stroke in which the arms are thrown forward together out of the water while the feet kick up and down",
+        "dictionary_meaning": "a swimming stroke in which the arms are thrown forward together out of the water while the feet kick up and down",
+        "dictionary_source": "WordNet (NLTK)",
+        "identified_word_sense": "butterfly.n.02",
+        "usage_example": "A colorful butterfly fluttered gracefully over the garden flowers.",
+        "example_sentence": "A colorful butterfly fluttered gracefully over the garden flowers.",
+        "phonetic_hint": "/ˈbʌtə(ɹ)flaɪ/",
+        "synonyms": [
+          "butterfly stroke"
+        ],
+        "antonyms": [],
+        "explanation": "Suspected spelling mistake in \"butterflv\". Suggested correction is \"butterfly\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'butterfly'.",
+        "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'butterfly'.",
+        "original_sentence": "When butterfly come on the flowers feel happy and like to watch",
+        "corrected_sentence": "Whe butterfly ly come on the flowers feel happy and like to watch",
+        "extra_examples": [],
+        "tip": "Remember: 'butterfly' (noun) is spelled correctly here."
+      },
+      "accepted_correction": {
+        "original": "butterflv",
+        "proposed": "butterfly"
+      },
+      "explanation": "Suspected spelling mistake in \"butterflv\". Suggested correction is \"butterfly\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'butterfly'.",
+      "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'butterfly'.",
+      "learning_objective": "Master accurate spelling of 'butterfly' and avoid common typos.",
+      "difficulty": "Medium",
+      "confidence_score": 0.82,
+      "source_document_id": "doc_cbdb5e60",
+      "source_document_title": "Untitled document",
+      "created_at": "2026-07-30T21:37:43.393099Z",
+      "tags": [
+        "Academic Vocabulary",
+        "Spelling Correction"
+      ],
+      "child_friendly_definition": "A flying insect with four large, brightly colored wings.",
+      "dictionary_meaning": "a swimming stroke in which the arms are thrown forward together out of the water while the feet kick up and down",
+      "contextual_meaning": "In context (noun): A flying insect with four large, brightly colored wings.",
+      "example_sentence": "A colorful butterfly fluttered gracefully over the garden flowers.",
+      "part_of_speech": "noun",
+      "synonyms": [
+        "butterfly stroke"
+      ],
+      "antonyms": [],
+      "difficulty_level": "Medium",
+      "pronunciation": "/ˈbʌtə(ɹ)flaɪ/",
+      "detected_pos": "noun",
+      "identified_word_sense": "butterfly.n.02",
+      "official_dictionary_definition": "a swimming stroke in which the arms are thrown forward together out of the water while the feet kick up and down",
+      "simplified_child_definition": "A flying insect with four large, brightly colored wings.",
+      "generated_example_sentence": "A colorful butterfly fluttered gracefully over the garden flowers.",
+      "dictionary_source": "WordNet (NLTK)",
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    },
+    {
+      "id": "fc_8b7ff137",
+      "category": "Spelling Correction",
+      "card_style": "spelling",
+      "original_sentence": "When butterfly come on the flowers feel happy and like to watch",
+      "corrected_sentence": "When butterfly come on the flowers fee happy py and like to watch",
+      "front": {
+        "title": "Spelling Challenge",
+        "prompt": "Identify or type the correct spelling for the highlighted word in context:",
+        "context_sentence": "When butterfly come on the flowers feel happy and like to watch",
+        "target_word": "happv",
+        "options": [
+          "happy",
+          "happv"
+        ],
+        "study_type": "spelling_choice_or_input"
+      },
+      "back": {
+        "correct_answer": "happy",
+        "part_of_speech": "adjective",
+        "detected_pos": "adjective",
+        "child_friendly_definition": "Describes something that is happy: enjoying or showing or marked by joy or pleasure.",
+        "official_dictionary_definition": "enjoying or showing or marked by joy or pleasure",
+        "dictionary_meaning": "enjoying or showing or marked by joy or pleasure",
+        "dictionary_source": "WordNet (NLTK)",
+        "identified_word_sense": "happy.a.01",
+        "usage_example": "The teacher shared a very happy example with the whole classroom today.",
+        "example_sentence": "The teacher shared a very happy example with the whole classroom today.",
+        "phonetic_hint": "/happy/",
+        "synonyms": [],
+        "antonyms": [
+          "unhappy"
+        ],
+        "explanation": "Suspected spelling mistake in \"happv\". Suggested correction is \"happy\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'happy'.",
+        "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'happy'.",
+        "original_sentence": "When butterfly come on the flowers feel happy and like to watch",
+        "corrected_sentence": "When butterfly come on the flowers fee happy py and like to watch",
+        "extra_examples": [
+          "very much and want it to st happy ean Green and happy forever:"
+        ],
+        "tip": "Remember: 'happy' (adjective) is spelled correctly here."
+      },
+      "accepted_correction": {
+        "original": "happv",
+        "proposed": "happy"
+      },
+      "explanation": "Suspected spelling mistake in \"happv\". Suggested correction is \"happy\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'happy'.",
+      "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'happy'.",
+      "learning_objective": "Master accurate spelling of 'happy' and avoid common typos.",
+      "difficulty": "Easy",
+      "confidence_score": 0.82,
+      "source_document_id": "doc_cbdb5e60",
+      "source_document_title": "Untitled document",
+      "created_at": "2026-07-30T21:37:44.826095Z",
+      "tags": [
+        "Spelling Correction"
+      ],
+      "child_friendly_definition": "Describes something that is happy: enjoying or showing or marked by joy or pleasure.",
+      "dictionary_meaning": "enjoying or showing or marked by joy or pleasure",
+      "contextual_meaning": "In context (adjective): Describes something that is happy: enjoying or showing or marked by joy or pleasure.",
+      "example_sentence": "The teacher shared a very happy example with the whole classroom today.",
+      "part_of_speech": "adjective",
+      "synonyms": [],
+      "antonyms": [
+        "unhappy"
+      ],
+      "difficulty_level": "Easy",
+      "pronunciation": "/happy/",
+      "detected_pos": "adjective",
+      "identified_word_sense": "happy.a.01",
+      "official_dictionary_definition": "enjoying or showing or marked by joy or pleasure",
+      "simplified_child_definition": "Describes something that is happy: enjoying or showing or marked by joy or pleasure.",
+      "generated_example_sentence": "The teacher shared a very happy example with the whole classroom today.",
+      "dictionary_source": "WordNet (NLTK)",
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    },
+    {
+      "id": "fc_5fa8a452",
+      "category": "Spelling Correction",
+      "card_style": "spelling",
+      "original_sentence": "them for long time",
+      "corrected_sentence": "them f long ong time",
+      "front": {
+        "title": "Spelling Challenge",
+        "prompt": "Identify or type the correct spelling for the highlighted word in context:",
+        "context_sentence": "them for long time",
+        "target_word": "lona",
+        "options": [
+          "long",
+          "lona"
+        ],
+        "study_type": "spelling_choice_or_input"
+      },
+      "back": {
+        "correct_answer": "long",
+        "part_of_speech": "adverb",
+        "detected_pos": "adverb",
+        "child_friendly_definition": "In a long manner: for an extended time or at a distant time.",
+        "official_dictionary_definition": "for an extended time or at a distant time",
+        "dictionary_meaning": "for an extended time or at a distant time",
+        "dictionary_source": "WordNet (NLTK)",
+        "identified_word_sense": "long.r.01",
+        "usage_example": "The children worked long to finish their creative writing project on time.",
+        "example_sentence": "The children worked long to finish their creative writing project on time.",
+        "phonetic_hint": "/ˈlɔːŋ/",
+        "synonyms": [],
+        "antonyms": [],
+        "explanation": "Suspected spelling mistake in \"lona\". Suggested correction is \"long\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'long'.",
+        "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'long'.",
+        "original_sentence": "them for long time",
+        "corrected_sentence": "them f long ong time",
+        "extra_examples": [],
+        "tip": "Remember: 'long' (adverb) is spelled correctly here."
+      },
+      "accepted_correction": {
+        "original": "lona",
+        "proposed": "long"
+      },
+      "explanation": "Suspected spelling mistake in \"lona\". Suggested correction is \"long\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'long'.",
+      "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'long'.",
+      "learning_objective": "Master accurate spelling of 'long' and avoid common typos.",
+      "difficulty": "Easy",
+      "confidence_score": 0.82,
+      "source_document_id": "doc_cbdb5e60",
+      "source_document_title": "Untitled document",
+      "created_at": "2026-07-30T21:37:45.557197Z",
+      "tags": [
+        "Spelling Correction"
+      ],
+      "child_friendly_definition": "In a long manner: for an extended time or at a distant time.",
+      "dictionary_meaning": "for an extended time or at a distant time",
+      "contextual_meaning": "In context (adverb): In a long manner: for an extended time or at a distant time.",
+      "example_sentence": "The children worked long to finish their creative writing project on time.",
+      "part_of_speech": "adverb",
+      "synonyms": [],
+      "antonyms": [],
+      "difficulty_level": "Easy",
+      "pronunciation": "/ˈlɔːŋ/",
+      "detected_pos": "adverb",
+      "identified_word_sense": "long.r.01",
+      "official_dictionary_definition": "for an extended time or at a distant time",
+      "simplified_child_definition": "In a long manner: for an extended time or at a distant time.",
+      "generated_example_sentence": "The children worked long to finish their creative writing project on time.",
+      "dictionary_source": "WordNet (NLTK)",
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    },
+    {
+      "id": "fc_258c9f2d",
+      "category": "Spelling Correction",
+      "card_style": "spelling",
+      "original_sentence": "Near my school there is a big park Many children come there to play football cricket and",
+      "corrected_sentence": "Near my school there is a big park M children ren come there to play football cricket and",
+      "front": {
+        "title": "Spelling Challenge",
+        "prompt": "Identify or type the correct spelling for the highlighted word in context:",
+        "context_sentence": "Near my school there is a big park Many children come there to play football cricket and",
+        "target_word": "childrens",
+        "options": [
+          "children",
+          "childrens"
+        ],
+        "study_type": "spelling_choice_or_input"
+      },
+      "back": {
+        "correct_answer": "children",
+        "part_of_speech": "noun",
+        "detected_pos": "noun",
+        "child_friendly_definition": "A children: a young person of either sex.",
+        "official_dictionary_definition": "a young person of either sex",
+        "dictionary_meaning": "a young person of either sex",
+        "dictionary_source": "WordNet (NLTK)",
+        "identified_word_sense": "child.n.01",
+        "usage_example": "The student noticed a interesting children during the afternoon science lesson.",
+        "example_sentence": "The student noticed a interesting children during the afternoon science lesson.",
+        "phonetic_hint": "[ˈt͡ʃʊld̠ɹ̠ ̝ʷən]",
+        "synonyms": [
+          "child",
+          "kid",
+          "youngster",
+          "minor"
+        ],
+        "antonyms": [],
+        "explanation": "Suspected spelling mistake in \"childrens\". Suggested correction is \"children\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'children'.",
+        "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'children'.",
+        "original_sentence": "Near my school there is a big park Many children come there to play football cricket and",
+        "corrected_sentence": "Near my school there is a big park M children ren come there to play football cricket and",
+        "extra_examples": [],
+        "tip": "Remember: 'children' (noun) is spelled correctly here."
+      },
+      "accepted_correction": {
+        "original": "childrens",
+        "proposed": "children"
+      },
+      "explanation": "Suspected spelling mistake in \"childrens\". Suggested correction is \"children\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'children'.",
+      "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'children'.",
+      "learning_objective": "Master accurate spelling of 'children' and avoid common typos.",
+      "difficulty": "Medium",
+      "confidence_score": 0.82,
+      "source_document_id": "doc_cbdb5e60",
+      "source_document_title": "Untitled document",
+      "created_at": "2026-07-30T21:37:46.967561Z",
+      "tags": [
+        "Academic Vocabulary",
+        "Spelling Correction"
+      ],
+      "child_friendly_definition": "A children: a young person of either sex.",
+      "dictionary_meaning": "a young person of either sex",
+      "contextual_meaning": "In context (noun): A children: a young person of either sex.",
+      "example_sentence": "The student noticed a interesting children during the afternoon science lesson.",
+      "part_of_speech": "noun",
+      "synonyms": [
+        "child",
+        "kid",
+        "youngster",
+        "minor"
+      ],
+      "antonyms": [],
+      "difficulty_level": "Medium",
+      "pronunciation": "[ˈt͡ʃʊld̠ɹ̠ ̝ʷən]",
+      "detected_pos": "noun",
+      "identified_word_sense": "child.n.01",
+      "official_dictionary_definition": "a young person of either sex",
+      "simplified_child_definition": "A children: a young person of either sex.",
+      "generated_example_sentence": "The student noticed a interesting children during the afternoon science lesson.",
+      "dictionary_source": "WordNet (NLTK)",
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    },
+    {
+      "id": "fc_77d55311",
+      "category": "Capitalization",
+      "card_style": "capitalization_rule",
+      "original_sentence": "When I sit under the tree it is cool and nice",
+      "corrected_sentence": "When I s It under the tree it is cool and nice",
+      "front": {
+        "title": "Capitalization Mastery",
+        "prompt": "Identify the word that requires proper capitalization in this sentence:",
+        "context_sentence": "When I sit under the tree it is cool and nice",
+        "target_word": "i",
+        "study_type": "capitalization"
+      },
+      "back": {
+        "correct_answer": "I",
+        "part_of_speech": "pronoun",
+        "child_friendly_definition": "",
+        "dictionary_meaning": "",
+        "usage_example": "",
+        "example_sentence": "",
+        "explanation": "Capitalize standalone pronoun \"i\" to \"I\" according to grammar rules Capitalization Rule: Always capitalize proper nouns, the pronoun 'I', and the first word of a sentence.",
+        "rule": "Capitalization Rule: Always capitalize proper nouns, the pronoun 'I', and the first word of a sentence.",
+        "original_sentence": "When I sit under the tree it is cool and nice",
+        "corrected_sentence": "When I s It under the tree it is cool and nice",
+        "extra_examples": [],
+        "tip": "Proper nouns and sentence origins must always be capitalized."
+      },
+      "accepted_correction": {
+        "original": "i",
+        "proposed": "I"
+      },
+      "explanation": "Capitalize standalone pronoun \"i\" to \"I\" according to grammar rules Capitalization Rule: Always capitalize proper nouns, the pronoun 'I', and the first word of a sentence.",
+      "rule": "Capitalization Rule: Always capitalize proper nouns, the pronoun 'I', and the first word of a sentence.",
+      "learning_objective": "Master standard capitalization rules for 'I'.",
+      "difficulty": "Easy",
+      "confidence_score": 0.96,
+      "source_document_id": "doc_cbdb5e60",
+      "source_document_title": "Untitled document",
+      "created_at": "2026-07-30T21:37:46.969561Z",
+      "tags": [
+        "Capitalization"
+      ],
+      "child_friendly_definition": "",
+      "dictionary_meaning": "",
+      "contextual_meaning": "In context (pronoun): ",
+      "example_sentence": "",
+      "part_of_speech": "pronoun",
+      "synonyms": [],
+      "antonyms": [],
+      "difficulty_level": "Easy",
+      "pronunciation": "",
+      "detected_pos": "pronoun",
+      "identified_word_sense": "grammar_rule",
+      "official_dictionary_definition": "",
+      "simplified_child_definition": "",
+      "generated_example_sentence": "",
+      "dictionary_source": "Grammar Engine Rule",
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    },
+    {
+      "id": "fc_99ad3d49",
+      "category": "Spelling Correction",
+      "card_style": "spelling",
+      "original_sentence": "It was. looking very dirty",
+      "corrected_sentence": "It looking looking very dirty",
+      "front": {
+        "title": "Spelling Challenge",
+        "prompt": "Identify or type the correct spelling for the highlighted word in context:",
+        "context_sentence": "It was. looking very dirty",
+        "target_word": "lookina",
+        "options": [
+          "looking",
+          "lookina"
+        ],
+        "study_type": "spelling_choice_or_input"
+      },
+      "back": {
+        "correct_answer": "looking",
+        "part_of_speech": "verb",
+        "detected_pos": "verb",
+        "child_friendly_definition": "To looking: perceive with attention; direct one's gaze towards.",
+        "official_dictionary_definition": "perceive with attention; direct one's gaze towards",
+        "dictionary_meaning": "perceive with attention; direct one's gaze towards",
+        "dictionary_source": "WordNet (NLTK)",
+        "identified_word_sense": "look.v.01",
+        "usage_example": "We decided to looking together after completing our morning school assignments.",
+        "example_sentence": "We decided to looking together after completing our morning school assignments.",
+        "phonetic_hint": "/ˈlʊkɪŋ/",
+        "synonyms": [
+          "look"
+        ],
+        "antonyms": [],
+        "explanation": "Suspected spelling mistake in \"lookina\". Suggested correction is \"looking\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'looking'.",
+        "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'looking'.",
+        "original_sentence": "It was. looking very dirty",
+        "corrected_sentence": "It looking looking very dirty",
+        "extra_examples": [],
+        "tip": "Remember: 'looking' (verb) is spelled correctly here."
+      },
+      "accepted_correction": {
+        "original": "lookina",
+        "proposed": "looking"
+      },
+      "explanation": "Suspected spelling mistake in \"lookina\". Suggested correction is \"looking\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'looking'.",
+      "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'looking'.",
+      "learning_objective": "Master accurate spelling of 'looking' and avoid common typos.",
+      "difficulty": "Medium",
+      "confidence_score": 0.82,
+      "source_document_id": "doc_cbdb5e60",
+      "source_document_title": "Untitled document",
+      "created_at": "2026-07-30T21:37:48.298092Z",
+      "tags": [
+        "Spelling Correction"
+      ],
+      "child_friendly_definition": "To looking: perceive with attention; direct one's gaze towards.",
+      "dictionary_meaning": "perceive with attention; direct one's gaze towards",
+      "contextual_meaning": "In context (verb): To looking: perceive with attention; direct one's gaze towards.",
+      "example_sentence": "We decided to looking together after completing our morning school assignments.",
+      "part_of_speech": "verb",
+      "synonyms": [
+        "look"
+      ],
+      "antonyms": [],
+      "difficulty_level": "Medium",
+      "pronunciation": "/ˈlʊkɪŋ/",
+      "detected_pos": "verb",
+      "identified_word_sense": "look.v.01",
+      "official_dictionary_definition": "perceive with attention; direct one's gaze towards",
+      "simplified_child_definition": "To looking: perceive with attention; direct one's gaze towards.",
+      "generated_example_sentence": "We decided to looking together after completing our morning school assignments.",
+      "dictionary_source": "WordNet (NLTK)",
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    },
+    {
+      "id": "fc_6a240f3e",
+      "category": "Spelling Correction",
+      "card_style": "spelling",
+      "original_sentence": "We pick up some of the bottles and put them in the dustbin. was feeling",
+      "corrected_sentence": "We pick up some of the bottles and put them in the dustbi feeling feeling",
+      "front": {
+        "title": "Spelling Challenge",
+        "prompt": "Identify or type the correct spelling for the highlighted word in context:",
+        "context_sentence": "We pick up some of the bottles and put them in the dustbin. was feeling",
+        "target_word": "feelina",
+        "options": [
+          "feeling",
+          "feelina"
+        ],
+        "study_type": "spelling_choice_or_input"
+      },
+      "back": {
+        "correct_answer": "feeling",
+        "part_of_speech": "noun",
+        "detected_pos": "noun",
+        "child_friendly_definition": "A feeling: the experiencing of affective and emotional states.",
+        "official_dictionary_definition": "the experiencing of affective and emotional states",
+        "dictionary_meaning": "the experiencing of affective and emotional states",
+        "dictionary_source": "WordNet (NLTK)",
+        "identified_word_sense": "feeling.n.01",
+        "usage_example": "The student noticed a interesting feeling during the afternoon science lesson.",
+        "example_sentence": "The student noticed a interesting feeling during the afternoon science lesson.",
+        "phonetic_hint": "/ˈfiːlɪŋ/",
+        "synonyms": [],
+        "antonyms": [],
+        "explanation": "Suspected spelling mistake in \"feelina\". Suggested correction is \"feeling\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'feeling'.",
+        "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'feeling'.",
+        "original_sentence": "We pick up some of the bottles and put them in the dustbin. was feeling",
+        "corrected_sentence": "We pick up some of the bottles and put them in the dustbi feeling feeling",
+        "extra_examples": [],
+        "tip": "Remember: 'feeling' (noun) is spelled correctly here."
+      },
+      "accepted_correction": {
+        "original": "feelina",
+        "proposed": "feeling"
+      },
+      "explanation": "Suspected spelling mistake in \"feelina\". Suggested correction is \"feeling\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'feeling'.",
+      "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'feeling'.",
+      "learning_objective": "Master accurate spelling of 'feeling' and avoid common typos.",
+      "difficulty": "Medium",
+      "confidence_score": 0.82,
+      "source_document_id": "doc_cbdb5e60",
+      "source_document_title": "Untitled document",
+      "created_at": "2026-07-30T21:37:49.723210Z",
+      "tags": [
+        "Spelling Correction"
+      ],
+      "child_friendly_definition": "A feeling: the experiencing of affective and emotional states.",
+      "dictionary_meaning": "the experiencing of affective and emotional states",
+      "contextual_meaning": "In context (noun): A feeling: the experiencing of affective and emotional states.",
+      "example_sentence": "The student noticed a interesting feeling during the afternoon science lesson.",
+      "part_of_speech": "noun",
+      "synonyms": [],
+      "antonyms": [],
+      "difficulty_level": "Medium",
+      "pronunciation": "/ˈfiːlɪŋ/",
+      "detected_pos": "noun",
+      "identified_word_sense": "feeling.n.01",
+      "official_dictionary_definition": "the experiencing of affective and emotional states",
+      "simplified_child_definition": "A feeling: the experiencing of affective and emotional states.",
+      "generated_example_sentence": "The student noticed a interesting feeling during the afternoon science lesson.",
+      "dictionary_source": "WordNet (NLTK)",
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    },
+    {
+      "id": "fc_ca43a1d5",
+      "category": "Spelling Correction",
+      "card_style": "spelling",
+      "original_sentence": "can make a bia difference",
+      "corrected_sentence": "can ma difference ifference",
+      "front": {
+        "title": "Spelling Challenge",
+        "prompt": "Identify or type the correct spelling for the highlighted word in context:",
+        "context_sentence": "can make a bia difference",
+        "target_word": "differance",
+        "options": [
+          "difference",
+          "differance"
+        ],
+        "study_type": "spelling_choice_or_input"
+      },
+      "back": {
+        "correct_answer": "difference",
+        "part_of_speech": "noun",
+        "detected_pos": "noun",
+        "child_friendly_definition": "A difference: the quality of being unlike or dissimilar.",
+        "official_dictionary_definition": "the quality of being unlike or dissimilar",
+        "dictionary_meaning": "the quality of being unlike or dissimilar",
+        "dictionary_source": "WordNet (NLTK)",
+        "identified_word_sense": "difference.n.01",
+        "usage_example": "The student noticed a interesting difference during the afternoon science lesson.",
+        "example_sentence": "The student noticed a interesting difference during the afternoon science lesson.",
+        "phonetic_hint": "/difference/",
+        "synonyms": [],
+        "antonyms": [
+          "sameness"
+        ],
+        "explanation": "Suspected spelling mistake in \"differance\". Suggested correction is \"difference\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'difference'.",
+        "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'difference'.",
+        "original_sentence": "can make a bia difference",
+        "corrected_sentence": "can ma difference ifference",
+        "extra_examples": [],
+        "tip": "Remember: 'difference' (noun) is spelled correctly here."
+      },
+      "accepted_correction": {
+        "original": "differance",
+        "proposed": "difference"
+      },
+      "explanation": "Suspected spelling mistake in \"differance\". Suggested correction is \"difference\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'difference'.",
+      "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'difference'.",
+      "learning_objective": "Master accurate spelling of 'difference' and avoid common typos.",
+      "difficulty": "Medium",
+      "confidence_score": 0.82,
+      "source_document_id": "doc_cbdb5e60",
+      "source_document_title": "Untitled document",
+      "created_at": "2026-07-30T21:37:50.949623Z",
+      "tags": [
+        "Academic Vocabulary",
+        "Spelling Correction"
+      ],
+      "child_friendly_definition": "A difference: the quality of being unlike or dissimilar.",
+      "dictionary_meaning": "the quality of being unlike or dissimilar",
+      "contextual_meaning": "In context (noun): A difference: the quality of being unlike or dissimilar.",
+      "example_sentence": "The student noticed a interesting difference during the afternoon science lesson.",
+      "part_of_speech": "noun",
+      "synonyms": [],
+      "antonyms": [
+        "sameness"
+      ],
+      "difficulty_level": "Medium",
+      "pronunciation": "/difference/",
+      "detected_pos": "noun",
+      "identified_word_sense": "difference.n.01",
+      "official_dictionary_definition": "the quality of being unlike or dissimilar",
+      "simplified_child_definition": "A difference: the quality of being unlike or dissimilar.",
+      "generated_example_sentence": "The student noticed a interesting difference during the afternoon science lesson.",
+      "dictionary_source": "WordNet (NLTK)",
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    },
+    {
+      "id": "fc_4d9fccc8",
+      "category": "Spelling Correction",
+      "card_style": "spelling",
+      "original_sentence": "Sometimes people throw garbage on the road and in the river: This is not good because animals",
+      "corrected_sentence": "Sometimes peop garbage w garbage on the road and in the river: This is not good because animals",
+      "front": {
+        "title": "Spelling Challenge",
+        "prompt": "Identify or type the correct spelling for the highlighted word in context:",
+        "context_sentence": "Sometimes people throw garbage on the road and in the river: This is not good because animals",
+        "target_word": "qarbaqe",
+        "options": [
+          "garbage",
+          "qarbaqe"
+        ],
+        "study_type": "spelling_choice_or_input"
+      },
+      "back": {
+        "correct_answer": "garbage",
+        "part_of_speech": "noun",
+        "detected_pos": "noun",
+        "child_friendly_definition": "A garbage: food that is discarded.",
+        "official_dictionary_definition": "food that is discarded (as from a kitchen)",
+        "dictionary_meaning": "food that is discarded (as from a kitchen)",
+        "dictionary_source": "WordNet (NLTK)",
+        "identified_word_sense": "garbage.n.01",
+        "usage_example": "The student noticed a interesting garbage during the afternoon science lesson.",
+        "example_sentence": "The student noticed a interesting garbage during the afternoon science lesson.",
+        "phonetic_hint": "/ˈɡɑːbɪd͡ʒ/",
+        "synonyms": [
+          "refuse",
+          "food waste",
+          "scraps"
+        ],
+        "antonyms": [],
+        "explanation": "Suspected spelling mistake in \"qarbaqe\". Suggested correction is \"garbage\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'garbage'.",
+        "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'garbage'.",
+        "original_sentence": "Sometimes people throw garbage on the road and in the river: This is not good because animals",
+        "corrected_sentence": "Sometimes peop garbage w garbage on the road and in the river: This is not good because animals",
+        "extra_examples": [],
+        "tip": "Remember: 'garbage' (noun) is spelled correctly here."
+      },
+      "accepted_correction": {
+        "original": "qarbaqe",
+        "proposed": "garbage"
+      },
+      "explanation": "Suspected spelling mistake in \"qarbaqe\". Suggested correction is \"garbage\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'garbage'.",
+      "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'garbage'.",
+      "learning_objective": "Master accurate spelling of 'garbage' and avoid common typos.",
+      "difficulty": "Medium",
+      "confidence_score": 0.82,
+      "source_document_id": "doc_cbdb5e60",
+      "source_document_title": "Untitled document",
+      "created_at": "2026-07-30T21:37:52.421447Z",
+      "tags": [
+        "Spelling Correction"
+      ],
+      "child_friendly_definition": "A garbage: food that is discarded.",
+      "dictionary_meaning": "food that is discarded (as from a kitchen)",
+      "contextual_meaning": "In context (noun): A garbage: food that is discarded.",
+      "example_sentence": "The student noticed a interesting garbage during the afternoon science lesson.",
+      "part_of_speech": "noun",
+      "synonyms": [
+        "refuse",
+        "food waste",
+        "scraps"
+      ],
+      "antonyms": [],
+      "difficulty_level": "Medium",
+      "pronunciation": "/ˈɡɑːbɪd͡ʒ/",
+      "detected_pos": "noun",
+      "identified_word_sense": "garbage.n.01",
+      "official_dictionary_definition": "food that is discarded (as from a kitchen)",
+      "simplified_child_definition": "A garbage: food that is discarded.",
+      "generated_example_sentence": "The student noticed a interesting garbage during the afternoon science lesson.",
+      "dictionary_source": "WordNet (NLTK)",
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    },
+    {
+      "id": "fc_7f0a4dc9",
+      "category": "Spelling Correction",
+      "card_style": "spelling",
+      "original_sentence": "Sometimes people throw garbage on the road and in the river: This is not good because animals",
+      "corrected_sentence": "Sometimes people throw garbage on the road and in the river: Thi good not good because animals",
+      "front": {
+        "title": "Spelling Challenge",
+        "prompt": "Identify or type the correct spelling for the highlighted word in context:",
+        "context_sentence": "Sometimes people throw garbage on the road and in the river: This is not good because animals",
+        "target_word": "qood",
+        "options": [
+          "good",
+          "qood"
+        ],
+        "study_type": "spelling_choice_or_input"
+      },
+      "back": {
+        "correct_answer": "good",
+        "part_of_speech": "adjective",
+        "detected_pos": "adjective",
+        "child_friendly_definition": "Describes something that is good: having desirable or positive qualities especially those suitable for a thing specified.",
+        "official_dictionary_definition": "having desirable or positive qualities especially those suitable for a thing specified",
+        "dictionary_meaning": "having desirable or positive qualities especially those suitable for a thing specified",
+        "dictionary_source": "WordNet (NLTK)",
+        "identified_word_sense": "good.a.01",
+        "usage_example": "The teacher shared a very good example with the whole classroom today.",
+        "example_sentence": "The teacher shared a very good example with the whole classroom today.",
+        "phonetic_hint": "/ɡʊ(d)/",
+        "synonyms": [],
+        "antonyms": [
+          "bad"
+        ],
+        "explanation": "Suspected spelling mistake in \"qood\". Suggested correction is \"good\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'good'.",
+        "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'good'.",
+        "original_sentence": "Sometimes people throw garbage on the road and in the river: This is not good because animals",
+        "corrected_sentence": "Sometimes people throw garbage on the road and in the river: Thi good not good because animals",
+        "extra_examples": [],
+        "tip": "Remember: 'good' (adjective) is spelled correctly here."
+      },
+      "accepted_correction": {
+        "original": "qood",
+        "proposed": "good"
+      },
+      "explanation": "Suspected spelling mistake in \"qood\". Suggested correction is \"good\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'good'.",
+      "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'good'.",
+      "learning_objective": "Master accurate spelling of 'good' and avoid common typos.",
+      "difficulty": "Easy",
+      "confidence_score": 0.82,
+      "source_document_id": "doc_cbdb5e60",
+      "source_document_title": "Untitled document",
+      "created_at": "2026-07-30T21:37:53.205794Z",
+      "tags": [
+        "Spelling Correction"
+      ],
+      "child_friendly_definition": "Describes something that is good: having desirable or positive qualities especially those suitable for a thing specified.",
+      "dictionary_meaning": "having desirable or positive qualities especially those suitable for a thing specified",
+      "contextual_meaning": "In context (adjective): Describes something that is good: having desirable or positive qualities especially those suitable for a thing specified.",
+      "example_sentence": "The teacher shared a very good example with the whole classroom today.",
+      "part_of_speech": "adjective",
+      "synonyms": [],
+      "antonyms": [
+        "bad"
+      ],
+      "difficulty_level": "Easy",
+      "pronunciation": "/ɡʊ(d)/",
+      "detected_pos": "adjective",
+      "identified_word_sense": "good.a.01",
+      "official_dictionary_definition": "having desirable or positive qualities especially those suitable for a thing specified",
+      "simplified_child_definition": "Describes something that is good: having desirable or positive qualities especially those suitable for a thing specified.",
+      "generated_example_sentence": "The teacher shared a very good example with the whole classroom today.",
+      "dictionary_source": "WordNet (NLTK)",
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    },
+    {
+      "id": "fc_1234eb5e",
+      "category": "Spelling Correction",
+      "card_style": "spelling",
+      "original_sentence": "because Iove animals very much",
+      "corrected_sentence": "be animals ove animals very much",
+      "front": {
+        "title": "Spelling Challenge",
+        "prompt": "Identify or type the correct spelling for the highlighted word in context:",
+        "context_sentence": "because Iove animals very much",
+        "target_word": "animais",
+        "options": [
+          "animals",
+          "animais"
+        ],
+        "study_type": "spelling_choice_or_input"
+      },
+      "back": {
+        "correct_answer": "animals",
+        "part_of_speech": "noun",
+        "detected_pos": "noun",
+        "child_friendly_definition": "A animals: a living organism characterized by voluntary movement.",
+        "official_dictionary_definition": "a living organism characterized by voluntary movement",
+        "dictionary_meaning": "a living organism characterized by voluntary movement",
+        "dictionary_source": "WordNet (NLTK)",
+        "identified_word_sense": "animal.n.01",
+        "usage_example": "The student noticed a interesting animals during the afternoon science lesson.",
+        "example_sentence": "The student noticed a interesting animals during the afternoon science lesson.",
+        "phonetic_hint": "/ˈæn.ɪ.məlz/",
+        "synonyms": [
+          "animal",
+          "animate being",
+          "beast",
+          "brute"
+        ],
+        "antonyms": [],
+        "explanation": "Suspected spelling mistake in \"animais\". Suggested correction is \"animals\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'animals'.",
+        "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'animals'.",
+        "original_sentence": "because Iove animals very much",
+        "corrected_sentence": "be animals ove animals very much",
+        "extra_examples": [],
+        "tip": "Remember: 'animals' (noun) is spelled correctly here."
+      },
+      "accepted_correction": {
+        "original": "animais",
+        "proposed": "animals"
+      },
+      "explanation": "Suspected spelling mistake in \"animais\". Suggested correction is \"animals\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'animals'.",
+      "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'animals'.",
+      "learning_objective": "Master accurate spelling of 'animals' and avoid common typos.",
+      "difficulty": "Medium",
+      "confidence_score": 0.82,
+      "source_document_id": "doc_cbdb5e60",
+      "source_document_title": "Untitled document",
+      "created_at": "2026-07-30T21:37:53.995552Z",
+      "tags": [
+        "Spelling Correction"
+      ],
+      "child_friendly_definition": "A animals: a living organism characterized by voluntary movement.",
+      "dictionary_meaning": "a living organism characterized by voluntary movement",
+      "contextual_meaning": "In context (noun): A animals: a living organism characterized by voluntary movement.",
+      "example_sentence": "The student noticed a interesting animals during the afternoon science lesson.",
+      "part_of_speech": "noun",
+      "synonyms": [
+        "animal",
+        "animate being",
+        "beast",
+        "brute"
+      ],
+      "antonyms": [],
+      "difficulty_level": "Medium",
+      "pronunciation": "/ˈæn.ɪ.məlz/",
+      "detected_pos": "noun",
+      "identified_word_sense": "animal.n.01",
+      "official_dictionary_definition": "a living organism characterized by voluntary movement",
+      "simplified_child_definition": "A animals: a living organism characterized by voluntary movement.",
+      "generated_example_sentence": "The student noticed a interesting animals during the afternoon science lesson.",
+      "dictionary_source": "WordNet (NLTK)",
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    },
+    {
+      "id": "fc_31616746",
+      "category": "Spelling Correction",
+      "card_style": "spelling",
+      "original_sentence": "because Iove animals very much",
+      "corrected_sentence": "because Iove an much s very much",
+      "front": {
+        "title": "Spelling Challenge",
+        "prompt": "Identify or type the correct spelling for the highlighted word in context:",
+        "context_sentence": "because Iove animals very much",
+        "target_word": "mucn",
+        "options": [
+          "much",
+          "mucn"
+        ],
+        "study_type": "spelling_choice_or_input"
+      },
+      "back": {
+        "correct_answer": "much",
+        "part_of_speech": "adverb",
+        "detected_pos": "adverb",
+        "child_friendly_definition": "In a much manner: very.",
+        "official_dictionary_definition": "very",
+        "dictionary_meaning": "very",
+        "dictionary_source": "WordNet (NLTK)",
+        "identified_word_sense": "much.r.02",
+        "usage_example": "The children worked much to finish their creative writing project on time.",
+        "example_sentence": "The children worked much to finish their creative writing project on time.",
+        "phonetic_hint": "/much/",
+        "synonyms": [],
+        "antonyms": [],
+        "explanation": "Suspected spelling mistake in \"mucn\". Suggested correction is \"much\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'much'.",
+        "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'much'.",
+        "original_sentence": "because Iove animals very much",
+        "corrected_sentence": "because Iove an much s very much",
+        "extra_examples": [],
+        "tip": "Remember: 'much' (adverb) is spelled correctly here."
+      },
+      "accepted_correction": {
+        "original": "mucn",
+        "proposed": "much"
+      },
+      "explanation": "Suspected spelling mistake in \"mucn\". Suggested correction is \"much\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'much'.",
+      "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'much'.",
+      "learning_objective": "Master accurate spelling of 'much' and avoid common typos.",
+      "difficulty": "Easy",
+      "confidence_score": 0.82,
+      "source_document_id": "doc_cbdb5e60",
+      "source_document_title": "Untitled document",
+      "created_at": "2026-07-30T21:37:55.023684Z",
+      "tags": [
+        "Spelling Correction"
+      ],
+      "child_friendly_definition": "In a much manner: very.",
+      "dictionary_meaning": "very",
+      "contextual_meaning": "In context (adverb): In a much manner: very.",
+      "example_sentence": "The children worked much to finish their creative writing project on time.",
+      "part_of_speech": "adverb",
+      "synonyms": [],
+      "antonyms": [],
+      "difficulty_level": "Easy",
+      "pronunciation": "/much/",
+      "detected_pos": "adverb",
+      "identified_word_sense": "much.r.02",
+      "official_dictionary_definition": "very",
+      "simplified_child_definition": "In a much manner: very.",
+      "generated_example_sentence": "The children worked much to finish their creative writing project on time.",
+      "dictionary_source": "WordNet (NLTK)",
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    },
+    {
+      "id": "fc_bf264edf",
+      "category": "Spelling Correction",
+      "card_style": "spelling",
+      "original_sentence": "trees save earth: was very happy because my friends liked my poster even if it was not the",
+      "corrected_sentence": "trees save earth: was very happy because my friends liked my poster even if it best not the",
+      "front": {
+        "title": "Spelling Challenge",
+        "prompt": "Identify or type the correct spelling for the highlighted word in context:",
+        "context_sentence": "trees save earth: was very happy because my friends liked my poster even if it was not the",
+        "target_word": "bcst",
+        "options": [
+          "best",
+          "bcst"
+        ],
+        "study_type": "spelling_choice_or_input"
+      },
+      "back": {
+        "correct_answer": "best",
+        "part_of_speech": "adjective",
+        "detected_pos": "adjective",
+        "child_friendly_definition": "Describes something that is best: having the most positive qualities.",
+        "official_dictionary_definition": "(superlative of `good') having the most positive qualities",
+        "dictionary_meaning": "(superlative of `good') having the most positive qualities",
+        "dictionary_source": "WordNet (NLTK)",
+        "identified_word_sense": "best.a.01",
+        "usage_example": "The teacher shared a very best example with the whole classroom today.",
+        "example_sentence": "The teacher shared a very best example with the whole classroom today.",
+        "phonetic_hint": "/ˈbɛst/",
+        "synonyms": [],
+        "antonyms": [
+          "worst"
+        ],
+        "explanation": "Suspected spelling mistake in \"bcst\". Suggested correction is \"best\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'best'.",
+        "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'best'.",
+        "original_sentence": "trees save earth: was very happy because my friends liked my poster even if it was not the",
+        "corrected_sentence": "trees save earth: was very happy because my friends liked my poster even if it best not the",
+        "extra_examples": [],
+        "tip": "Remember: 'best' (adjective) is spelled correctly here."
+      },
+      "accepted_correction": {
+        "original": "bcst",
+        "proposed": "best"
+      },
+      "explanation": "Suspected spelling mistake in \"bcst\". Suggested correction is \"best\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'best'.",
+      "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'best'.",
+      "learning_objective": "Master accurate spelling of 'best' and avoid common typos.",
+      "difficulty": "Easy",
+      "confidence_score": 0.82,
+      "source_document_id": "doc_cbdb5e60",
+      "source_document_title": "Untitled document",
+      "created_at": "2026-07-30T21:37:56.519892Z",
+      "tags": [
+        "Spelling Correction"
+      ],
+      "child_friendly_definition": "Describes something that is best: having the most positive qualities.",
+      "dictionary_meaning": "(superlative of `good') having the most positive qualities",
+      "contextual_meaning": "In context (adjective): Describes something that is best: having the most positive qualities.",
+      "example_sentence": "The teacher shared a very best example with the whole classroom today.",
+      "part_of_speech": "adjective",
+      "synonyms": [],
+      "antonyms": [
+        "worst"
+      ],
+      "difficulty_level": "Easy",
+      "pronunciation": "/ˈbɛst/",
+      "detected_pos": "adjective",
+      "identified_word_sense": "best.a.01",
+      "official_dictionary_definition": "(superlative of `good') having the most positive qualities",
+      "simplified_child_definition": "Describes something that is best: having the most positive qualities.",
+      "generated_example_sentence": "The teacher shared a very best example with the whole classroom today.",
+      "dictionary_source": "WordNet (NLTK)",
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    },
+    {
+      "id": "fc_da0932dd",
+      "category": "Spelling Correction",
+      "card_style": "spelling",
+      "original_sentence": "always trv to switch off the lights when nobody is in the room also close the tap after washing",
+      "corrected_sentence": "always trv to lights off the lights when nobody is in the room also close the tap after washing",
+      "front": {
+        "title": "Spelling Challenge",
+        "prompt": "Identify or type the correct spelling for the highlighted word in context:",
+        "context_sentence": "always trv to switch off the lights when nobody is in the room also close the tap after washing",
+        "target_word": "liahts",
+        "options": [
+          "lights",
+          "liahts"
+        ],
+        "study_type": "spelling_choice_or_input"
+      },
+      "back": {
+        "correct_answer": "lights",
+        "part_of_speech": "verb",
+        "detected_pos": "verb",
+        "child_friendly_definition": "To lights: begin to smoke.",
+        "official_dictionary_definition": "begin to smoke",
+        "dictionary_meaning": "begin to smoke",
+        "dictionary_source": "WordNet (NLTK)",
+        "identified_word_sense": "light_up.v.05",
+        "usage_example": "We decided to lights together after completing our morning school assignments.",
+        "example_sentence": "We decided to lights together after completing our morning school assignments.",
+        "phonetic_hint": "/lights/",
+        "synonyms": [
+          "light up",
+          "fire up",
+          "light"
+        ],
+        "antonyms": [],
+        "explanation": "Suspected spelling mistake in \"liahts\". Suggested correction is \"lights\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'lights'.",
+        "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'lights'.",
+        "original_sentence": "always trv to switch off the lights when nobody is in the room also close the tap after washing",
+        "corrected_sentence": "always trv to lights off the lights when nobody is in the room also close the tap after washing",
+        "extra_examples": [],
+        "tip": "Remember: 'lights' (verb) is spelled correctly here."
+      },
+      "accepted_correction": {
+        "original": "liahts",
+        "proposed": "lights"
+      },
+      "explanation": "Suspected spelling mistake in \"liahts\". Suggested correction is \"lights\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'lights'.",
+      "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'lights'.",
+      "learning_objective": "Master accurate spelling of 'lights' and avoid common typos.",
+      "difficulty": "Easy",
+      "confidence_score": 0.82,
+      "source_document_id": "doc_cbdb5e60",
+      "source_document_title": "Untitled document",
+      "created_at": "2026-07-30T21:37:57.984223Z",
+      "tags": [
+        "Spelling Correction"
+      ],
+      "child_friendly_definition": "To lights: begin to smoke.",
+      "dictionary_meaning": "begin to smoke",
+      "contextual_meaning": "In context (verb): To lights: begin to smoke.",
+      "example_sentence": "We decided to lights together after completing our morning school assignments.",
+      "part_of_speech": "verb",
+      "synonyms": [
+        "light up",
+        "fire up",
+        "light"
+      ],
+      "antonyms": [],
+      "difficulty_level": "Easy",
+      "pronunciation": "/lights/",
+      "detected_pos": "verb",
+      "identified_word_sense": "light_up.v.05",
+      "official_dictionary_definition": "begin to smoke",
+      "simplified_child_definition": "To lights: begin to smoke.",
+      "generated_example_sentence": "We decided to lights together after completing our morning school assignments.",
+      "dictionary_source": "WordNet (NLTK)",
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    },
+    {
+      "id": "fc_63711893",
+      "category": "Spelling Correction",
+      "card_style": "spelling",
+      "original_sentence": "always trv to switch off the lights when nobody is in the room also close the tap after washing",
+      "corrected_sentence": "always trv to switch off t nobody hts when nobody is in the room also close the tap after washing",
+      "front": {
+        "title": "Spelling Challenge",
+        "prompt": "Identify or type the correct spelling for the highlighted word in context:",
+        "context_sentence": "always trv to switch off the lights when nobody is in the room also close the tap after washing",
+        "target_word": "nobodv",
+        "options": [
+          "nobody",
+          "nobodv"
+        ],
+        "study_type": "spelling_choice_or_input"
+      },
+      "back": {
+        "correct_answer": "nobody",
+        "part_of_speech": "noun",
+        "detected_pos": "noun",
+        "child_friendly_definition": "A nobody: a person of no influence.",
+        "official_dictionary_definition": "a person of no influence",
+        "dictionary_meaning": "a person of no influence",
+        "dictionary_source": "WordNet (NLTK)",
+        "identified_word_sense": "cipher.n.04",
+        "usage_example": "The student noticed a interesting nobody during the afternoon science lesson.",
+        "example_sentence": "The student noticed a interesting nobody during the afternoon science lesson.",
+        "phonetic_hint": "/ˈnəʊ.bɒ.di/",
+        "synonyms": [
+          "cipher",
+          "cypher",
+          "nonentity"
+        ],
+        "antonyms": [],
+        "explanation": "Suspected spelling mistake in \"nobodv\". Suggested correction is \"nobody\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'nobody'.",
+        "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'nobody'.",
+        "original_sentence": "always trv to switch off the lights when nobody is in the room also close the tap after washing",
+        "corrected_sentence": "always trv to switch off t nobody hts when nobody is in the room also close the tap after washing",
+        "extra_examples": [],
+        "tip": "Remember: 'nobody' (noun) is spelled correctly here."
+      },
+      "accepted_correction": {
+        "original": "nobodv",
+        "proposed": "nobody"
+      },
+      "explanation": "Suspected spelling mistake in \"nobodv\". Suggested correction is \"nobody\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'nobody'.",
+      "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'nobody'.",
+      "learning_objective": "Master accurate spelling of 'nobody' and avoid common typos.",
+      "difficulty": "Easy",
+      "confidence_score": 0.82,
+      "source_document_id": "doc_cbdb5e60",
+      "source_document_title": "Untitled document",
+      "created_at": "2026-07-30T21:37:59.368355Z",
+      "tags": [
+        "Spelling Correction"
+      ],
+      "child_friendly_definition": "A nobody: a person of no influence.",
+      "dictionary_meaning": "a person of no influence",
+      "contextual_meaning": "In context (noun): A nobody: a person of no influence.",
+      "example_sentence": "The student noticed a interesting nobody during the afternoon science lesson.",
+      "part_of_speech": "noun",
+      "synonyms": [
+        "cipher",
+        "cypher",
+        "nonentity"
+      ],
+      "antonyms": [],
+      "difficulty_level": "Easy",
+      "pronunciation": "/ˈnəʊ.bɒ.di/",
+      "detected_pos": "noun",
+      "identified_word_sense": "cipher.n.04",
+      "official_dictionary_definition": "a person of no influence",
+      "simplified_child_definition": "A nobody: a person of no influence.",
+      "generated_example_sentence": "The student noticed a interesting nobody during the afternoon science lesson.",
+      "dictionary_source": "WordNet (NLTK)",
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    },
+    {
+      "id": "fc_149af7be",
+      "category": "Spelling Correction",
+      "card_style": "spelling",
+      "original_sentence": "always trv to switch off the lights when nobody is in the room also close the tap after washing",
+      "corrected_sentence": "always trv to switch off the lights when nobody is in the room also close washing p after washing",
+      "front": {
+        "title": "Spelling Challenge",
+        "prompt": "Identify or type the correct spelling for the highlighted word in context:",
+        "context_sentence": "always trv to switch off the lights when nobody is in the room also close the tap after washing",
+        "target_word": "washina",
+        "options": [
+          "washing",
+          "washina"
+        ],
+        "study_type": "spelling_choice_or_input"
+      },
+      "back": {
+        "correct_answer": "washing",
+        "part_of_speech": "verb",
+        "detected_pos": "verb",
+        "child_friendly_definition": "To washing: admit to testing or proof.",
+        "official_dictionary_definition": "admit to testing or proof",
+        "dictionary_meaning": "admit to testing or proof",
+        "dictionary_source": "WordNet (NLTK)",
+        "identified_word_sense": "wash.v.06",
+        "usage_example": "We decided to washing together after completing our morning school assignments.",
+        "example_sentence": "We decided to washing together after completing our morning school assignments.",
+        "phonetic_hint": "/washing/",
+        "synonyms": [
+          "wash"
+        ],
+        "antonyms": [],
+        "explanation": "Suspected spelling mistake in \"washina\". Suggested correction is \"washing\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'washing'.",
+        "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'washing'.",
+        "original_sentence": "always trv to switch off the lights when nobody is in the room also close the tap after washing",
+        "corrected_sentence": "always trv to switch off the lights when nobody is in the room also close washing p after washing",
+        "extra_examples": [],
+        "tip": "Remember: 'washing' (verb) is spelled correctly here."
+      },
+      "accepted_correction": {
+        "original": "washina",
+        "proposed": "washing"
+      },
+      "explanation": "Suspected spelling mistake in \"washina\". Suggested correction is \"washing\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'washing'.",
+      "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'washing'.",
+      "learning_objective": "Master accurate spelling of 'washing' and avoid common typos.",
+      "difficulty": "Medium",
+      "confidence_score": 0.82,
+      "source_document_id": "doc_cbdb5e60",
+      "source_document_title": "Untitled document",
+      "created_at": "2026-07-30T21:38:00.795243Z",
+      "tags": [
+        "Spelling Correction"
+      ],
+      "child_friendly_definition": "To washing: admit to testing or proof.",
+      "dictionary_meaning": "admit to testing or proof",
+      "contextual_meaning": "In context (verb): To washing: admit to testing or proof.",
+      "example_sentence": "We decided to washing together after completing our morning school assignments.",
+      "part_of_speech": "verb",
+      "synonyms": [
+        "wash"
+      ],
+      "antonyms": [],
+      "difficulty_level": "Medium",
+      "pronunciation": "/washing/",
+      "detected_pos": "verb",
+      "identified_word_sense": "wash.v.06",
+      "official_dictionary_definition": "admit to testing or proof",
+      "simplified_child_definition": "To washing: admit to testing or proof.",
+      "generated_example_sentence": "We decided to washing together after completing our morning school assignments.",
+      "dictionary_source": "WordNet (NLTK)",
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    },
+    {
+      "id": "fc_a361bd32",
+      "category": "Spelling Correction",
+      "card_style": "spelling",
+      "original_sentence": "tell mv little brother not to throw wrappers on the around Sometimes he forget but",
+      "corrected_sentence": "tell mv little brother not to throw wrappers on the arou forget etimes he forget but",
+      "front": {
+        "title": "Spelling Challenge",
+        "prompt": "Identify or type the correct spelling for the highlighted word in context:",
+        "context_sentence": "tell mv little brother not to throw wrappers on the around Sometimes he forget but",
+        "target_word": "forqet",
+        "options": [
+          "forget",
+          "forqet"
+        ],
+        "study_type": "spelling_choice_or_input"
+      },
+      "back": {
+        "correct_answer": "forget",
+        "part_of_speech": "noun",
+        "detected_pos": "noun",
+        "child_friendly_definition": "A forget: To lose remembrance of.",
+        "official_dictionary_definition": "To lose remembrance of.",
+        "dictionary_meaning": "To lose remembrance of.",
+        "dictionary_source": "Free Dictionary API",
+        "identified_word_sense": "forget.noun.01",
+        "usage_example": "The student noticed a interesting forget during the afternoon science lesson.",
+        "example_sentence": "The student noticed a interesting forget during the afternoon science lesson.",
+        "phonetic_hint": "/fəˈɡɛt/",
+        "synonyms": [
+          "disremember",
+          "obliviate",
+          "overlook",
+          "pass over"
+        ],
+        "antonyms": [],
+        "explanation": "Suspected spelling mistake in \"forqet\". Suggested correction is \"forget\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'forget'.",
+        "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'forget'.",
+        "original_sentence": "tell mv little brother not to throw wrappers on the around Sometimes he forget but",
+        "corrected_sentence": "tell mv little brother not to throw wrappers on the arou forget etimes he forget but",
+        "extra_examples": [],
+        "tip": "Remember: 'forget' (noun) is spelled correctly here."
+      },
+      "accepted_correction": {
+        "original": "forqet",
+        "proposed": "forget"
+      },
+      "explanation": "Suspected spelling mistake in \"forqet\". Suggested correction is \"forget\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'forget'.",
+      "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'forget'.",
+      "learning_objective": "Master accurate spelling of 'forget' and avoid common typos.",
+      "difficulty": "Easy",
+      "confidence_score": 0.82,
+      "source_document_id": "doc_cbdb5e60",
+      "source_document_title": "Untitled document",
+      "created_at": "2026-07-30T21:38:01.534473Z",
+      "tags": [
+        "Spelling Correction"
+      ],
+      "child_friendly_definition": "A forget: To lose remembrance of.",
+      "dictionary_meaning": "To lose remembrance of.",
+      "contextual_meaning": "In context (noun): A forget: To lose remembrance of.",
+      "example_sentence": "The student noticed a interesting forget during the afternoon science lesson.",
+      "part_of_speech": "noun",
+      "synonyms": [
+        "disremember",
+        "obliviate",
+        "overlook",
+        "pass over"
+      ],
+      "antonyms": [],
+      "difficulty_level": "Easy",
+      "pronunciation": "/fəˈɡɛt/",
+      "detected_pos": "noun",
+      "identified_word_sense": "forget.noun.01",
+      "official_dictionary_definition": "To lose remembrance of.",
+      "simplified_child_definition": "A forget: To lose remembrance of.",
+      "generated_example_sentence": "The student noticed a interesting forget during the afternoon science lesson.",
+      "dictionary_source": "Free Dictionary API",
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    },
+    {
+      "id": "fc_a5b5d28e",
+      "category": "Spelling Correction",
+      "card_style": "spelling",
+      "original_sentence": "very much and want it to stay clean Green and happy forever:",
+      "corrected_sentence": "very m stay and want it to stay clean Green and happy forever:",
+      "front": {
+        "title": "Spelling Challenge",
+        "prompt": "Identify or type the correct spelling for the highlighted word in context:",
+        "context_sentence": "very much and want it to stay clean Green and happy forever:",
+        "target_word": "stav",
+        "options": [
+          "stay",
+          "stav"
+        ],
+        "study_type": "spelling_choice_or_input"
+      },
+      "back": {
+        "correct_answer": "stay",
+        "part_of_speech": "noun",
+        "detected_pos": "noun",
+        "child_friendly_definition": "A stay: a thin strip of metal or bone that is used to stiffen a garment.",
+        "official_dictionary_definition": "a thin strip of metal or bone that is used to stiffen a garment (e.g. a corset)",
+        "dictionary_meaning": "a thin strip of metal or bone that is used to stiffen a garment (e.g. a corset)",
+        "dictionary_source": "WordNet (NLTK)",
+        "identified_word_sense": "stay.n.04",
+        "usage_example": "The student noticed a interesting stay during the afternoon science lesson.",
+        "example_sentence": "The student noticed a interesting stay during the afternoon science lesson.",
+        "phonetic_hint": "/steɪ/",
+        "synonyms": [],
+        "antonyms": [],
+        "explanation": "Suspected spelling mistake in \"stav\". Suggested correction is \"stay\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'stay'.",
+        "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'stay'.",
+        "original_sentence": "very much and want it to stay clean Green and happy forever:",
+        "corrected_sentence": "very m stay and want it to stay clean Green and happy forever:",
+        "extra_examples": [],
+        "tip": "Remember: 'stay' (noun) is spelled correctly here."
+      },
+      "accepted_correction": {
+        "original": "stav",
+        "proposed": "stay"
+      },
+      "explanation": "Suspected spelling mistake in \"stav\". Suggested correction is \"stay\". Spelling Rule: Ensure correct letter patterns and suffixes when writing 'stay'.",
+      "rule": "Spelling Rule: Ensure correct letter patterns and suffixes when writing 'stay'.",
+      "learning_objective": "Master accurate spelling of 'stay' and avoid common typos.",
+      "difficulty": "Easy",
+      "confidence_score": 0.82,
+      "source_document_id": "doc_cbdb5e60",
+      "source_document_title": "Untitled document",
+      "created_at": "2026-07-30T21:38:02.942375Z",
+      "tags": [
+        "Spelling Correction"
+      ],
+      "child_friendly_definition": "A stay: a thin strip of metal or bone that is used to stiffen a garment.",
+      "dictionary_meaning": "a thin strip of metal or bone that is used to stiffen a garment (e.g. a corset)",
+      "contextual_meaning": "In context (noun): A stay: a thin strip of metal or bone that is used to stiffen a garment.",
+      "example_sentence": "The student noticed a interesting stay during the afternoon science lesson.",
+      "part_of_speech": "noun",
+      "synonyms": [],
+      "antonyms": [],
+      "difficulty_level": "Easy",
+      "pronunciation": "/steɪ/",
+      "detected_pos": "noun",
+      "identified_word_sense": "stay.n.04",
+      "official_dictionary_definition": "a thin strip of metal or bone that is used to stiffen a garment (e.g. a corset)",
+      "simplified_child_definition": "A stay: a thin strip of metal or bone that is used to stiffen a garment.",
+      "generated_example_sentence": "The student noticed a interesting stay during the afternoon science lesson.",
+      "dictionary_source": "WordNet (NLTK)",
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    }
+  ]
+}
