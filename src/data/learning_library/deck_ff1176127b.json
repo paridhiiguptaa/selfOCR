@@ -1,0 +1,98 @@
+{
+  "deck_id": "deck_ff1176127b",
+  "source_document_id": "doc_979cba57",
+  "source_document_title": "tc_03_handwriting_confusion_sky",
+  "exported_document_text": "The sky is blue and bright.",
+  "created_at": "2026-08-01T21:13:36.061902Z",
+  "total_flashcards": 1,
+  "categories_distribution": {
+    "Grammar Correction": 1
+  },
+  "difficulty_distribution": {
+    "Easy": 1,
+    "Medium": 0,
+    "Hard": 0
+  },
+  "estimated_study_time_min": 2,
+  "mastery_percentage": 0.0,
+  "study_progress": {
+    "cards_completed": 0,
+    "cards_mastered": 0,
+    "cards_bookmarked": 0,
+    "last_studied_at": null
+  },
+  "cards": [
+    {
+      "id": "fc_5f875cf7",
+      "category": "Grammar Correction",
+      "card_style": "grammar_explanation",
+      "original_sentence": "The sky is blue and bright",
+      "corrected_sentence": "The sky is blue and bright",
+      "front": {
+        "title": "Grammar Error Spotter",
+        "prompt": "Analyze the sentence below. Identify the grammatical error before revealing the rule:",
+        "context_sentence": "The sky is blue and bright",
+        "highlighted_error": "skv",
+        "options": [
+          "Change 'skv' to 'sky'",
+          "Remove 'skv' entirely",
+          "Move 'skv' to end of sentence"
+        ],
+        "study_type": "grammar_spotter"
+      },
+      "back": {
+        "correct_answer": "Change 'skv' to 'sky'",
+        "part_of_speech": "noun",
+        "child_friendly_definition": "the atmosphere and outer space as viewed from the earth",
+        "dictionary_meaning": "the atmosphere and outer space as viewed from the earth",
+        "usage_example": "The student noticed a very interesting sky during the afternoon science lesson.",
+        "example_sentence": "The student noticed a very interesting sky during the afternoon science lesson.",
+        "phonetic_hint": "/sky/",
+        "synonyms": [],
+        "antonyms": [],
+        "error_found": "skv",
+        "corrected_form": "sky",
+        "explanation": "Correct handwriting character confusion \"skv\" (v -> y) to \"sky\" Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+        "rule": "Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+        "original_sentence": "The sky is blue and bright",
+        "corrected_sentence": "The sky is blue and bright",
+        "extra_examples": [],
+        "tip": "Check for subject-verb agreement and tense consistency."
+      },
+      "accepted_correction": {
+        "original": "skv",
+        "proposed": "sky"
+      },
+      "explanation": "Correct handwriting character confusion \"skv\" (v -> y) to \"sky\" Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+      "rule": "Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+      "learning_objective": "Recognize and correct grammatical errors involving 'skv' -> 'sky'.",
+      "difficulty": "Easy",
+      "confidence_score": 0.94,
+      "source_document_id": "doc_979cba57",
+      "source_document_title": "tc_03_handwriting_confusion_sky",
+      "created_at": "2026-08-01T21:13:36.061902Z",
+      "tags": [
+        "Grammar Correction"
+      ],
+      "child_friendly_definition": "the atmosphere and outer space as viewed from the earth",
+      "dictionary_meaning": "the atmosphere and outer space as viewed from the earth",
+      "contextual_meaning": "In context (noun): the atmosphere and outer space as viewed from the earth",
+      "example_sentence": "The student noticed a very interesting sky during the afternoon science lesson.",
+      "part_of_speech": "noun",
+      "synonyms": [],
+      "antonyms": [],
+      "difficulty_level": "Easy",
+      "pronunciation": "/sky/",
+      "detected_pos": "noun",
+      "identified_word_sense": "sky.n.01",
+      "official_dictionary_definition": "the atmosphere and outer space as viewed from the earth",
+      "simplified_child_definition": "the atmosphere and outer space as viewed from the earth",
+      "generated_example_sentence": "The student noticed a very interesting sky during the afternoon science lesson.",
+      "dictionary_source": "WordNet (NLTK)",
+      "requires_manual_verification": true,
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    }
+  ]
+}

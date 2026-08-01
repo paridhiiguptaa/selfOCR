@@ -6,12 +6,14 @@ from typing import List, Dict, Any, Tuple, Optional
 from ..config import PipelineConfig, default_config
 from ..models import TextRegion
 from ..utils.logging_config import logger, Timer
+from ..utils.image_utils import expand_bounding_box_intelligently
 
 class SuryaLayoutAnalyzer:
     """
     Layout analysis using Surya OCR and line-level geometric segmentation.
     Groups word-level bounding boxes on the same horizontal line into line-level sentence regions,
     preventing 1-word-per-line fragmentation and dramatically reducing OCR latency.
+    Includes intelligent non-overlapping margin padding to preserve ascenders and descenders.
     """
 
     def __init__(self, config: Optional[PipelineConfig] = None):
@@ -40,6 +42,7 @@ class SuryaLayoutAnalyzer:
     def analyze(self, image: np.ndarray) -> Tuple[List[TextRegion], Dict[str, Any]]:
         """
         Analyze page layout, identify document regions, bounding boxes, labels, and human reading order.
+        Applies non-overlapping padding to preserve complete ascenders and descenders.
         Returns (ordered_regions, layout_metadata).
         """
         h, w = image.shape[:2]
@@ -88,20 +91,72 @@ class SuryaLayoutAnalyzer:
                         # Group word boxes into line sentence regions
                         line_regions = self._merge_word_boxes_into_lines(raw_regions)
                         ordered_regions = self.reconstruct_reading_order(line_regions, image_width=w)
+                        filtered_regions = self.filter_empty_regions(ordered_regions, image=image)
+                        padded_regions = self.apply_intelligent_padding(filtered_regions, image_size=(w, h))
+
                         metadata["engine"] = "surya_ocr"
-                        metadata["region_count"] = len(ordered_regions)
+                        metadata["region_count"] = len(padded_regions)
                         metadata["detected_types"] = type_counts
-                        return ordered_regions, metadata
+                        return padded_regions, metadata
                 except Exception as e:
                     logger.warning(f"Surya layout prediction failed: {e}. Utilizing geometric line segmenter.")
 
             # Geometric line segmentation
             line_regions = self._geometric_line_segmentation(image)
             ordered_regions = self.reconstruct_reading_order(line_regions, image_width=w)
+            filtered_regions = self.filter_empty_regions(ordered_regions, image=image)
+            padded_regions = self.apply_intelligent_padding(filtered_regions, image_size=(w, h))
+
             metadata["engine"] = "geometric_line_segmenter"
-            metadata["region_count"] = len(ordered_regions)
-            metadata["detected_types"] = {"Text": len(ordered_regions)}
-            return ordered_regions, metadata
+            metadata["region_count"] = len(padded_regions)
+            metadata["detected_types"] = {"Text": len(padded_regions)}
+            return padded_regions, metadata
+
+    def compute_ink_density(self, crop: np.ndarray) -> float:
+        """Calculate foreground ink pixel ratio inside bounding box crop."""
+        if crop is None or crop.size == 0:
+            return 0.0
+        gray = cv2.cvtColor(crop, cv2.COLOR_RGB2GRAY) if len(crop.shape) == 3 else crop
+        _, thresh = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
+        ink_pixels = np.count_nonzero(thresh)
+        return float(ink_pixels) / float(gray.size)
+
+    def filter_empty_regions(self, regions: List[TextRegion], image: np.ndarray) -> List[TextRegion]:
+        """Filter out empty background bounding boxes with insufficient ink density."""
+        valid_regions = []
+        for reg in regions:
+            xmin, ymin, xmax, ymax = reg.bbox
+            crop = image[ymin:ymax, xmin:xmax]
+            density = self.compute_ink_density(crop)
+            reg.ink_density = density
+            if density >= self.config.min_ink_density:
+                valid_regions.append(reg)
+            else:
+                logger.info(f"Filtered out empty background Region #{reg.region_id} (Ink density {density:.4f} < {self.config.min_ink_density:.4f}).")
+        return valid_regions
+
+    def apply_intelligent_padding(self, regions: List[TextRegion], image_size: Tuple[int, int]) -> List[TextRegion]:
+        """Apply adaptive margin padding around all detected text regions to preserve ascenders & descenders."""
+        if not regions:
+            return []
+
+        all_bboxes = [r.bbox for r in regions]
+        padded_regions = []
+
+        for reg in regions:
+            reg.unpadded_bbox = reg.bbox
+            padded_box = expand_bounding_box_intelligently(
+                bbox=reg.bbox,
+                image_size=image_size,
+                v_pad_ratio=self.config.bbox_padding_vertical_ratio,
+                h_pad_ratio=self.config.bbox_padding_horizontal_ratio,
+                min_pad_px=self.config.bbox_min_padding_px,
+                other_bboxes=all_bboxes
+            )
+            reg.bbox = padded_box
+            padded_regions.append(reg)
+
+        return padded_regions
 
     def reconstruct_reading_order(self, regions: List[TextRegion], image_width: int) -> List[TextRegion]:
         """

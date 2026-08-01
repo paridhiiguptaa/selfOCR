@@ -60,7 +60,34 @@ class ImagePreprocessor:
                 output_img = self.enhance_contrast_clahe(output_img)
                 metadata["clahe_applied"] = True
 
+            # Step 5: Stroke Sharpening via Unsharp Masking
+            if self.config.enable_unsharp_mask:
+                output_img = self.sharpen_unsharp_mask(output_img, amount=self.config.unsharp_amount)
+                metadata["unsharp_mask_applied"] = True
+
         return output_img, metadata
+
+    def sharpen_unsharp_mask(self, image: np.ndarray, amount: float = 1.5, sigma: float = 1.0) -> np.ndarray:
+        """Sharpen fine strokes using unsharp masking while preserving grayscale detail."""
+        blurred = cv2.GaussianBlur(image, (0, 0), sigma)
+        sharpened = cv2.addWeighted(image, 1.0 + amount, blurred, -amount, 0)
+        return np.clip(sharpened, 0, 255).astype(np.uint8)
+
+    def adaptive_resample_crop(self, crop: np.ndarray, target_height: Optional[int] = None) -> np.ndarray:
+        """Lanczos adaptive upscaling for low-height line crops to improve character recognizer legibility."""
+        if crop is None or crop.size == 0:
+            return crop
+
+        th = target_height or self.config.target_crop_height_px
+        h, w = crop.shape[:2]
+        if h >= th:
+            return crop
+
+        scale = th / float(h)
+        new_w = max(1, int(round(w * scale)))
+        new_h = th
+
+        return cv2.resize(crop, (new_w, new_h), interpolation=cv2.INTER_LANCZOS4)
 
     def evaluate_quality(self, image: np.ndarray) -> Dict[str, float]:
         """Calculate image quality metrics: contrast, noise level, and brightness statistics."""

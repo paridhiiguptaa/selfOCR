@@ -5,11 +5,12 @@ from typing import Tuple, List, Dict, Any, Optional
 from ..utils.logging_config import logger, Timer
 from .notebook_line_remover import NotebookLineRemover
 from .handwriting_post_corrector import HandwritingPostCorrector
+from .image_preprocessor import ImagePreprocessor
 
 class CropOCREngine:
     """
     High-accuracy line-level OCR engine using EasyOCR for clean printed text
-    and TrOCR Base Handwritten for cursive/handwritten notebook crops.
+    and TrOCR Base Handwritten for cursive/notebook crops.
     """
 
     def __init__(self):
@@ -21,6 +22,7 @@ class CropOCREngine:
         self._initialized_trocr = False
         self.line_remover = NotebookLineRemover()
         self.post_corrector = HandwritingPostCorrector()
+        self.preprocessor = ImagePreprocessor()
 
     def _init_easyocr(self) -> bool:
         """Lazily initialize EasyOCR reader."""
@@ -75,8 +77,9 @@ class CropOCREngine:
         if h < 5 or w < 5:
             return "", 0.0
 
-        # Step 1: Suppress notebook ruling lines
+        # Step 1: Suppress notebook ruling lines & adaptively resample low-height crops
         clean_crop = self.line_remover.remove_lines(crop)
+        clean_crop = self.preprocessor.adaptive_resample_crop(clean_crop)
 
         # Step 2: Try EasyOCR first for printed sentence lines (fast line-level recognition)
         easyocr_result = None

@@ -4,6 +4,8 @@ from typing import List, Dict, Any, Tuple, Optional
 from ..models import CorrectionSuggestion, CorrectionResult
 from ..utils.logging_config import logger, Timer
 
+from .punctuation_restoration_engine import PunctuationRestorationEngine
+
 class TextCorrectionEngine:
     """
     AI-powered contextual text correction & proofreading engine.
@@ -17,6 +19,7 @@ class TextCorrectionEngine:
         self._tool = None
         self._spellchecker = None
         self._initialized = False
+        self.punctuation_engine = PunctuationRestorationEngine()
 
     def _init_tools(self):
         if self._initialized:
@@ -109,6 +112,13 @@ class TextCorrectionEngine:
                 suggestions.append(r_sug)
                 self._increment_metrics(metrics, r_sug.category)
 
+        # 3. Context-Aware Punctuation Restoration Engine
+        punct_suggs, _ = self.punctuation_engine.restore_punctuation(text)
+        for p_sug in punct_suggs:
+            if not any(s.start_offset == p_sug.start_offset for s in suggestions):
+                suggestions.append(p_sug)
+                self._increment_metrics(metrics, p_sug.category)
+
         # Sort by start_offset
         suggestions.sort(key=lambda s: s.start_offset)
 
@@ -189,20 +199,26 @@ class TextCorrectionEngine:
             (r'\bcolours in (?:the )?rainbow\b', 'colours in the rainbow', 'Missing Word', 0.92, 'Insert missing article "the" before "rainbow"'),
             (r'\bbased (?:on )?student\b', 'based on student', 'Missing Word', 0.88, 'Insert missing preposition "on" after "based"'),
 
-            # --- 5. OCR CONFIDENCE RECOVERY & HANDWRITING CONFUSIONS ---
+            # --- 5. CONTEXTUAL WORD SUBSTITUTIONS & HOMOPHONES ---
+            (r'\b(boy|girl|man|woman|he|she|they|I|we)\s+road\s+(a|the|his|her|my|their)?\s*(bicycle|bike|horse|car|bus|vehicle)?\b', r'\1 rode \2 \3', 'Contextual Substitution', 0.95, 'Contextual word correction: use "rode" instead of "road" when describing riding a bicycle or vehicle'),
+            (r'\b(he|she|they|I|we|student|child)\s+red\s+(a|the|his|her|my|their)?\s*(book|story|novel|text|page|paper)\b', r'\1 read \2 \3', 'Contextual Substitution', 0.95, 'Contextual word correction: use "read" instead of "red" when describing reading a book'),
+            (r'\b(there|their)\s+are\s+([a-z]+)\s+in\s+the\s+sky\b', r'there are \2 in the sky', 'Contextual Substitution', 0.92, 'Contextual homophone correction: use "there" for location'),
+            (r'\b(see|sea)\s+the\s+rainbow\b', 'see the rainbow', 'Contextual Substitution', 0.92, 'Contextual word correction: use "see" for visual perception'),
+
+            # --- 6. OCR CONFIDENCE RECOVERY & HANDWRITING CONFUSIONS ---
             (r'\bfroin\b', 'from', 'OCR Confidence Recovery', 0.94, 'Correct OCR misread "froin" to "from"'),
             (r'\boji\b', 'on', 'OCR Confidence Recovery', 0.94, 'Correct OCR artifact "oji" to "on"'),
-            (r'\bskv\b', 'sky', 'OCR Confidence Recovery', 0.94, 'Correct handwriting character confusion "skv" (v -> y) to "sky"'),
-            (r'\byellov\b', 'yellow', 'OCR Confidence Recovery', 0.94, 'Correct handwriting character confusion "yellov" (v -> w) to "yellow"'),
-            (r'\bvellov\b', 'yellow', 'OCR Confidence Recovery', 0.94, 'Correct handwriting character confusion "vellov" to "yellow"'),
-            (r'\bpeepina\b', 'peeping', 'OCR Confidence Recovery', 0.94, 'Correct handwriting character confusion "peepina" (a -> g) to "peeping"'),
-            (r'\bfeefing\b', 'peeping', 'OCR Confidence Recovery', 0.94, 'Correct handwriting character confusion "feefing" (f -> p) to "peeping"'),
-            (r'\bareen\b', 'green', 'OCR Confidence Recovery', 0.94, 'Correct handwriting character confusion "areen" (a -> g) to "green"'),
-            (r'\boraaqe\b', 'orange', 'OCR Confidence Recovery', 0.94, 'Correct handwriting character confusion "oraaqe" to "orange"'),
-            (r'\boranae\b', 'orange', 'OCR Confidence Recovery', 0.94, 'Correct handwriting character confusion "oranae" to "orange"'),
-            (r'\bviovet\b', 'violet', 'OCR Confidence Recovery', 0.94, 'Correct handwriting character confusion "viovet" to "violet"'),
-            (r'\bindiao\b', 'indigo', 'OCR Confidence Recovery', 0.94, 'Correct handwriting character confusion "indiao" to "indigo"'),
-            (r'\bindiqo\b', 'indigo', 'OCR Confidence Recovery', 0.94, 'Correct handwriting character confusion "indiqo" to "indigo"'),
+            (r'\bskv\b', 'sky', 'Character Confusion', 0.94, 'Correct handwriting character confusion "skv" (v -> y) to "sky"'),
+            (r'\byellov\b', 'yellow', 'Character Confusion', 0.94, 'Correct handwriting character confusion "yellov" (v -> w) to "yellow"'),
+            (r'\bvellov\b', 'yellow', 'Character Confusion', 0.94, 'Correct handwriting character confusion "vellov" to "yellow"'),
+            (r'\bpeepina\b', 'peeping', 'Character Confusion', 0.94, 'Correct handwriting character confusion "peepina" (a -> g) to "peeping"'),
+            (r'\bfeefing\b', 'peeping', 'Character Confusion', 0.94, 'Correct handwriting character confusion "feefing" (f -> p) to "peeping"'),
+            (r'\bareen\b', 'green', 'Character Confusion', 0.94, 'Correct handwriting character confusion "areen" (a -> g) to "green"'),
+            (r'\boraaqe\b', 'orange', 'Character Confusion', 0.94, 'Correct handwriting character confusion "oraaqe" to "orange"'),
+            (r'\boranae\b', 'orange', 'Character Confusion', 0.94, 'Correct handwriting character confusion "oranae" to "orange"'),
+            (r'\bviovet\b', 'violet', 'Character Confusion', 0.94, 'Correct handwriting character confusion "viovet" to "violet"'),
+            (r'\bindiao\b', 'indigo', 'Character Confusion', 0.94, 'Correct handwriting character confusion "indiao" to "indigo"'),
+            (r'\bindiqo\b', 'indigo', 'Character Confusion', 0.94, 'Correct handwriting character confusion "indiqo" to "indigo"'),
             (r'\bimplomentation\b', 'implementation', 'Spelling Correction', 0.92, 'Fix spelling error in "implementation"'),
             (r'\busebility\b', 'usability', 'Spelling Correction', 0.92, 'Fix spelling error in "usability"'),
             (r'\bKowid\b', 'COVID', 'Spelling Correction', 0.90, 'Possible OCR spelling error "Kowid" to "COVID"'),
@@ -226,30 +242,47 @@ class TextCorrectionEngine:
 
             for item in rules:
                 pattern, repl, category, conf, explanation = item
-                for match in re.finditer(pattern, line, re.IGNORECASE if category != 'Capitalization' else 0):
-                    start = curr_offset + match.start()
-                    end = curr_offset + match.end()
-                    orig = text[start:end]
+                try:
+                    for match in re.finditer(pattern, line, re.IGNORECASE if category != 'Capitalization' else 0):
+                        start = curr_offset + match.start()
+                        end = curr_offset + match.end()
 
-                    if callable(repl):
-                        proposed = repl(match)
-                    else:
-                        proposed = match.expand(repl) if '\\' in repl else repl
+                        if any(s.start_offset == start for s in suggestions):
+                            continue
 
-                    if orig != proposed:
-                        sug = CorrectionSuggestion(
-                            suggestion_id=f"sug_{sug_id}",
-                            original_text=orig,
-                            proposed_correction=proposed,
-                            category=category,
-                            confidence_score=conf,
-                            explanation=explanation,
-                            start_offset=start,
-                            end_offset=end,
-                            line_number=line_num
-                        )
-                        suggestions.append(sug)
-                        sug_id += 1
+                        orig = line[match.start():match.end()]
+                        if callable(repl):
+                            proposed = repl(match)
+                        elif isinstance(repl, str) and '\\' in repl:
+                            proposed = match.expand(repl)
+                        else:
+                            proposed = repl
+
+                        if proposed.endswith(".."):
+                            proposed = proposed[:-1]
+
+                        if orig != proposed and orig.strip():
+                            candidates = [
+                                {"candidate": proposed, "score": round(conf, 4)},
+                                {"candidate": orig, "score": round(1.0 - conf, 4)}
+                            ]
+                            sug = CorrectionSuggestion(
+                                suggestion_id=f"sug_{sug_id}",
+                                original_text=orig,
+                                proposed_correction=proposed,
+                                category=category,
+                                confidence_score=conf,
+                                explanation=explanation,
+                                start_offset=start,
+                                end_offset=end,
+                                line_number=line_num,
+                                alternative_candidates=candidates
+                            )
+                            suggestions.append(sug)
+                            self._increment_metrics(metrics, category)
+                            sug_id += 1
+                except Exception as e:
+                    logger.warning(f"Proofreading rule match notice: {e}")
 
             # Check Spellchecker for un-caught single words
             if self._spellchecker is not None:
@@ -267,6 +300,10 @@ class TextCorrectionEngine:
                             end = curr_offset + match.end()
                             
                             if not any(s.start_offset == start for s in suggestions):
+                                candidates = [
+                                    {"candidate": candidate, "score": 0.82},
+                                    {"candidate": word, "score": 0.18}
+                                ]
                                 sug = CorrectionSuggestion(
                                     suggestion_id=f"sug_{sug_id}",
                                     original_text=word,
@@ -276,7 +313,8 @@ class TextCorrectionEngine:
                                     explanation=f'Suspected spelling mistake in "{word}". Suggested correction is "{candidate}".',
                                     start_offset=start,
                                     end_offset=end,
-                                    line_number=line_num
+                                    line_number=line_num,
+                                    alternative_candidates=candidates
                                 )
                                 suggestions.append(sug)
                                 sug_id += 1

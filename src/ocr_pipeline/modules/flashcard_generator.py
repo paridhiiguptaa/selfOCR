@@ -531,11 +531,14 @@ class ChildFriendlyLexicalEngine:
         }
 
 
+from .vocabulary_engine import VocabularyLearningEngine
+from .learning_opportunity_detector import LearningOpportunityDetector
+
 class FlashcardGeneratorEngine:
     """
     AI-powered Flashcard Generation Engine.
     Transforms corrected documents and accepted proofreading history into personalized,
-    active-recall educational study decks.
+    active-recall educational study decks using sequence alignment and structured learning opportunity detection.
     """
 
     def __init__(self, storage_dir: Optional[str] = None):
@@ -545,6 +548,7 @@ class FlashcardGeneratorEngine:
             storage_dir = os.path.join(base_dir, "data", "learning_library")
         self.storage_dir = storage_dir
         os.makedirs(self.storage_dir, exist_ok=True)
+        self.opportunity_detector = LearningOpportunityDetector()
 
     def generate_deck(
         self,
@@ -572,6 +576,12 @@ class FlashcardGeneratorEngine:
                     target_suggestions.append(sug)
 
         logger.info(f"Flashcard Generator started for '{document_title}' with {len(target_suggestions)} target corrections.")
+
+        # 1b. Run Learning Opportunity Detection Stage
+        opportunities = self.opportunity_detector.align_and_detect(
+            exported_text=exported_text,
+            accepted_suggestions=target_suggestions
+        )
 
         processed_count = len(target_suggestions)
         duplicates_removed = 0

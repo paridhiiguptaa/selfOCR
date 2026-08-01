@@ -13,7 +13,7 @@ class PipelineConfig:
         ".jpg", ".jpeg", ".png", ".tiff", ".tif", ".bmp", ".webp", ".pdf"
     )
     
-    # Preprocessing
+    # Preprocessing & Stroke Preservation
     enable_orientation_correction: bool = True
     enable_deskew: bool = True
     enable_perspective_correction: bool = True
@@ -21,22 +21,41 @@ class PipelineConfig:
     smart_skip_clean_images: bool = True
     contrast_clahe_clip_limit: float = 2.0
     contrast_clahe_tile_grid: Tuple[int, int] = (8, 8)
+    enable_unsharp_mask: bool = True
+    unsharp_amount: float = 1.5
+    enable_adaptive_crop_upscaling: bool = True
+    target_crop_height_px: int = 64
     
-    # Layout Analysis (Surya OCR)
+    # Document Analysis & Content Classification
+    enable_document_analysis: bool = True
+    min_ink_density: float = 0.015            # Filter out empty background bounding boxes (< 1.5% ink)
+    
+    # Layout Analysis & Bounding Box Padding (Surya / Geometric)
     enable_surya_layout: bool = True
     surya_batch_size: int = 4
+    bbox_padding_vertical_ratio: float = 0.18  # 18% vertical padding to preserve ascenders/descenders
+    bbox_padding_horizontal_ratio: float = 0.08 # 8% horizontal padding
+    bbox_min_padding_px: int = 6               # Minimum 6px padding around all crops
     
     # Primary VLM OCR Engine (Qwen2.5-VL)
     qwen_model_name: str = "Qwen/Qwen2.5-VL-3B-Instruct"
     qwen_max_new_tokens: int = 1024
     
-    # Fallback OCR Engine (GOT-OCR 2.0)
+    # Dedicated Handwriting & Fallback OCR Engines (TrOCR & GOT-OCR 2.0)
+    trocr_handwriting_model_name: str = "microsoft/trocr-small-handwritten"
     got_fallback_model_name: str = "stepfun-ai/GOT-OCR2_0"
     enable_got_fallback: bool = True
     
-    # Confidence & Fallback Thresholds
+    # Quality Estimator & Calibration Thresholds
+    min_quality_score_threshold: float = 0.65 # Multi-factor quality threshold
     min_confidence_threshold: float = 0.75
+    word_confidence_threshold: float = 0.80
     max_fallback_retries: int = 2
+    
+    # Context-Aware Proofreading
+    enable_contextual_proofreading: bool = True
+    proofreading_transformer_model: str = "distilroberta-base"
+    proofreading_regex_timeout_sec: float = 2.0
     
     # Execution Device & Precision
     device: str = "cuda" if torch.cuda.is_available() else "cpu"

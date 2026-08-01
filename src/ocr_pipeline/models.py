@@ -10,12 +10,17 @@ class TextRegion:
     region_type: str = "Text"        # "Title", "Section-header", "Text", "List-item", "Table", "Caption"
     text: str = ""
     confidence: float = 1.0
+    quality_score: float = 1.0       # Calibrated multi-factor quality score
+    ink_density: float = 0.05
+    word_confidences: List[Dict[str, Any]] = field(default_factory=list) # List of {"word": str, "confidence": float}
+    quality_indicators: Dict[str, float] = field(default_factory=dict)
     text_type: str = "mixed"         # "printed", "handwritten", "mixed"
     reading_order_idx: int = 0
     line_number: int = 1
     column_number: int = 1
     fallback_triggered: bool = False
     fallback_model: Optional[str] = None
+    unpadded_bbox: Optional[Tuple[int, int, int, int]] = None
 
     @property
     def center(self) -> Tuple[float, float]:
@@ -41,6 +46,7 @@ class DocumentPage:
     width: int
     height: int
     is_pdf: bool = False
+    document_classification: str = "mixed_content" # "predominantly_printed", "predominantly_handwritten", "mixed_content"
 
 @dataclass
 class PageTelemetry:
@@ -49,8 +55,11 @@ class PageTelemetry:
     preprocessing_meta: Dict[str, Any] = field(default_factory=dict)
     orientation_meta: Dict[str, Any] = field(default_factory=dict)
     layout_stats: Dict[str, Any] = field(default_factory=dict)
+    document_analysis_meta: Dict[str, Any] = field(default_factory=dict)
+    quality_calibration_meta: Dict[str, Any] = field(default_factory=dict)
     fallback_count: int = 0
     mean_confidence: float = 0.0
+    mean_quality_score: float = 0.0
 
 @dataclass
 class OCRResult:
@@ -69,12 +78,13 @@ class CorrectionSuggestion:
     suggestion_id: str
     original_text: str
     proposed_correction: str
-    category: str  # 'Spelling Correction', 'Grammar Correction', 'Missing Word', 'Punctuation Improvement', 'Capitalization', 'OCR Confidence Recovery', 'Sentence Structure', 'Style Suggestion'
+    category: str  # 'Spelling Correction', 'Grammar Correction', 'Missing Word', 'Punctuation Improvement', 'Capitalization', 'OCR Confidence Recovery', 'Contextual Substitution', 'Character Confusion', 'Sentence Structure', 'Style Suggestion'
     confidence_score: float
     explanation: str
     start_offset: int
     end_offset: int
     line_number: int = 1
+    alternative_candidates: List[Dict[str, Any]] = field(default_factory=list) # List of {"candidate": str, "score": float}
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -86,7 +96,8 @@ class CorrectionSuggestion:
             "explanation": self.explanation,
             "start_offset": self.start_offset,
             "end_offset": self.end_offset,
-            "line_number": self.line_number
+            "line_number": self.line_number,
+            "alternative_candidates": self.alternative_candidates
         }
 
 @dataclass
