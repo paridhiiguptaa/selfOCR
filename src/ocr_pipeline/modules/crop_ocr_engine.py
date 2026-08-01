@@ -1,3 +1,7 @@
+import os
+os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
+os.environ["OMP_NUM_THREADS"] = "1"
+
 import cv2
 import numpy as np
 from PIL import Image
@@ -25,18 +29,27 @@ class CropOCREngine:
         self.preprocessor = ImagePreprocessor()
 
     def _init_easyocr(self) -> bool:
-        """Lazily initialize EasyOCR reader."""
+        """Lazily initialize EasyOCR reader with thread safety for Windows CPU."""
         if self._initialized_easyocr:
             return self._easyocr_reader is not None
 
         self._initialized_easyocr = True
         try:
+            import torch
             import easyocr
             logger.info("Initializing EasyOCR Engine...")
-            self._easyocr_reader = easyocr.Reader(['en'], gpu=False)
+            try:
+                torch.set_num_threads(1)
+            except Exception:
+                pass
+
+            try:
+                self._easyocr_reader = easyocr.Reader(['en'], gpu=False, quantize=False)
+            except Exception:
+                self._easyocr_reader = easyocr.Reader(['en'], gpu=False)
             logger.info("EasyOCR Engine initialized successfully.")
             return True
-        except Exception as e:
+        except BaseException as e:
             logger.warning(f"EasyOCR initialization failed: {e}")
             self._easyocr_reader = None
             return False

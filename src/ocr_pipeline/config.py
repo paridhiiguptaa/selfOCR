@@ -52,8 +52,8 @@ class PipelineConfig:
     word_confidence_threshold: float = 0.80
     max_fallback_retries: int = 2
     
-    # Context-Aware Proofreading
-    enable_contextual_proofreading: bool = True
+    # Context-Aware Proofreading (Decoupled - user triggered via 'Show Corrections')
+    enable_contextual_proofreading: bool = False
     proofreading_transformer_model: str = "distilroberta-base"
     proofreading_regex_timeout_sec: float = 2.0
     

@@ -1,0 +1,256 @@
+{
+  "deck_id": "deck_e485303e5c",
+  "source_document_id": "doc_781b552d",
+  "source_document_title": "hw_noise_03_character_confusion",
+  "exported_document_text": "The sky is blue with yellow sun and green grass.",
+  "created_at": "2026-08-01T23:29:07.687545Z",
+  "total_flashcards": 3,
+  "categories_distribution": {
+    "Grammar Correction": 3
+  },
+  "difficulty_distribution": {
+    "Easy": 3,
+    "Medium": 0,
+    "Hard": 0
+  },
+  "estimated_study_time_min": 4,
+  "mastery_percentage": 0.0,
+  "study_progress": {
+    "cards_completed": 0,
+    "cards_mastered": 0,
+    "cards_bookmarked": 0,
+    "last_studied_at": null
+  },
+  "cards": [
+    {
+      "id": "fc_7e24616e",
+      "category": "Grammar Correction",
+      "card_style": "grammar_explanation",
+      "original_sentence": "The sky is blue with yellow sun and green grass",
+      "corrected_sentence": "The sky is blue with yellow sun and green grass",
+      "front": {
+        "title": "Grammar Error Spotter",
+        "prompt": "Analyze the sentence below. Identify the grammatical error before revealing the rule:",
+        "context_sentence": "The sky is blue with yellow sun and green grass",
+        "highlighted_error": "skv",
+        "options": [
+          "Change 'skv' to 'sky'",
+          "Remove 'skv' entirely",
+          "Move 'skv' to end of sentence"
+        ],
+        "study_type": "grammar_spotter"
+      },
+      "back": {
+        "correct_answer": "Change 'skv' to 'sky'",
+        "part_of_speech": "noun",
+        "child_friendly_definition": "A vibrant light blue colour, like that of the sky on a fine day.",
+        "dictionary_meaning": "A vibrant light blue colour, like that of the sky on a fine day.",
+        "usage_example": "The student noticed a very interesting sky during the afternoon science lesson.",
+        "example_sentence": "The student noticed a very interesting sky during the afternoon science lesson.",
+        "phonetic_hint": "/sky/",
+        "synonyms": [],
+        "antonyms": [],
+        "error_found": "skv",
+        "corrected_form": "sky",
+        "explanation": "Correct handwriting character confusion \"skv\" (v -> y) to \"sky\" Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+        "rule": "Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+        "original_sentence": "The sky is blue with yellow sun and green grass",
+        "corrected_sentence": "The sky is blue with yellow sun and green grass",
+        "extra_examples": [],
+        "tip": "Check for subject-verb agreement and tense consistency."
+      },
+      "accepted_correction": {
+        "original": "skv",
+        "proposed": "sky"
+      },
+      "explanation": "Correct handwriting character confusion \"skv\" (v -> y) to \"sky\" Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+      "rule": "Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+      "learning_objective": "Recognize and correct grammatical errors involving 'skv' -> 'sky'.",
+      "difficulty": "Easy",
+      "confidence_score": 0.94,
+      "source_document_id": "doc_781b552d",
+      "source_document_title": "hw_noise_03_character_confusion",
+      "created_at": "2026-08-01T23:29:05.825071Z",
+      "tags": [
+        "Grammar Correction"
+      ],
+      "child_friendly_definition": "A vibrant light blue colour, like that of the sky on a fine day.",
+      "dictionary_meaning": "A vibrant light blue colour, like that of the sky on a fine day.",
+      "contextual_meaning": "In context (noun): A vibrant light blue colour, like that of the sky on a fine day.",
+      "example_sentence": "The student noticed a very interesting sky during the afternoon science lesson.",
+      "part_of_speech": "noun",
+      "synonyms": [],
+      "antonyms": [],
+      "difficulty_level": "Easy",
+      "pronunciation": "/sky/",
+      "detected_pos": "noun",
+      "identified_word_sense": "sky.api.7",
+      "official_dictionary_definition": "A vibrant light blue colour, like that of the sky on a fine day.",
+      "simplified_child_definition": "A vibrant light blue colour, like that of the sky on a fine day.",
+      "generated_example_sentence": "The student noticed a very interesting sky during the afternoon science lesson.",
+      "dictionary_source": "Free Dictionary API",
+      "requires_manual_verification": false,
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    },
+    {
+      "id": "fc_a9a22816",
+      "category": "Grammar Correction",
+      "card_style": "grammar_explanation",
+      "original_sentence": "The sky is blue with yellow sun and green grass",
+      "corrected_sentence": "The sky is blue with yellow sun and green grass",
+      "front": {
+        "title": "Grammar Error Spotter",
+        "prompt": "Analyze the sentence below. Identify the grammatical error before revealing the rule:",
+        "context_sentence": "The sky is blue with yellow sun and green grass",
+        "highlighted_error": "yellov",
+        "options": [
+          "Change 'yellov' to 'yellow'",
+          "Remove 'yellov' entirely",
+          "Move 'yellov' to end of sentence"
+        ],
+        "study_type": "grammar_spotter"
+      },
+      "back": {
+        "correct_answer": "Change 'yellov' to 'yellow'",
+        "part_of_speech": "adjective",
+        "child_friendly_definition": "of the color intermediate between green and orange in the color spectrum; of something resembling the color of an egg yolk",
+        "dictionary_meaning": "of the color intermediate between green and orange in the color spectrum; of something resembling the color of an egg yolk",
+        "usage_example": "The teacher shared a very yellow example with the whole classroom today.",
+        "example_sentence": "The teacher shared a very yellow example with the whole classroom today.",
+        "phonetic_hint": "/yellow/",
+        "synonyms": [
+          "yellowish",
+          "xanthous"
+        ],
+        "antonyms": [],
+        "error_found": "yellov",
+        "corrected_form": "yellow",
+        "explanation": "Correct handwriting character confusion \"yellov\" (v -> w) to \"yellow\" Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+        "rule": "Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+        "original_sentence": "The sky is blue with yellow sun and green grass",
+        "corrected_sentence": "The sky is blue with yellow sun and green grass",
+        "extra_examples": [],
+        "tip": "Check for subject-verb agreement and tense consistency."
+      },
+      "accepted_correction": {
+        "original": "yellov",
+        "proposed": "yellow"
+      },
+      "explanation": "Correct handwriting character confusion \"yellov\" (v -> w) to \"yellow\" Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+      "rule": "Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+      "learning_objective": "Recognize and correct grammatical errors involving 'yellov' -> 'yellow'.",
+      "difficulty": "Easy",
+      "confidence_score": 0.94,
+      "source_document_id": "doc_781b552d",
+      "source_document_title": "hw_noise_03_character_confusion",
+      "created_at": "2026-08-01T23:29:06.521880Z",
+      "tags": [
+        "Grammar Correction"
+      ],
+      "child_friendly_definition": "of the color intermediate between green and orange in the color spectrum; of something resembling the color of an egg yolk",
+      "dictionary_meaning": "of the color intermediate between green and orange in the color spectrum; of something resembling the color of an egg yolk",
+      "contextual_meaning": "In context (adjective): of the color intermediate between green and orange in the color spectrum; of something resembling the color of an egg yolk",
+      "example_sentence": "The teacher shared a very yellow example with the whole classroom today.",
+      "part_of_speech": "adjective",
+      "synonyms": [
+        "yellowish",
+        "xanthous"
+      ],
+      "antonyms": [],
+      "difficulty_level": "Easy",
+      "pronunciation": "/yellow/",
+      "detected_pos": "adjective",
+      "identified_word_sense": "yellow.s.01",
+      "official_dictionary_definition": "of the color intermediate between green and orange in the color spectrum; of something resembling the color of an egg yolk",
+      "simplified_child_definition": "of the color intermediate between green and orange in the color spectrum; of something resembling the color of an egg yolk",
+      "generated_example_sentence": "The teacher shared a very yellow example with the whole classroom today.",
+      "dictionary_source": "WordNet (NLTK)",
+      "requires_manual_verification": true,
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    },
+    {
+      "id": "fc_2f0b802c",
+      "category": "Grammar Correction",
+      "card_style": "grammar_explanation",
+      "original_sentence": "The sky is blue with yellow sun and green grass",
+      "corrected_sentence": "The sky is blue with yellow sun and green grass",
+      "front": {
+        "title": "Grammar Error Spotter",
+        "prompt": "Analyze the sentence below. Identify the grammatical error before revealing the rule:",
+        "context_sentence": "The sky is blue with yellow sun and green grass",
+        "highlighted_error": "areen",
+        "options": [
+          "Change 'areen' to 'green'",
+          "Remove 'areen' entirely",
+          "Move 'areen' to end of sentence"
+        ],
+        "study_type": "grammar_spotter"
+      },
+      "back": {
+        "correct_answer": "Change 'areen' to 'green'",
+        "part_of_speech": "adjective",
+        "child_friendly_definition": "of the color between blue and yellow in the color spectrum; similar to the color of fresh grass",
+        "dictionary_meaning": "of the color between blue and yellow in the color spectrum; similar to the color of fresh grass",
+        "usage_example": "The teacher shared a very green example with the whole classroom today.",
+        "example_sentence": "The teacher shared a very green example with the whole classroom today.",
+        "phonetic_hint": "/green/",
+        "synonyms": [
+          "greenish",
+          "light-green",
+          "dark-green"
+        ],
+        "antonyms": [],
+        "error_found": "areen",
+        "corrected_form": "green",
+        "explanation": "Correct handwriting character confusion \"areen\" (a -> g) to \"green\" Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+        "rule": "Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+        "original_sentence": "The sky is blue with yellow sun and green grass",
+        "corrected_sentence": "The sky is blue with yellow sun and green grass",
+        "extra_examples": [],
+        "tip": "Check for subject-verb agreement and tense consistency."
+      },
+      "accepted_correction": {
+        "original": "areen",
+        "proposed": "green"
+      },
+      "explanation": "Correct handwriting character confusion \"areen\" (a -> g) to \"green\" Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+      "rule": "Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+      "learning_objective": "Recognize and correct grammatical errors involving 'areen' -> 'green'.",
+      "difficulty": "Easy",
+      "confidence_score": 0.94,
+      "source_document_id": "doc_781b552d",
+      "source_document_title": "hw_noise_03_character_confusion",
+      "created_at": "2026-08-01T23:29:07.687545Z",
+      "tags": [
+        "Grammar Correction"
+      ],
+      "child_friendly_definition": "of the color between blue and yellow in the color spectrum; similar to the color of fresh grass",
+      "dictionary_meaning": "of the color between blue and yellow in the color spectrum; similar to the color of fresh grass",
+      "contextual_meaning": "In context (adjective): of the color between blue and yellow in the color spectrum; similar to the color of fresh grass",
+      "example_sentence": "The teacher shared a very green example with the whole classroom today.",
+      "part_of_speech": "adjective",
+      "synonyms": [
+        "greenish",
+        "light-green",
+        "dark-green"
+      ],
+      "antonyms": [],
+      "difficulty_level": "Easy",
+      "pronunciation": "/green/",
+      "detected_pos": "adjective",
+      "identified_word_sense": "green.s.01",
+      "official_dictionary_definition": "of the color between blue and yellow in the color spectrum; similar to the color of fresh grass",
+      "simplified_child_definition": "of the color between blue and yellow in the color spectrum; similar to the color of fresh grass",
+      "generated_example_sentence": "The teacher shared a very green example with the whole classroom today.",
+      "dictionary_source": "WordNet (NLTK)",
+      "requires_manual_verification": false,
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    }
+  ]
+}

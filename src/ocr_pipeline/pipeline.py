@@ -102,16 +102,11 @@ class OCRPipeline:
                 page_md = qwen_md if qwen_md.strip() else page_transcription["markdown"]
                 page_plain = page_transcription["plain_text"] or qwen_md
 
-                # Phase 6b: Bidirectional Proofreading Validation Loop
+                # Phase 6b: Bidirectional 5-Stage Proofreading & Text Recovery Validation Loop
                 if self.config.enable_contextual_proofreading:
                     corr_res = self.text_corrector.analyze_text(page_plain)
-                    if corr_res.suggestions:
-                        # Auto-validate high-confidence OCR corrections (>= 0.90 confidence)
-                        high_conf_sugs = [s for s in corr_res.suggestions if s.confidence_score >= 0.90]
-                        if high_conf_sugs:
-                            page_plain = self.text_corrector.apply_suggestions(
-                                page_plain, [s.suggestion_id for s in high_conf_sugs], corr_res.suggestions
-                            )
+                    if corr_res.corrected_text.strip():
+                        page_plain = corr_res.corrected_text
 
                 all_plain_texts.append(page_plain)
                 all_md_texts.append(f"# Page {page.page_number}\n\n" + page_md)

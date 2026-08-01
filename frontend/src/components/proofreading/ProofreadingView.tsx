@@ -19,9 +19,10 @@ export const ProofreadingView: React.FC<ProofreadingViewProps> = ({
   onTextUpdate,
   onSuggestionsChange,
 }) => {
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [correctionData, setCorrectionData] = useState<CorrectionResponse | null>(null);
+  const [hasRun, setHasRun] = useState<boolean>(false);
 
   // States
   const [acceptedIds, setAcceptedIds] = useState<string[]>([]);
@@ -29,15 +30,6 @@ export const ProofreadingView: React.FC<ProofreadingViewProps> = ({
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [selectedSuggestionId, setSelectedSuggestionId] = useState<string | null>(null);
 
-  // Notify parent of accepted suggestions whenever acceptedIds or correctionData change
-  useEffect(() => {
-    if (correctionData && onSuggestionsChange) {
-      const acceptedSuggs = correctionData.suggestions.filter((s) => acceptedIds.includes(s.suggestion_id));
-      onSuggestionsChange(acceptedSuggs, correctionData.suggestions);
-    }
-  }, [acceptedIds, correctionData, onSuggestionsChange]);
-
-  
   // Sidebar & Modals
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
   const [isComparing, setIsComparing] = useState<boolean>(false);
@@ -48,67 +40,64 @@ export const ProofreadingView: React.FC<ProofreadingViewProps> = ({
   const [historyIdx, setHistoryIdx] = useState<number>(-1);
 
   const initialTextRef = React.useRef(ocrPlainText);
+  const currentTextRef = React.useRef(ocrPlainText);
 
-  // Fetch AI Proofreading Suggestions ONLY once for the initial OCR document
   useEffect(() => {
-    let isMounted = true;
-    let attempts = 0;
-    const maxAttempts = 3;
+    currentTextRef.current = ocrPlainText;
+  }, [ocrPlainText]);
 
-    const fetchCorrections = async () => {
-      setLoading(true);
-      setError(null);
-
-      while (attempts < maxAttempts && isMounted) {
-        attempts++;
-        try {
-          const controller = new AbortController();
-          const timeoutId = setTimeout(() => controller.abort(), 15000);
-
-          const response = await fetch('http://localhost:8000/api/correct-text', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ text: initialTextRef.current, language: 'en' }),
-            signal: controller.signal,
-          });
-
-          clearTimeout(timeoutId);
-
-          if (!response.ok) {
-            throw new Error(`Text correction server responded with status: ${response.status}`);
-          }
-
-          const data: CorrectionResponse = await response.json();
-          if (isMounted) {
-            setCorrectionData(data);
-            setHistory([initialTextRef.current]);
-            setHistoryIdx(0);
-            setLoading(false);
-            return;
-          }
-        } catch (err: any) {
-          console.warn(`Proofreading fetch attempt ${attempts} failed: ${err.message}`);
-          if (attempts >= maxAttempts && isMounted) {
-            setError(err.message || 'Failed to connect to proofreading service. Please check server status.');
-            setLoading(false);
-          } else {
-            await new Promise((r) => setTimeout(r, 1500));
-          }
-        }
-      }
-    };
-
-    if (initialTextRef.current) {
-      fetchCorrections();
+  // Notify parent of accepted suggestions whenever acceptedIds or correctionData change
+  useEffect(() => {
+    if (correctionData && onSuggestionsChange) {
+      const acceptedSuggs = correctionData.suggestions.filter((s) => acceptedIds.includes(s.suggestion_id));
+      onSuggestionsChange(acceptedSuggs, correctionData.suggestions);
     }
+  }, [acceptedIds, correctionData, onSuggestionsChange]);
 
-    return () => {
-      isMounted = false;
-    };
+  // Function to run proofreading on demand using current text
+  const handleRunProofreading = async () => {
+    const textToProcess = currentTextRef.current || ocrPlainText;
+    if (!textToProcess || !textToProcess.trim()) return;
+
+    initialTextRef.current = textToProcess;
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch('http://localhost:8000/api/correct-text', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: textToProcess, language: 'en' }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Text correction server responded with status: ${response.status}`);
+      }
+
+      const data: CorrectionResponse = await response.json();
+      setCorrectionData(data);
+      setHistory([textToProcess]);
+      setHistoryIdx(0);
+      setAcceptedIds([]);
+      setRejectedIds([]);
+      setHasRun(true);
+      setLoading(false);
+    } catch (err: any) {
+      console.warn(`Proofreading fetch failed: ${err.message}`);
+      setError(err.message || 'Failed to connect to proofreading service.');
+      setLoading(false);
+    }
+  };
+
+  // Auto-run once if entering tab for the first time
+  useEffect(() => {
+    if (!hasRun && ocrPlainText) {
+      handleRunProofreading();
+    }
   }, []);
 
   const getCurrentTextWithAccepted = (accepted: string[]): string => {
-    const orig = initialTextRef.current;
+    const orig = initialTextRef.current || ocrPlainText;
     if (!correctionData) return orig;
     if (accepted.length === 0) return orig;
 
