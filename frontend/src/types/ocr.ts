@@ -128,6 +128,15 @@ export interface CorrectionResponse {
   processing_time_sec: number;
 }
 
+export interface ProofreadingState {
+  correctionData: CorrectionResponse | null;
+  acceptedIds: string[];
+  rejectedIds: string[];
+  hasRun: boolean;
+  documentHash: string;
+  isDirty: boolean;
+}
+
 export type CardStyle =
   | 'spelling'
   | 'fill_in_blank'

@@ -1,0 +1,104 @@
+{
+  "deck_id": "deck_6c718b3970",
+  "source_document_id": "doc_5f4900ef",
+  "source_document_title": "tc_14_notebook_reconstruction_optics",
+  "exported_document_text": "Materials through which light does not pass at all are called Opaque.",
+  "created_at": "2026-08-02T21:51:13.186121Z",
+  "total_flashcards": 1,
+  "categories_distribution": {
+    "Sentence Structure": 1
+  },
+  "difficulty_distribution": {
+    "Easy": 0,
+    "Medium": 1,
+    "Hard": 0
+  },
+  "estimated_study_time_min": 2,
+  "mastery_percentage": 0.0,
+  "study_progress": {
+    "cards_completed": 0,
+    "cards_mastered": 0,
+    "cards_bookmarked": 0,
+    "last_studied_at": null
+  },
+  "cards": [
+    {
+      "id": "fc_27611f8e",
+      "category": "Sentence Structure",
+      "card_style": "sentence_reconstruction",
+      "original_sentence": "Materials through which light does not pass at all are called Opaque",
+      "corrected_sentence": "Materials through which light does not pass at all are called Opaque. alled Opaque",
+      "front": {
+        "title": "Sentence Reconstruction",
+        "prompt": "Rebuild the corrected sentence from its original flawed version:",
+        "original_sentence": "Materials through which light does not pass at all are called Opaque",
+        "scrambled_tokens": [
+          "Materials",
+          "through",
+          "which",
+          "light",
+          "does",
+          "not",
+          "pass",
+          "at",
+          "all",
+          "are",
+          "called",
+          "Opaque.",
+          "alled",
+          "Opaque"
+        ],
+        "study_type": "reconstruction"
+      },
+      "back": {
+        "correct_answer": "Materials through which light does not pass at all are called Opaque. alled Opaque",
+        "part_of_speech": "noun",
+        "child_friendly_definition": "Describes or represents 'Materials through which light does not pass at all are called Opaque.' as used in this sentence.",
+        "dictionary_meaning": "Describes or represents 'Materials through which light does not pass at all are called Opaque.' as used in this sentence.",
+        "usage_example": "The student noticed a very interesting Materials through which light does not pass at all are called Opaque..",
+        "example_sentence": "The student noticed a very interesting Materials through which light does not pass at all are called Opaque..",
+        "explanation": "Hierarchical contextual document reconstruction under topic 'Light, Shadows & Reflections'. Sentence Structure Rule: Organize clauses logically for clear syntactic flow.",
+        "rule": "Sentence Structure Rule: Organize clauses logically for clear syntactic flow.",
+        "original_sentence": "Materials through which light does not pass at all are called Opaque",
+        "corrected_sentence": "Materials through which light does not pass at all are called Opaque. alled Opaque",
+        "extra_examples": [],
+        "tip": "Focus on clear subject-verb arrangement."
+      },
+      "accepted_correction": {
+        "original": "Matrials which light does pass atall thccaldbd is Opaque",
+        "proposed": "Materials through which light does not pass at all are called Opaque."
+      },
+      "explanation": "Hierarchical contextual document reconstruction under topic 'Light, Shadows & Reflections'. Sentence Structure Rule: Organize clauses logically for clear syntactic flow.",
+      "rule": "Sentence Structure Rule: Organize clauses logically for clear syntactic flow.",
+      "learning_objective": "Reconstruct flawed sentence patterns into clear, well-formed statements.",
+      "difficulty": "Medium",
+      "confidence_score": 0.96,
+      "source_document_id": "doc_5f4900ef",
+      "source_document_title": "tc_14_notebook_reconstruction_optics",
+      "created_at": "2026-08-02T21:51:13.186121Z",
+      "tags": [
+        "Academic Vocabulary",
+        "Sentence Structure"
+      ],
+      "child_friendly_definition": "Describes or represents 'Materials through which light does not pass at all are called Opaque.' as used in this sentence.",
+      "dictionary_meaning": "A term functioning as an noun in context.",
+      "contextual_meaning": "In context (noun): Describes or represents 'Materials through which light does not pass at all are called Opaque.' as used in this sentence.",
+      "example_sentence": "The student noticed a very interesting Materials through which light does not pass at all are called Opaque..",
+      "part_of_speech": "noun",
+      "synonyms": [],
+      "antonyms": [],
+      "difficulty_level": "Medium",
+      "pronunciation": "/materials through which light does not pass at all are called opaque./",
+      "detected_pos": "noun",
+      "identified_word_sense": "materials through which light does not pass at all are called opaque..noun.fallback",
+      "official_dictionary_definition": "A term functioning as an noun in context.",
+      "simplified_child_definition": "Describes or represents 'Materials through which light does not pass at all are called Opaque.' as used in this sentence.",
+      "generated_example_sentence": "The student noticed a very interesting Materials through which light does not pass at all are called Opaque..",
+      "dictionary_source": "Contextual Inference",
+      "requires_manual_verification": true,
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    }
+  ]
+}

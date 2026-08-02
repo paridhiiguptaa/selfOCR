@@ -52,5 +52,61 @@ BENCHMARK_TEST_CASES: List[TestCase] = [
         raw_ocr_input="ans: yes i have seen the rainbow ?",
         ground_truth="Ans: Yes, I have seen the rainbow?",
         description="Answer tag capitalization, pronoun 'i' capitalization, and space before question mark."
+    ),
+    TestCase(
+        test_id="tc_07_homophone_sea",
+        category="homophone_context",
+        raw_ocr_input="I sea the bright rainbow in the sky.",
+        ground_truth="I see the bright rainbow in the sky.",
+        description="Contextual word substitution of 'sea' to 'see' in sight context."
+    ),
+    TestCase(
+        test_id="tc_08_homophone_there",
+        category="homophone_context",
+        raw_ocr_input="Their are seven colors in the rainbow.",
+        ground_truth="There are seven colors in the rainbow.",
+        description="Contextual homophone substitution of 'Their' to 'There' with existential 'are'."
+    ),
+    TestCase(
+        test_id="tc_09_homophone_sun",
+        category="homophone_context",
+        raw_ocr_input="The son is shining brightly in the sky.",
+        ground_truth="The sun is shining brightly in the sky.",
+        description="Contextual word substitution of 'son' to 'sun' in sky context."
+    ),
+    TestCase(
+        test_id="tc_10_homophone_cat",
+        category="homophone_context",
+        raw_ocr_input="I cat the paper with scissors.",
+        ground_truth="I cut the paper with scissors.",
+        description="Contextual word substitution of 'cat' to 'cut' in cutting context."
+    ),
+    TestCase(
+        test_id="tc_11_multi_word_handwriting",
+        category="handwritten",
+        raw_ocr_input="The yellov sun is peepina through clouds.",
+        ground_truth="The yellow sun is peeping through clouds.",
+        description="Multi-word handwritten character confusion recovery ('yellov' -> 'yellow', 'peepina' -> 'peeping')."
+    ),
+    TestCase(
+        test_id="tc_12_notebook_reconstruction_matter",
+        category="handwritten",
+        raw_ocr_input="Us is made of matte EartethaGaAEeu exists in 3 states",
+        ground_truth="Everything around us is made of matter. Matter exists in three states: solid, liquid and gases.",
+        description="Educational notebook hierarchical document reconstruction under Properties of Matter topic."
+    ),
+    TestCase(
+        test_id="tc_13_notebook_reconstruction_activity",
+        category="handwritten",
+        raw_ocr_input="Eil Jueket with water Take ang tempt braille",
+        ground_truth="Fill a bucket with water. Take an empty bottle with its mouth facing downwards.",
+        description="Classroom activity instructional text reconstruction."
+    ),
+    TestCase(
+        test_id="tc_14_notebook_reconstruction_optics",
+        category="handwritten",
+        raw_ocr_input="Matrials which light does pass atall thccaldbd is Opaque",
+        ground_truth="Materials through which light does not pass at all are called Opaque.",
+        description="Light and Optics domain note reconstruction."
     )
 ]

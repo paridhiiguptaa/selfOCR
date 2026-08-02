@@ -219,14 +219,17 @@ async def process_batch_ocr(files: List[UploadFile] = File(...)):
 
     return {"batch_size": len(files), "results": batch_results}
 
+import hashlib
 from pydantic import BaseModel, Field
 from .modules.text_corrector import TextCorrectionEngine
 
 correction_engine = TextCorrectionEngine()
+_CORRECTION_CACHE: Dict[str, Dict[str, Any]] = {}
 
 class TextCorrectionRequest(BaseModel):
     text: str = Field(..., description="OCR extracted text or plain text to be proofread")
     language: Optional[str] = Field("en", description="Language code")
+    ocr_candidates: Optional[List[Dict[str, Any]]] = Field(None, description="Optional OCR multi-candidate list")
 
 class ApplyCorrectionsRequest(BaseModel):
     original_text: str = Field(..., description="Original text string")
@@ -237,12 +240,18 @@ class ApplyCorrectionsRequest(BaseModel):
 async def correct_text(payload: TextCorrectionRequest):
     """
     Analyze OCR text output and generate structured correction suggestions.
-    Identifies spelling errors, grammar mistakes, missing words, punctuation issues,
-    and OCR artifacts with exact character offsets for frontend highlighting.
+    Uses MD5 text hash caching to return instant results on duplicate requests.
     """
     try:
-        res = correction_engine.analyze_text(payload.text)
-        return JSONResponse(content=res.to_dict())
+        text_hash = hashlib.md5(payload.text.encode("utf-8")).hexdigest()
+        if text_hash in _CORRECTION_CACHE and not payload.ocr_candidates:
+            logger.info(f"Returning server-side cached proofreading result for text hash '{text_hash[:8]}'.")
+            return JSONResponse(content=_CORRECTION_CACHE[text_hash])
+
+        res = correction_engine.analyze_text(payload.text, ocr_candidates=payload.ocr_candidates)
+        res_dict = res.to_dict()
+        _CORRECTION_CACHE[text_hash] = res_dict
+        return JSONResponse(content=res_dict)
     except Exception as e:
         logger.error(f"API correct_text error: {e}")
         raise HTTPException(status_code=500, detail=str(e))

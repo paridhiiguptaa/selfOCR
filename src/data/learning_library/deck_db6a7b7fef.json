@@ -1,0 +1,97 @@
+{
+  "deck_id": "deck_db6a7b7fef",
+  "source_document_id": "doc_7bc97e16",
+  "source_document_title": "tc_01_homophone_road",
+  "exported_document_text": "The boy rode the bicycle to school.",
+  "created_at": "2026-08-02T21:14:06.146417Z",
+  "total_flashcards": 1,
+  "categories_distribution": {
+    "Sentence Structure": 1
+  },
+  "difficulty_distribution": {
+    "Easy": 0,
+    "Medium": 1,
+    "Hard": 0
+  },
+  "estimated_study_time_min": 2,
+  "mastery_percentage": 0.0,
+  "study_progress": {
+    "cards_completed": 0,
+    "cards_mastered": 0,
+    "cards_bookmarked": 0,
+    "last_studied_at": null
+  },
+  "cards": [
+    {
+      "id": "fc_b8e0de8d",
+      "category": "Sentence Structure",
+      "card_style": "sentence_reconstruction",
+      "original_sentence": "The boy rode the bicycle to school",
+      "corrected_sentence": "The boy rode the bicycle to school",
+      "front": {
+        "title": "Sentence Reconstruction",
+        "prompt": "Rebuild the corrected sentence from its original flawed version:",
+        "original_sentence": "The boy rode the bicycle to school",
+        "scrambled_tokens": [
+          "The",
+          "boy",
+          "rode",
+          "the",
+          "bicycle",
+          "to",
+          "school"
+        ],
+        "study_type": "reconstruction"
+      },
+      "back": {
+        "correct_answer": "The boy rode the bicycle to school",
+        "part_of_speech": "noun",
+        "child_friendly_definition": "Describes or represents 'boy rode the bicycle' as used in this sentence.",
+        "dictionary_meaning": "Describes or represents 'boy rode the bicycle' as used in this sentence.",
+        "usage_example": "The student noticed a very interesting boy rode the bicycle during the afternoon science lesson.",
+        "example_sentence": "The student noticed a very interesting boy rode the bicycle during the afternoon science lesson.",
+        "explanation": "Contextual word correction: use \"rode\" instead of \"road\" when describing riding a bicycle or vehicle Sentence Structure Rule: Organize clauses logically for clear syntactic flow.",
+        "rule": "Sentence Structure Rule: Organize clauses logically for clear syntactic flow.",
+        "original_sentence": "The boy rode the bicycle to school",
+        "corrected_sentence": "The boy rode the bicycle to school",
+        "extra_examples": [],
+        "tip": "Focus on clear subject-verb arrangement."
+      },
+      "accepted_correction": {
+        "original": "boy road the bicycle",
+        "proposed": "boy rode the bicycle"
+      },
+      "explanation": "Contextual word correction: use \"rode\" instead of \"road\" when describing riding a bicycle or vehicle Sentence Structure Rule: Organize clauses logically for clear syntactic flow.",
+      "rule": "Sentence Structure Rule: Organize clauses logically for clear syntactic flow.",
+      "learning_objective": "Reconstruct flawed sentence patterns into clear, well-formed statements.",
+      "difficulty": "Medium",
+      "confidence_score": 0.95,
+      "source_document_id": "doc_7bc97e16",
+      "source_document_title": "tc_01_homophone_road",
+      "created_at": "2026-08-02T21:14:06.146417Z",
+      "tags": [
+        "Academic Vocabulary",
+        "Sentence Structure"
+      ],
+      "child_friendly_definition": "Describes or represents 'boy rode the bicycle' as used in this sentence.",
+      "dictionary_meaning": "A term functioning as an noun in context.",
+      "contextual_meaning": "In context (noun): Describes or represents 'boy rode the bicycle' as used in this sentence.",
+      "example_sentence": "The student noticed a very interesting boy rode the bicycle during the afternoon science lesson.",
+      "part_of_speech": "noun",
+      "synonyms": [],
+      "antonyms": [],
+      "difficulty_level": "Medium",
+      "pronunciation": "/boy rode the bicycle/",
+      "detected_pos": "noun",
+      "identified_word_sense": "boy rode the bicycle.noun.fallback",
+      "official_dictionary_definition": "A term functioning as an noun in context.",
+      "simplified_child_definition": "Describes or represents 'boy rode the bicycle' as used in this sentence.",
+      "generated_example_sentence": "The student noticed a very interesting boy rode the bicycle during the afternoon science lesson.",
+      "dictionary_source": "Contextual Inference",
+      "requires_manual_verification": true,
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    }
+  ]
+}

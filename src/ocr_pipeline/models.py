@@ -21,6 +21,9 @@ class TextRegion:
     fallback_triggered: bool = False
     fallback_model: Optional[str] = None
     unpadded_bbox: Optional[Tuple[int, int, int, int]] = None
+    candidates: List[Dict[str, Any]] = field(default_factory=list) # List of {"text": str, "confidence": float}
+    ocr_confidence: float = 1.0
+    reconstruction_confidence: float = 1.0
 
     @property
     def center(self) -> Tuple[float, float]:
@@ -108,6 +111,8 @@ class CorrectionResult:
     suggestions: List[CorrectionSuggestion]
     quality_metrics: Dict[str, int]
     processing_time_sec: float
+    topic_prior: Dict[str, Any] = field(default_factory=dict)
+    reconstruction_stats: Dict[str, Any] = field(default_factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -115,7 +120,9 @@ class CorrectionResult:
             "corrected_text": self.corrected_text,
             "suggestions": [s.to_dict() for s in self.suggestions],
             "quality_metrics": self.quality_metrics,
-            "processing_time_sec": round(self.processing_time_sec, 3)
+            "processing_time_sec": round(self.processing_time_sec, 3),
+            "topic_prior": self.topic_prior,
+            "reconstruction_stats": self.reconstruction_stats
         }
 
 @dataclass

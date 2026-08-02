@@ -1,0 +1,100 @@
+{
+  "deck_id": "deck_9c0d79b45f",
+  "source_document_id": "doc_eb20f5ff",
+  "source_document_title": "hw_noise_05_punctuation_restore",
+  "exported_document_text": "Where do you see the rainbowAns: in the sky",
+  "created_at": "2026-08-02T21:32:37.786103Z",
+  "total_flashcards": 1,
+  "categories_distribution": {
+    "Missing Word": 1
+  },
+  "difficulty_distribution": {
+    "Easy": 0,
+    "Medium": 1,
+    "Hard": 0
+  },
+  "estimated_study_time_min": 2,
+  "mastery_percentage": 0.0,
+  "study_progress": {
+    "cards_completed": 0,
+    "cards_mastered": 0,
+    "cards_bookmarked": 0,
+    "last_studied_at": null
+  },
+  "cards": [
+    {
+      "id": "fc_141a37a7",
+      "category": "Missing Word",
+      "card_style": "fill_in_blank",
+      "original_sentence": "Where do you see the rainbow Ans: in the sky",
+      "corrected_sentence": "Where do you see the rainbow Ans: in the sky",
+      "front": {
+        "title": "Fill in the Blank",
+        "prompt": "Choose or type the missing word to complete the sentence correctly:",
+        "sentence_with_blank": "Where do you see the rainbow Ans: [ _____ ]",
+        "hint": "Initial letter: I",
+        "options": [
+          "in the sky",
+          "and",
+          "which",
+          "however"
+        ],
+        "study_type": "fill_blank"
+      },
+      "back": {
+        "correct_answer": "in the sky",
+        "part_of_speech": "noun",
+        "child_friendly_definition": "",
+        "dictionary_meaning": "",
+        "usage_example": "",
+        "example_sentence": "",
+        "phonetic_hint": "",
+        "synonyms": [],
+        "antonyms": [],
+        "full_sentence": "Where do you see the rainbow Ans: in the sky",
+        "explanation": "Insert missing article \"the\" before \"sky\" Contextual Completeness: Ensure all necessary syntax components such as 'in the sky' are included for grammatical precision.",
+        "rule": "Contextual Completeness: Ensure all necessary syntax components such as 'in the sky' are included for grammatical precision.",
+        "original_sentence": "Where do you see the rainbow Ans: in the sky",
+        "corrected_sentence": "Where do you see the rainbow Ans: in the sky",
+        "extra_examples": [],
+        "tip": "The word 'in the sky' (noun) completes the syntactic meaning."
+      },
+      "accepted_correction": {
+        "original": "In the sky",
+        "proposed": "in the sky"
+      },
+      "explanation": "Insert missing article \"the\" before \"sky\" Contextual Completeness: Ensure all necessary syntax components such as 'in the sky' are included for grammatical precision.",
+      "rule": "Contextual Completeness: Ensure all necessary syntax components such as 'in the sky' are included for grammatical precision.",
+      "learning_objective": "Identify missing contextual words like 'in the sky' to complete sentence structures.",
+      "difficulty": "Medium",
+      "confidence_score": 0.92,
+      "source_document_id": "doc_eb20f5ff",
+      "source_document_title": "hw_noise_05_punctuation_restore",
+      "created_at": "2026-08-02T21:32:37.786103Z",
+      "tags": [
+        "Articles",
+        "Academic Vocabulary",
+        "Missing Word"
+      ],
+      "child_friendly_definition": "",
+      "dictionary_meaning": "",
+      "contextual_meaning": "In context (noun): ",
+      "example_sentence": "",
+      "part_of_speech": "noun",
+      "synonyms": [],
+      "antonyms": [],
+      "difficulty_level": "Medium",
+      "pronunciation": "",
+      "detected_pos": "noun",
+      "identified_word_sense": "grammar_rule",
+      "official_dictionary_definition": "",
+      "simplified_child_definition": "",
+      "generated_example_sentence": "",
+      "dictionary_source": "Grammar Engine Rule",
+      "requires_manual_verification": false,
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    }
+  ]
+}

@@ -25,21 +25,32 @@ class NotebookLineRemover:
             gray = cv2.cvtColor(crop, cv2.COLOR_RGB2GRAY) if len(crop.shape) == 3 else crop.copy()
 
             # 1. Detect thin horizontal lines using long horizontal morphological kernel
-            kernel_len = max(15, w // 15)
+            kernel_len = max(20, w // 12)
             horiz_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (kernel_len, 1))
 
-            # Otsu binarization
+            # Otsu binarization for dark ink / pencil strokes on light background
             _, thresh = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
             
             # Isolate horizontal lines
             detected_lines = cv2.morphologyEx(thresh, cv2.MORPH_OPEN, horiz_kernel, iterations=1)
 
-            # 2. Subtract detected lines slightly diluted to leave text strokes intact
-            dilated_lines = cv2.dilate(detected_lines, np.ones((2, 2), np.uint8), iterations=1)
+            # 2. Isolate vertical/diagonal text strokes to prevent line removal from eroding letters
+            vert_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (1, 5))
+            vert_strokes = cv2.morphologyEx(thresh, cv2.MORPH_OPEN, vert_kernel, iterations=1)
 
-            # Inpaint or replace line pixels with background lightness
-            cleaned = crop.copy()
-            cleaned[dilated_lines > 0] = [255, 255, 255] if len(crop.shape) == 3 else 255
+            # Line mask removing points that are part of strong vertical strokes
+            line_mask = cv2.subtract(detected_lines, vert_strokes)
+
+            if np.count_nonzero(line_mask) == 0:
+                return crop.copy()
+
+            # 3. Use inpainting to restore line intersections smoothly without leaving white holes in letters
+            dilated_mask = cv2.dilate(line_mask, np.ones((2, 1), np.uint8), iterations=1)
+            
+            if len(crop.shape) == 3:
+                cleaned = cv2.inpaint(crop, dilated_mask, 2, cv2.INPAINT_TELEA)
+            else:
+                cleaned = cv2.inpaint(crop, dilated_mask, 2, cv2.INPAINT_TELEA)
 
             return cleaned
         except Exception as e:

@@ -1,0 +1,174 @@
+{
+  "deck_id": "deck_d70eb95ceb",
+  "source_document_id": "doc_8e0cdd01",
+  "source_document_title": "tc_11_multi_word_handwriting",
+  "exported_document_text": "The yellow sun is peeping through clouds.",
+  "created_at": "2026-08-02T21:32:21.113250Z",
+  "total_flashcards": 2,
+  "categories_distribution": {
+    "Grammar Correction": 2
+  },
+  "difficulty_distribution": {
+    "Easy": 2,
+    "Medium": 0,
+    "Hard": 0
+  },
+  "estimated_study_time_min": 3,
+  "mastery_percentage": 0.0,
+  "study_progress": {
+    "cards_completed": 0,
+    "cards_mastered": 0,
+    "cards_bookmarked": 0,
+    "last_studied_at": null
+  },
+  "cards": [
+    {
+      "id": "fc_22c4c581",
+      "category": "Grammar Correction",
+      "card_style": "grammar_explanation",
+      "original_sentence": "The yellow sun is peeping through clouds",
+      "corrected_sentence": "The yellow sun is peeping through clouds",
+      "front": {
+        "title": "Grammar Error Spotter",
+        "prompt": "Analyze the sentence below. Identify the grammatical error before revealing the rule:",
+        "context_sentence": "The yellow sun is peeping through clouds",
+        "highlighted_error": "yellov",
+        "options": [
+          "Change 'yellov' to 'yellow'",
+          "Remove 'yellov' entirely",
+          "Move 'yellov' to end of sentence"
+        ],
+        "study_type": "grammar_spotter"
+      },
+      "back": {
+        "correct_answer": "Change 'yellov' to 'yellow'",
+        "part_of_speech": "adjective",
+        "child_friendly_definition": "Having yellow as its colour.",
+        "dictionary_meaning": "Having yellow as its colour.",
+        "usage_example": "The teacher shared a very yellow example with the whole classroom today.",
+        "example_sentence": "The teacher shared a very yellow example with the whole classroom today.",
+        "phonetic_hint": "/yellow/",
+        "synonyms": [],
+        "antonyms": [],
+        "error_found": "yellov",
+        "corrected_form": "yellow",
+        "explanation": "Correct character confusion \"yellov\" (v -> w) to \"yellow\" Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+        "rule": "Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+        "original_sentence": "The yellow sun is peeping through clouds",
+        "corrected_sentence": "The yellow sun is peeping through clouds",
+        "extra_examples": [],
+        "tip": "Check for subject-verb agreement and tense consistency."
+      },
+      "accepted_correction": {
+        "original": "yellov",
+        "proposed": "yellow"
+      },
+      "explanation": "Correct character confusion \"yellov\" (v -> w) to \"yellow\" Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+      "rule": "Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+      "learning_objective": "Recognize and correct grammatical errors involving 'yellov' -> 'yellow'.",
+      "difficulty": "Easy",
+      "confidence_score": 0.94,
+      "source_document_id": "doc_8e0cdd01",
+      "source_document_title": "tc_11_multi_word_handwriting",
+      "created_at": "2026-08-02T21:32:20.340987Z",
+      "tags": [
+        "Grammar Correction"
+      ],
+      "child_friendly_definition": "Having yellow as its colour.",
+      "dictionary_meaning": "Having yellow as its colour.",
+      "contextual_meaning": "In context (adjective): Having yellow as its colour.",
+      "example_sentence": "The teacher shared a very yellow example with the whole classroom today.",
+      "part_of_speech": "adjective",
+      "synonyms": [],
+      "antonyms": [],
+      "difficulty_level": "Easy",
+      "pronunciation": "/yellow/",
+      "detected_pos": "adjective",
+      "identified_word_sense": "yellow.api.1",
+      "official_dictionary_definition": "Having yellow as its colour.",
+      "simplified_child_definition": "Having yellow as its colour.",
+      "generated_example_sentence": "The teacher shared a very yellow example with the whole classroom today.",
+      "dictionary_source": "Free Dictionary API",
+      "requires_manual_verification": true,
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    },
+    {
+      "id": "fc_8266358f",
+      "category": "Grammar Correction",
+      "card_style": "grammar_explanation",
+      "original_sentence": "The yellow sun is peeping through clouds",
+      "corrected_sentence": "The yellow sun is peeping through clouds",
+      "front": {
+        "title": "Grammar Error Spotter",
+        "prompt": "Analyze the sentence below. Identify the grammatical error before revealing the rule:",
+        "context_sentence": "The yellow sun is peeping through clouds",
+        "highlighted_error": "peepina",
+        "options": [
+          "Change 'peepina' to 'peeping'",
+          "Remove 'peepina' entirely",
+          "Move 'peepina' to end of sentence"
+        ],
+        "study_type": "grammar_spotter"
+      },
+      "back": {
+        "correct_answer": "Change 'peepina' to 'peeping'",
+        "part_of_speech": "verb",
+        "child_friendly_definition": "appear as though from hiding",
+        "dictionary_meaning": "appear as though from hiding",
+        "usage_example": "the new moon peeped through the tree tops",
+        "example_sentence": "the new moon peeped through the tree tops",
+        "phonetic_hint": "/peeping/",
+        "synonyms": [
+          "peep"
+        ],
+        "antonyms": [],
+        "error_found": "peepina",
+        "corrected_form": "peeping",
+        "explanation": "Correct character confusion \"peepina\" (a -> g) to \"peeping\" Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+        "rule": "Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+        "original_sentence": "The yellow sun is peeping through clouds",
+        "corrected_sentence": "The yellow sun is peeping through clouds",
+        "extra_examples": [],
+        "tip": "Check for subject-verb agreement and tense consistency."
+      },
+      "accepted_correction": {
+        "original": "peepina",
+        "proposed": "peeping"
+      },
+      "explanation": "Correct character confusion \"peepina\" (a -> g) to \"peeping\" Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+      "rule": "Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+      "learning_objective": "Recognize and correct grammatical errors involving 'peepina' -> 'peeping'.",
+      "difficulty": "Easy",
+      "confidence_score": 0.94,
+      "source_document_id": "doc_8e0cdd01",
+      "source_document_title": "tc_11_multi_word_handwriting",
+      "created_at": "2026-08-02T21:32:21.113250Z",
+      "tags": [
+        "Grammar Correction"
+      ],
+      "child_friendly_definition": "appear as though from hiding",
+      "dictionary_meaning": "appear as though from hiding",
+      "contextual_meaning": "In context (verb): appear as though from hiding",
+      "example_sentence": "the new moon peeped through the tree tops",
+      "part_of_speech": "verb",
+      "synonyms": [
+        "peep"
+      ],
+      "antonyms": [],
+      "difficulty_level": "Easy",
+      "pronunciation": "/peeping/",
+      "detected_pos": "verb",
+      "identified_word_sense": "peep.v.05",
+      "official_dictionary_definition": "appear as though from hiding",
+      "simplified_child_definition": "appear as though from hiding",
+      "generated_example_sentence": "the new moon peeped through the tree tops",
+      "dictionary_source": "WordNet (NLTK)",
+      "requires_manual_verification": false,
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    }
+  ]
+}

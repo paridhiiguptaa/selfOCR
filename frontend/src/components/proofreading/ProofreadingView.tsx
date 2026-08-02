@@ -1,32 +1,53 @@
 import React, { useState, useEffect } from 'react';
-import type { CorrectionResponse, CorrectionSuggestionData } from '../../types/ocr';
+import type { CorrectionResponse, CorrectionSuggestionData, ProofreadingState } from '../../types/ocr';
 import { ProofreadingDashboard } from './ProofreadingDashboard';
 import { FilterToolbar } from './FilterToolbar';
 import { ProofreadingEditor } from './ProofreadingEditor';
 import { SuggestionSidebar } from './SuggestionSidebar';
 import { DocumentComparisonView } from './DocumentComparisonView';
 import { ProofreadingLoading } from './ProofreadingLoading';
-import { X, HelpCircle, AlertCircle } from 'lucide-react';
+import { X, HelpCircle, AlertCircle, RefreshCw } from 'lucide-react';
 
 interface ProofreadingViewProps {
   ocrPlainText: string;
   onTextUpdate?: (newText: string) => void;
   onSuggestionsChange?: (accepted: CorrectionSuggestionData[], all: CorrectionSuggestionData[]) => void;
+  proofreadingState?: ProofreadingState;
+  onStateChange?: (newState: Partial<ProofreadingState>) => void;
 }
 
 export const ProofreadingView: React.FC<ProofreadingViewProps> = ({
   ocrPlainText,
   onTextUpdate,
   onSuggestionsChange,
+  proofreadingState,
+  onStateChange,
 }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const [correctionData, setCorrectionData] = useState<CorrectionResponse | null>(null);
-  const [hasRun, setHasRun] = useState<boolean>(false);
 
-  // States
-  const [acceptedIds, setAcceptedIds] = useState<string[]>([]);
-  const [rejectedIds, setRejectedIds] = useState<string[]>([]);
+  // Internal fallbacks if proofreadingState is not provided
+  const [internalCorrectionData, setInternalCorrectionData] = useState<CorrectionResponse | null>(null);
+  const [internalHasRun, setInternalHasRun] = useState<boolean>(false);
+  const [internalAcceptedIds, setInternalAcceptedIds] = useState<string[]>([]);
+  const [internalRejectedIds, setInternalRejectedIds] = useState<string[]>([]);
+
+  const correctionData = proofreadingState ? proofreadingState.correctionData : internalCorrectionData;
+  const acceptedIds = proofreadingState ? proofreadingState.acceptedIds : internalAcceptedIds;
+  const rejectedIds = proofreadingState ? proofreadingState.rejectedIds : internalRejectedIds;
+  const hasRun = proofreadingState ? proofreadingState.hasRun : internalHasRun;
+  const isDirty = proofreadingState?.isDirty || false;
+
+  const setAcceptedIds = (ids: string[]) => {
+    if (onStateChange) onStateChange({ acceptedIds: ids });
+    else setInternalAcceptedIds(ids);
+  };
+
+  const setRejectedIds = (ids: string[]) => {
+    if (onStateChange) onStateChange({ rejectedIds: ids });
+    else setInternalRejectedIds(ids);
+  };
+
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [selectedSuggestionId, setSelectedSuggestionId] = useState<string | null>(null);
 
@@ -75,12 +96,24 @@ export const ProofreadingView: React.FC<ProofreadingViewProps> = ({
       }
 
       const data: CorrectionResponse = await response.json();
-      setCorrectionData(data);
+
+      if (onStateChange) {
+        onStateChange({
+          correctionData: data,
+          acceptedIds: [],
+          rejectedIds: [],
+          hasRun: true,
+          isDirty: false,
+        });
+      } else {
+        setInternalCorrectionData(data);
+        setInternalAcceptedIds([]);
+        setInternalRejectedIds([]);
+        setInternalHasRun(true);
+      }
+
       setHistory([textToProcess]);
       setHistoryIdx(0);
-      setAcceptedIds([]);
-      setRejectedIds([]);
-      setHasRun(true);
       setLoading(false);
     } catch (err: any) {
       console.warn(`Proofreading fetch failed: ${err.message}`);
@@ -89,9 +122,9 @@ export const ProofreadingView: React.FC<ProofreadingViewProps> = ({
     }
   };
 
-  // Auto-run once if entering tab for the first time
+  // Auto-run once if entering tab for the first time and has not run yet
   useEffect(() => {
-    if (!hasRun && ocrPlainText) {
+    if (!hasRun && ocrPlainText && !loading) {
       handleRunProofreading();
     }
   }, []);
@@ -218,6 +251,26 @@ export const ProofreadingView: React.FC<ProofreadingViewProps> = ({
 
   return (
     <div className="w-full flex flex-col space-y-6 relative">
+      {/* Document Transcription Modified Banner */}
+      {isDirty && (
+        <div className="w-full p-4 bg-amber-500/10 border border-amber-500/30 rounded-2xl flex flex-col sm:flex-row items-center justify-between space-y-3 sm:space-y-0 text-amber-200 text-xs shadow-lg">
+          <div className="flex items-center space-x-3">
+            <AlertCircle className="w-5 h-5 text-amber-400 flex-shrink-0" />
+            <div>
+              <span className="font-bold block text-sm text-amber-100">Document Transcription Modified</span>
+              <span>The OCR transcription has been edited. Click below to regenerate suggestions for updated text.</span>
+            </div>
+          </div>
+          <button
+            onClick={handleRunProofreading}
+            className="flex items-center space-x-2 px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs shadow-md transition-all whitespace-nowrap"
+          >
+            <RefreshCw className="w-4 h-4" />
+            <span>Re-run Proofreading</span>
+          </button>
+        </div>
+      )}
+
       {/* Top Dashboard Metrics */}
       {correctionData && (
         <ProofreadingDashboard

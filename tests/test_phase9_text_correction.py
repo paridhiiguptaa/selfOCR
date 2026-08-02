@@ -32,7 +32,7 @@ def test_text_correction_engine():
         assert sug.category in [
             'Spelling Correction', 'Grammar Correction', 'Missing Word',
             'Punctuation Improvement', 'Capitalization', 'OCR Confidence Recovery',
-            'Sentence Structure', 'Style Suggestion'
+            'Sentence Structure', 'Style Suggestion', 'Character Confusion', 'Contextual Substitution'
         ]
         assert 0.0 <= sug.confidence_score <= 1.0
         assert len(sug.explanation) > 0

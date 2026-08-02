@@ -73,13 +73,26 @@ class ImagePreprocessor:
         sharpened = cv2.addWeighted(image, 1.0 + amount, blurred, -amount, 0)
         return np.clip(sharpened, 0, 255).astype(np.uint8)
 
-    def adaptive_resample_crop(self, crop: np.ndarray, target_height: Optional[int] = None) -> np.ndarray:
-        """Lanczos adaptive upscaling for low-height line crops to improve character recognizer legibility."""
+    def adaptive_resample_crop(self, crop: np.ndarray, target_height: Optional[int] = None, add_margin: bool = True) -> np.ndarray:
+        """Lanczos adaptive upscaling for low-height line crops to improve character recognizer legibility, with border padding."""
         if crop is None or crop.size == 0:
             return crop
 
         th = target_height or self.config.target_crop_height_px
         h, w = crop.shape[:2]
+        if h < 5 or w < 5:
+            return crop
+
+        # Add light margin padding around handwritten crops so descenders/ascenders/edge characters are preserved
+        if add_margin:
+            pad_v = max(4, int(h * 0.12))
+            pad_h = max(6, int(w * 0.05))
+            if len(crop.shape) == 3:
+                crop = cv2.copyMakeBorder(crop, pad_v, pad_v, pad_h, pad_h, cv2.BORDER_CONSTANT, value=[255, 255, 255])
+            else:
+                crop = cv2.copyMakeBorder(crop, pad_v, pad_v, pad_h, pad_h, cv2.BORDER_CONSTANT, value=255)
+            h, w = crop.shape[:2]
+
         if h >= th:
             return crop
 

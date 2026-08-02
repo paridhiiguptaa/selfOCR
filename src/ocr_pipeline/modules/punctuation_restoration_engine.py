@@ -115,8 +115,8 @@ class PunctuationRestorationEngine:
                     suggestions.append(sug)
                     sug_id += 1
 
-            # 3. Question Mark Restoration for Interrogative Clauses
-            for match in re.finditer(r'\b(what|where|when|why|who|how|which|can you|could you|would you|do you|have you)\b[^.?!:\n]+(?=[.?!]|\s*$)', line, re.IGNORECASE):
+            # 3. Question Mark Restoration for Interrogative Sentences (starting with Question words)
+            for match in re.finditer(r'(?:^|[.?!]\s+)(what|where|when|why|who|how|which|can you|could you|would you|do you|have you)\b[^.?!:\n]+(?=[.?!]|\s*$)', line, re.IGNORECASE):
                 matched_clause = match.group(0).strip()
                 if not matched_clause.endswith("?"):
                     start = curr_offset + match.start() + len(matched_clause)

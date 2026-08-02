@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { PageMetadata, OCRResponse, CorrectionSuggestionData } from '../types/ocr';
+import type { PageMetadata, OCRResponse, CorrectionSuggestionData, ProofreadingState } from '../types/ocr';
 import { SideBySideSlider } from './SideBySideSlider';
 import { BoundingBoxViewer } from './BoundingBoxViewer';
 import { RegionTable } from './RegionTable';
@@ -26,7 +26,35 @@ export const TabbedResultsViewer: React.FC<TabbedResultsViewerProps> = ({
 
   const [isDocumentExported, setIsDocumentExported] = useState<boolean>(false);
   const [acceptedSuggestions, setAcceptedSuggestions] = useState<CorrectionSuggestionData[]>([]);
-  const [hasRunProofreading, setHasRunProofreading] = useState<boolean>(false);
+
+  // Centralized Proofreading State
+  const [proofreadingState, setProofreadingState] = useState<ProofreadingState>({
+    correctionData: null,
+    acceptedIds: [],
+    rejectedIds: [],
+    hasRun: false,
+    documentHash: ocrResult.transcription.plain_text,
+    isDirty: false,
+  });
+
+  const handleTextEdit = (newText: string) => {
+    onTextChange(newText);
+    setProofreadingState((prev) => ({
+      ...prev,
+      isDirty: prev.hasRun && newText !== prev.documentHash,
+    }));
+  };
+
+  const handleUpdateProofreadingState = (newState: Partial<ProofreadingState>) => {
+    setProofreadingState((prev) => {
+      const updated = { ...prev, ...newState };
+      if (newState.correctionData) {
+        updated.documentHash = ocrResult.transcription.plain_text;
+        updated.isDirty = false;
+      }
+      return updated;
+    });
+  };
 
   const tabs = [
     { id: 'transcription', label: '📄 OCR Transcription & Editor', icon: FileText, primary: true },
@@ -44,7 +72,6 @@ export const TabbedResultsViewer: React.FC<TabbedResultsViewerProps> = ({
   };
 
   const handleTriggerProofreading = () => {
-    setHasRunProofreading(true);
     setActiveTab('proofreading');
   };
 
@@ -89,7 +116,7 @@ export const TabbedResultsViewer: React.FC<TabbedResultsViewerProps> = ({
                   <h4 className="text-sm font-bold text-white flex items-center space-x-2">
                     <span>Raw OCR Transcription Ready</span>
                     <span className="text-[10px] px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 font-mono">
-                      {hasRunProofreading ? 'AI Proofread' : 'Raw OCR'}
+                      {proofreadingState.hasRun ? 'AI Proofread' : 'Raw OCR'}
                     </span>
                   </h4>
                   <p className="text-xs text-slate-300">
@@ -109,7 +136,7 @@ export const TabbedResultsViewer: React.FC<TabbedResultsViewerProps> = ({
             <TextEditor
               plainText={ocrResult.transcription.plain_text}
               markdownText={ocrResult.transcription.markdown}
-              onTextChange={onTextChange}
+              onTextChange={handleTextEdit}
             />
             <DownloadManager
               ocrResult={ocrResult}
@@ -122,10 +149,12 @@ export const TabbedResultsViewer: React.FC<TabbedResultsViewerProps> = ({
         {activeTab === 'proofreading' && (
           <ProofreadingView
             ocrPlainText={ocrResult.transcription.plain_text}
-            onTextUpdate={onTextChange}
+            onTextUpdate={handleTextEdit}
             onSuggestionsChange={(accepted) => {
               setAcceptedSuggestions(accepted);
             }}
+            proofreadingState={proofreadingState}
+            onStateChange={handleUpdateProofreadingState}
           />
         )}
 

@@ -1,0 +1,88 @@
+{
+  "deck_id": "deck_10dfe579f8",
+  "source_document_id": "doc_7f74f09c",
+  "source_document_title": "hw_noise_02_missing_space",
+  "exported_document_text": "The sky is blue. Peeping through the clouds. Ans: Yes,, I see it.",
+  "created_at": "2026-08-02T21:32:34.736175Z",
+  "total_flashcards": 1,
+  "categories_distribution": {
+    "Punctuation": 1
+  },
+  "difficulty_distribution": {
+    "Easy": 1,
+    "Medium": 0,
+    "Hard": 0
+  },
+  "estimated_study_time_min": 2,
+  "mastery_percentage": 0.0,
+  "study_progress": {
+    "cards_completed": 0,
+    "cards_mastered": 0,
+    "cards_bookmarked": 0,
+    "last_studied_at": null
+  },
+  "cards": [
+    {
+      "id": "fc_05ad2a77",
+      "category": "Punctuation",
+      "card_style": "punctuation_practice",
+      "original_sentence": "Ans: Yes,, I see it",
+      "corrected_sentence": "Ans: Yes,,, I see it",
+      "front": {
+        "title": "Punctuation Practice",
+        "prompt": "Examine this sentence. Where is punctuation missing or incorrect?",
+        "context_sentence": "Ans: Yes,, I see it",
+        "study_type": "punctuation"
+      },
+      "back": {
+        "correct_answer": "Ans: Yes,,, I see it",
+        "part_of_speech": "noun",
+        "child_friendly_definition": "",
+        "dictionary_meaning": "",
+        "usage_example": "",
+        "example_sentence": "",
+        "explanation": "Add introductory comma after \"Yes\"/\"No\" Punctuation Rule: Use punctuation marks correctly to delineate clauses and improve readability.",
+        "rule": "Punctuation Rule: Use punctuation marks correctly to delineate clauses and improve readability.",
+        "original_sentence": "Ans: Yes,, I see it",
+        "corrected_sentence": "Ans: Yes,,, I see it",
+        "extra_examples": [],
+        "tip": "Punctuation separates distinct ideas and prevents run-on sentences."
+      },
+      "accepted_correction": {
+        "original": "Ans: Yes",
+        "proposed": "Ans: Yes,"
+      },
+      "explanation": "Add introductory comma after \"Yes\"/\"No\" Punctuation Rule: Use punctuation marks correctly to delineate clauses and improve readability.",
+      "rule": "Punctuation Rule: Use punctuation marks correctly to delineate clauses and improve readability.",
+      "learning_objective": "Apply correct punctuation conventions within sentence context.",
+      "difficulty": "Easy",
+      "confidence_score": 0.94,
+      "source_document_id": "doc_7f74f09c",
+      "source_document_title": "hw_noise_02_missing_space",
+      "created_at": "2026-08-02T21:32:34.736175Z",
+      "tags": [
+        "Academic Vocabulary",
+        "Punctuation"
+      ],
+      "child_friendly_definition": "",
+      "dictionary_meaning": "",
+      "contextual_meaning": "In context (noun): ",
+      "example_sentence": "",
+      "part_of_speech": "noun",
+      "synonyms": [],
+      "antonyms": [],
+      "difficulty_level": "Easy",
+      "pronunciation": "",
+      "detected_pos": "noun",
+      "identified_word_sense": "grammar_rule",
+      "official_dictionary_definition": "",
+      "simplified_child_definition": "",
+      "generated_example_sentence": "",
+      "dictionary_source": "Grammar Engine Rule",
+      "requires_manual_verification": false,
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    }
+  ]
+}
