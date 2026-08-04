@@ -44,12 +44,12 @@ class PipelineConfig:
     # Dedicated Handwriting & Fallback OCR Engines (TrOCR & GOT-OCR 2.0)
     trocr_handwriting_model_name: str = "microsoft/trocr-small-handwritten"
     got_fallback_model_name: str = "stepfun-ai/GOT-OCR2_0"
-    enable_got_fallback: bool = True
+    enable_got_fallback: bool = False
     
     # Quality Estimator & Calibration Thresholds
-    min_quality_score_threshold: float = 0.65 # Multi-factor quality threshold
-    min_confidence_threshold: float = 0.75
-    word_confidence_threshold: float = 0.80
+    min_quality_score_threshold: float = 0.50 # Multi-factor quality threshold
+    min_confidence_threshold: float = 0.60
+    word_confidence_threshold: float = 0.70
     max_fallback_retries: int = 2
     
     # Context-Aware Proofreading (Decoupled - user triggered via 'Show Corrections')
@@ -57,6 +57,26 @@ class PipelineConfig:
     proofreading_transformer_model: str = "distilroberta-base"
     proofreading_regex_timeout_sec: float = 2.0
     
+    # Next-Generation Intelligent OCR Architecture Settings
+    enable_multiscale_ocr: bool = True
+    multiscale_high_confidence_bypass: float = 0.90
+    multiscale_max_candidates: int = 8
+    
+    enable_multi_model_ensemble: bool = True
+    enable_vlm_verification: bool = True
+    enable_paragraph_grouping: bool = True
+    vlm_verification_strictness: float = 0.85
+
+    enable_subject_detection: bool = True
+    subject_override: Optional[str] = None
+    
+    enable_educational_lm: bool = True
+    
+    enable_handwriting_adaptation: bool = True
+    user_profile_dir: str = "src/data/user_profiles"
+    default_user_id: str = "default_student"
+
+
     # Execution Device & Precision
     device: str = "cuda" if torch.cuda.is_available() else "cpu"
     torch_dtype: str = "float16" if torch.cuda.is_available() else "float32"
@@ -73,4 +93,5 @@ class PipelineConfig:
             raise ValueError("min_confidence_threshold must be between 0.0 and 1.0")
 
 default_config = PipelineConfig()
+
 

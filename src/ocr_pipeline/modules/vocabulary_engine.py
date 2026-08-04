@@ -8,6 +8,7 @@ and sense-specific synonym/example generation.
 
 import re
 import json
+import time
 import logging
 from typing import Dict, Any, List, Tuple, Optional
 import requests

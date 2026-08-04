@@ -1,17 +1,33 @@
 import { useState, useEffect } from 'react';
-import { Navbar } from './components/Navbar';
-import { UploadZone } from './components/UploadZone';
-import { PdfPageSelector } from './components/PdfPageSelector';
-import { PipelineProgressTracker } from './components/PipelineProgressTracker';
-import { TabbedResultsViewer } from './components/TabbedResultsViewer';
-import { DeveloperModePanel } from './components/DeveloperModePanel';
+import { Sidebar, type NavModule } from './components/Sidebar';
+import { LoginPage } from './components/auth/LoginPage';
+import { DashboardPage } from './components/pages/DashboardPage';
+import { UploadPage } from './components/pages/UploadPage';
+import { OcrProcessingPage } from './components/pages/OcrProcessingPage';
+import { OcrTranscriptionPage } from './components/pages/OcrTranscriptionPage';
+import { ProofreadingPage } from './components/pages/ProofreadingPage';
+import { FlashcardsPage } from './components/pages/FlashcardsPage';
+import { HistoryPage } from './components/pages/HistoryPage';
+import { AnalyticsPage } from './components/pages/AnalyticsPage';
 import { SettingsModal } from './components/SettingsModal';
 import { checkHealth, previewPdf, processOcr } from './api/client';
-import type { OCRResponse, PipelineSettings } from './types/ocr';
-import { Play, Sparkles, RefreshCw, AlertCircle } from 'lucide-react';
+import type { OCRResponse, PipelineSettings, CorrectionSuggestionData, ProofreadingState } from './types/ocr';
+import { Menu, Settings as SettingsIcon, CheckCircle2, XCircle } from 'lucide-react';
 
 export function App() {
+  // Authentication state
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
+
+  // Active module / page navigation
+  const [currentModule, setCurrentModule] = useState<NavModule>('dashboard');
+
+  // Backend connection state
   const [backendConnected, setBackendConnected] = useState<boolean>(false);
+
+  // Mobile sidebar state
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState<boolean>(false);
+
+  // File selection & PDF metadata
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [pdfThumbnails, setPdfThumbnails] = useState<any[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -23,10 +39,20 @@ export function App() {
   const [isCompleted, setIsCompleted] = useState<boolean>(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  // Results
+  // OCR Results & Proofreading / Flashcard state
   const [ocrResult, setOcrResult] = useState<OCRResponse | null>(null);
+  const [acceptedSuggestions, setAcceptedSuggestions] = useState<CorrectionSuggestionData[]>([]);
 
-  // Settings & Dev mode
+  const [proofreadingState, setProofreadingState] = useState<ProofreadingState>({
+    correctionData: null,
+    acceptedIds: [],
+    rejectedIds: [],
+    hasRun: false,
+    documentHash: '',
+    isDirty: false,
+  });
+
+  // Settings & Developer mode
   const [isSettingsOpen, setIsSettingsOpen] = useState<boolean>(false);
   const [settings, setSettings] = useState<PipelineSettings>({
     pdf_render_dpi: 300,
@@ -39,22 +65,34 @@ export function App() {
     developer_mode: false,
   });
 
-  // Check health on mount
+  // Health check on mount & periodic polling
   useEffect(() => {
     checkHealth().then(setBackendConnected);
     const interval = setInterval(() => {
-      checkHealth().then(setBackendConnected);
+      checkHealth().then((connected) => {
+        if (connected || !isProcessing) {
+          setBackendConnected(connected);
+        }
+      });
     }, 10000);
     return () => clearInterval(interval);
-  }, []);
+  }, [isProcessing]);
 
-  // Handle File Selection & PDF Thumbnail Extraction
+  // Handle File Selection
   const handleFileSelect = async (file: File) => {
     setSelectedFile(file);
     setOcrResult(null);
     setIsCompleted(false);
     setErrorMsg(null);
     setCurrentPage(1);
+    setProofreadingState({
+      correctionData: null,
+      acceptedIds: [],
+      rejectedIds: [],
+      hasRun: false,
+      documentHash: '',
+      isDirty: false,
+    });
 
     if (file.name.toLowerCase().endsWith('.pdf')) {
       try {
@@ -70,7 +108,7 @@ export function App() {
     }
   };
 
-  // Run OCR Pipeline
+  // Run OCR Pipeline & transition module automatically
   const handleRunOcr = async () => {
     if (!selectedFile) return;
 
@@ -78,6 +116,7 @@ export function App() {
     setIsCompleted(false);
     setErrorMsg(null);
     setStageIndex(0);
+    setCurrentModule('processing');
 
     try {
       const result = await processOcr(selectedFile, settings, (idx) => {
@@ -87,13 +126,20 @@ export function App() {
       setOcrResult(result);
       setIsCompleted(true);
       setIsProcessing(false);
+      setProofreadingState((prev) => ({
+        ...prev,
+        documentHash: result.transcription.plain_text,
+      }));
     } catch (err: any) {
+      // Keep the user on the processing page so the error banner and Retry button are visible.
+      // Do NOT navigate away — the OcrProcessingPage renders the error state with a retry option.
       setErrorMsg(err.message || 'An unexpected error occurred during OCR processing.');
       setIsProcessing(false);
+      // currentModule intentionally stays as 'processing'
     }
   };
 
-  // Reset session
+  // Reset document session
   const handleReset = () => {
     setSelectedFile(null);
     setOcrResult(null);
@@ -102,144 +148,218 @@ export function App() {
     setPdfThumbnails([]);
     setCurrentPage(1);
     setTotalPages(1);
+    setCurrentModule('upload');
   };
+
+  // If user is not logged in, render the Login Page
+  if (!isLoggedIn) {
+    return <LoginPage onLogin={() => setIsLoggedIn(true)} />;
+  }
 
   const activePageMeta = ocrResult?.pages[currentPage - 1] || ocrResult?.pages[0];
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
-      {/* Top Navbar */}
-      <Navbar
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex font-sans">
+      {/* Persistent Left Sidebar Navigation */}
+      <Sidebar
+        currentModule={currentModule}
+        onSelectModule={(mod) => {
+          // Block navigation away from the processing page while OCR is running.
+          // The user must wait for completion or see the error — no silent page resets.
+          if (isProcessing && currentModule === 'processing') {
+            return;
+          }
+          if (mod === 'settings') {
+            setIsSettingsOpen(true);
+          } else {
+            setCurrentModule(mod);
+          }
+        }}
         backendConnected={backendConnected}
         developerMode={settings.developer_mode}
         onToggleDeveloperMode={() =>
           setSettings((prev) => ({ ...prev, developer_mode: !prev.developer_mode }))
         }
-        onOpenSettings={() => setIsSettingsOpen(true)}
+        onLogout={() => setIsLoggedIn(false)}
+        isMobileOpen={isMobileSidebarOpen}
+        onToggleMobile={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)}
       />
 
-      {/* Main Container */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-6 py-8">
-        {/* Hero Banner */}
-        <div className="text-center max-w-3xl mx-auto mb-8 space-y-3">
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold">
-            <Sparkles className="w-4 h-4" />
-            <span>Dual Printed & Handwritten OCR Processing Engine</span>
+      {/* Main Workspace Container */}
+      <div className="flex-1 flex flex-col min-w-0 min-h-screen">
+        {/* Top Header Bar */}
+        <header className="sticky top-0 z-20 bg-white/90 backdrop-blur-md border-b border-slate-200/80 px-6 py-4 flex items-center justify-between shadow-2xs">
+          <div className="flex items-center space-x-3">
+            <button
+              onClick={() => setIsMobileSidebarOpen(true)}
+              className="lg:hidden p-2 text-slate-600 hover:bg-slate-100 rounded-xl"
+            >
+              <Menu className="w-5 h-5" />
+            </button>
+
+            <div>
+              <h2 className="text-base sm:text-lg font-black text-slate-900 capitalize tracking-tight">
+                {currentModule === 'dashboard'
+                  ? 'Dashboard Overview'
+                  : currentModule === 'upload'
+                  ? 'Upload Document'
+                  : currentModule === 'processing'
+                  ? 'OCR Processing'
+                  : currentModule === 'transcription'
+                  ? 'OCR Transcription Editor'
+                  : currentModule === 'proofreading'
+                  ? 'AI Proofreading Studio'
+                  : currentModule === 'flashcards'
+                  ? 'Educational Flashcards'
+                  : currentModule === 'history'
+                  ? 'Document History'
+                  : currentModule === 'analytics'
+                  ? 'Learning Analytics'
+                  : 'Settings'}
+              </h2>
+              <p className="text-[11px] text-slate-500 font-semibold hidden sm:block">
+                EduAI SaaS Educational Platform • Dual TrOCR Engine
+              </p>
+            </div>
           </div>
-          <h2 className="text-3xl font-extrabold text-white tracking-tight">
-            Accurate Transcription for Rotated & Complex Documents
-          </h2>
-          <p className="text-sm text-slate-400">
-            Upload images or PDFs to evaluate orientation detection, deskewing, hybrid text region detection, Hugging Face TrOCR recognition, and reading order layout analysis.
-          </p>
-        </div>
 
-        {/* File Upload Zone */}
-        <div className="max-w-3xl mx-auto mb-6">
-          <UploadZone
-            onFileSelect={handleFileSelect}
-            selectedFile={selectedFile}
-            isProcessing={isProcessing}
-          />
-        </div>
+          <div className="flex items-center space-x-3">
+            {/* Connection Status Pill */}
+            <div className="hidden sm:flex items-center space-x-1.5 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-700">
+              {backendConnected ? (
+                <>
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>API Online</span>
+                </>
+              ) : (
+                <>
+                  <XCircle className="w-3.5 h-3.5 text-rose-500" />
+                  <span>API Offline</span>
+                </>
+              )}
+            </div>
 
-        {/* PDF Multi-Page Thumbnail Selector */}
-        {pdfThumbnails.length > 0 && (
-          <div className="max-w-3xl mx-auto">
-            <PdfPageSelector
-              totalPages={totalPages}
+            {/* Quick Settings Icon */}
+            <button
+              onClick={() => setIsSettingsOpen(true)}
+              className="p-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-xl border border-slate-200 transition-colors"
+              title="Pipeline Settings"
+            >
+              <SettingsIcon className="w-4 h-4" />
+            </button>
+          </div>
+        </header>
+
+        {/* Dynamic Module Page Content */}
+        <main className="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl w-full mx-auto">
+          {currentModule === 'dashboard' && (
+            <DashboardPage
+              onNavigate={(mod) => setCurrentModule(mod)}
+              hasActiveDocument={!!ocrResult}
+              activeDocName={ocrResult?.document_name}
+              activeDocPageCount={ocrResult?.total_pages}
+            />
+          )}
+
+          {currentModule === 'upload' && (
+            <UploadPage
+              onFileSelect={handleFileSelect}
+              selectedFile={selectedFile}
+              isProcessing={isProcessing}
+              pdfThumbnails={pdfThumbnails}
               currentPage={currentPage}
-              thumbnails={pdfThumbnails}
-              onPageChange={(page) => setCurrentPage(page)}
+              totalPages={totalPages}
+              onPageChange={(p) => setCurrentPage(p)}
+              onRunOcr={handleRunOcr}
+              onReset={handleReset}
+              backendConnected={backendConnected}
+              settings={settings}
+              onUpdateSettings={(newSet) => setSettings(newSet)}
             />
-          </div>
-        )}
+          )}
 
-        {/* Action Controls (Run OCR Button) */}
-        {selectedFile && !isProcessing && !isCompleted && (
-          <div className="flex justify-center space-x-4 mb-8">
-            <button
-              onClick={handleRunOcr}
-              disabled={!backendConnected}
-              className="flex items-center space-x-2.5 px-8 py-3.5 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 disabled:opacity-50 text-white font-bold text-sm shadow-xl shadow-blue-500/25 transition-all transform hover:scale-[1.02]"
-            >
-              <Play className="w-5 h-5 fill-current" />
-              <span>Run OCR Pipeline</span>
-            </button>
-            <button
-              onClick={handleReset}
-              className="px-5 py-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-sm border border-slate-700 transition-colors"
-            >
-              Reset
-            </button>
-          </div>
-        )}
-
-        {/* Error Banner */}
-        {errorMsg && (
-          <div className="max-w-3xl mx-auto mb-8 p-4 bg-rose-500/10 border border-rose-500/30 rounded-2xl flex items-center space-x-3 text-rose-300 text-xs">
-            <AlertCircle className="w-5 h-5 text-rose-400 flex-shrink-0" />
-            <div className="flex-1">
-              <span className="font-bold block text-sm text-rose-200">Processing Failed</span>
-              <span>{errorMsg}</span>
-            </div>
-            <button
-              onClick={() => setErrorMsg(null)}
-              className="p-1 rounded text-rose-400 hover:bg-rose-500/20"
-            >
-              Dismiss
-            </button>
-          </div>
-        )}
-
-        {/* Pipeline Progress Tracker */}
-        {(isProcessing || isCompleted) && (
-          <PipelineProgressTracker
-            currentStageIndex={stageIndex}
-            isCompleted={isCompleted}
-            error={errorMsg}
-          />
-        )}
-
-        {/* 5-Tab Interactive Results Viewer */}
-        {isCompleted && ocrResult && activePageMeta && (
-          <div className="space-y-6">
-            <div className="flex items-center justify-between">
-              <h3 className="text-lg font-bold text-white">OCR Evaluation Results</h3>
-              <button
-                onClick={handleReset}
-                className="flex items-center space-x-1.5 text-xs text-slate-400 hover:text-white bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-700"
-              >
-                <RefreshCw className="w-3.5 h-3.5" />
-                <span>Process Another File</span>
-              </button>
-            </div>
-
-            <TabbedResultsViewer
-              pageMeta={activePageMeta}
-              ocrResult={ocrResult}
-              onTextChange={(newText) => {
-                setOcrResult((prev) =>
-                  prev
-                    ? {
-                        ...prev,
-                        transcription: { ...prev.transcription, plain_text: newText },
-                      }
-                    : null
-                );
-              }}
+          {currentModule === 'processing' && (
+            <OcrProcessingPage
+              stageIndex={stageIndex}
+              isCompleted={isCompleted}
+              error={errorMsg}
+              onNavigateToTranscription={() => setCurrentModule('transcription')}
+              onRetry={handleRunOcr}
             />
+          )}
 
-            {/* Developer Mode Diagnostics Panel */}
-            {settings.developer_mode && (
-              <DeveloperModePanel
+          {currentModule === 'transcription' && (
+            ocrResult && activePageMeta ? (
+              <OcrTranscriptionPage
                 pageMeta={activePageMeta}
-                telemetry={ocrResult.developer_telemetry}
+                ocrResult={ocrResult}
+                onTextChange={(newText) => {
+                  setOcrResult((prev) =>
+                    prev
+                      ? {
+                          ...prev,
+                          transcription: { ...prev.transcription, plain_text: newText },
+                        }
+                      : null
+                  );
+                }}
+                onNavigateToProofreading={() => setCurrentModule('proofreading')}
+                developerMode={settings.developer_mode}
               />
-            )}
-          </div>
-        )}
-      </main>
+            ) : (
+              <UploadPage
+                onFileSelect={handleFileSelect}
+                selectedFile={selectedFile}
+                isProcessing={isProcessing}
+                pdfThumbnails={pdfThumbnails}
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={(p) => setCurrentPage(p)}
+                onRunOcr={handleRunOcr}
+                onReset={handleReset}
+                backendConnected={backendConnected}
+                settings={settings}
+                onUpdateSettings={(newSet) => setSettings(newSet)}
+              />
+            )
+          )}
+
+          {currentModule === 'proofreading' && (
+            <ProofreadingPage
+              ocrPlainText={ocrResult?.transcription.plain_text || 'Sample handwritten class notes ready for AI proofreading.'}
+              ocrResult={ocrResult}
+              onTextUpdate={(newText) => {
+                if (ocrResult) {
+                  setOcrResult({
+                    ...ocrResult,
+                    transcription: { ...ocrResult.transcription, plain_text: newText },
+                  });
+                }
+              }}
+              onSuggestionsChange={(accepted) => setAcceptedSuggestions(accepted)}
+              proofreadingState={proofreadingState}
+              onStateChange={(newState) => setProofreadingState((prev) => ({ ...prev, ...newState }))}
+              onNavigateToFlashcards={() => setCurrentModule('flashcards')}
+            />
+          )}
+
+          {currentModule === 'flashcards' && (
+            <FlashcardsPage
+              exportedText={ocrResult?.transcription.plain_text || 'Sample handwritten class notes ready for flashcards.'}
+              acceptedSuggestions={acceptedSuggestions}
+              documentTitle={ocrResult?.document_name || 'Class Notes'}
+              isDocumentExported={true}
+              onNavigateToProofreading={() => setCurrentModule('proofreading')}
+            />
+          )}
+
+          {currentModule === 'history' && (
+            <HistoryPage onNavigate={(mod) => setCurrentModule(mod)} />
+          )}
+
+          {currentModule === 'analytics' && <AnalyticsPage />}
+        </main>
+      </div>
 
       {/* Settings Modal */}
       <SettingsModal

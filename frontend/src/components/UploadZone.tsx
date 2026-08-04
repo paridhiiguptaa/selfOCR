@@ -38,7 +38,7 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full select-none">
       <div
         onDragOver={(e) => {
           e.preventDefault();
@@ -47,12 +47,12 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
         onDragLeave={() => setIsDragOver(false)}
         onDrop={handleDrop}
         onClick={() => !isProcessing && fileInputRef.current?.click()}
-        className={`relative cursor-pointer rounded-2xl border-2 border-dashed p-8 text-center transition-all ${
+        className={`relative cursor-pointer rounded-3xl border-2 border-dashed p-8 sm:p-12 text-center transition-all duration-200 ${
           isDragOver
-            ? 'border-blue-500 bg-blue-500/10 shadow-lg shadow-blue-500/20'
+            ? 'border-blue-600 bg-blue-50/70 shadow-saas-lg scale-[1.01]'
             : selectedFile
-            ? 'border-emerald-500/50 bg-emerald-500/5'
-            : 'border-slate-700 bg-slate-800/40 hover:border-slate-600 hover:bg-slate-800/60'
+            ? 'border-emerald-500/60 bg-emerald-50/30 shadow-saas'
+            : 'border-slate-300 bg-slate-50/50 hover:border-blue-400 hover:bg-blue-50/30 hover:shadow-saas'
         } ${isProcessing ? 'pointer-events-none opacity-60' : ''}`}
       >
         <input
@@ -69,10 +69,10 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
 
         <div className="flex flex-col items-center justify-center space-y-4">
           <div
-            className={`p-4 rounded-2xl ${
+            className={`p-4 rounded-2xl transition-transform duration-200 ${
               selectedFile
-                ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
-                : 'bg-blue-600/20 text-blue-400 border border-blue-500/30'
+                ? 'bg-emerald-100 text-emerald-700 border border-emerald-200'
+                : 'bg-blue-100 text-blue-700 border border-blue-200'
             }`}
           >
             {selectedFile?.name.toLowerCase().endsWith('.pdf') ? (
@@ -86,17 +86,17 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
 
           {selectedFile ? (
             <div>
-              <h3 className="text-lg font-semibold text-white">{selectedFile.name}</h3>
-              <p className="text-xs text-slate-400 mt-1">
+              <h3 className="text-base sm:text-lg font-extrabold text-slate-900">{selectedFile.name}</h3>
+              <p className="text-xs text-slate-500 font-semibold mt-1">
                 {(selectedFile.size / (1024 * 1024)).toFixed(2)} MB • Click or drag another file to replace
               </p>
             </div>
           ) : (
             <div>
-              <h3 className="text-lg font-semibold text-white">
-                Drag and drop your document here, or <span className="text-blue-400 hover:underline">browse</span>
+              <h3 className="text-base sm:text-lg font-extrabold text-slate-900">
+                Drag and drop your document here, or <span className="text-blue-600 hover:underline">browse</span>
               </h3>
-              <p className="text-xs text-slate-400 mt-1">
+              <p className="text-xs text-slate-500 font-medium mt-1">
                 Supports printed & handwritten documents, scanned pages, assignment notes, and multi-page PDFs
               </p>
             </div>
@@ -107,7 +107,7 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
             {['PNG', 'JPG', 'WEBP', 'TIFF', 'BMP', 'PDF'].map((fmt) => (
               <span
                 key={fmt}
-                className="px-2.5 py-1 text-[10px] font-bold rounded-md bg-slate-700/60 text-slate-300 border border-slate-600/50"
+                className="px-2.5 py-1 text-[10px] font-extrabold rounded-md bg-white text-slate-600 border border-slate-200 shadow-2xs"
               >
                 {fmt}
               </span>
@@ -117,8 +117,8 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
       </div>
 
       {errorMsg && (
-        <div className="mt-3 flex items-center space-x-2 text-rose-400 bg-rose-500/10 border border-rose-500/20 px-4 py-2.5 rounded-xl text-xs">
-          <AlertCircle className="w-4 h-4 flex-shrink-0" />
+        <div className="mt-3 flex items-center space-x-2 text-rose-700 bg-rose-50 border border-rose-200 px-4 py-2.5 rounded-2xl text-xs font-semibold">
+          <AlertCircle className="w-4 h-4 flex-shrink-0 text-rose-600" />
           <span>{errorMsg}</span>
         </div>
       )}

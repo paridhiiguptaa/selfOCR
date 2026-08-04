@@ -330,4 +330,46 @@ class SuryaLayoutAnalyzer:
             ))
             reg_id += 1
 
-        return sorted(merged_regions, key=lambda r: r.bbox[1])
+        ordered = sorted(merged_regions, key=lambda r: r.bbox[1])
+        if self.config.enable_paragraph_grouping:
+            return self.group_lines_into_paragraphs(ordered)
+        return ordered
+
+    def group_lines_into_paragraphs(self, regions: List[TextRegion]) -> List[TextRegion]:
+        """
+        Group adjacent horizontal line regions into paragraph blocks.
+        Assigns paragraph_id to each TextRegion.
+        """
+        if not regions:
+            return []
+
+        para_id = 1
+        current_para: List[TextRegion] = []
+        result: List[TextRegion] = []
+
+        for reg in regions:
+            if not current_para:
+                reg.paragraph_id = para_id
+                current_para.append(reg)
+                continue
+
+            last_reg = current_para[-1]
+            gap_v = reg.bbox[1] - last_reg.bbox[3]
+            avg_h = max(1, last_reg.height)
+
+            # Check if region is part of the same paragraph (vertical gap < 1.6 * line_height)
+            if gap_v <= 1.6 * avg_h and reg.region_type == last_reg.region_type and reg.region_type not in ("Title", "Section-header"):
+                reg.paragraph_id = para_id
+                current_para.append(reg)
+            else:
+                para_id += 1
+                reg.paragraph_id = para_id
+                current_para = [reg]
+
+            result.append(reg)
+
+        if current_para and current_para[0] not in result:
+            result.insert(0, current_para[0])
+
+        return sorted(regions, key=lambda r: r.bbox[1])
+

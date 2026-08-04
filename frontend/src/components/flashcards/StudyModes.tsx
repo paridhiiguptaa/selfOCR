@@ -37,24 +37,24 @@ export const FillInBlankMode: React.FC<StudyModeProps> = ({ card, onAnswerComple
   };
 
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 space-y-6 max-w-2xl mx-auto shadow-xl">
-      <div className="flex items-center justify-between border-b border-slate-800 pb-4">
-        <div className="flex items-center space-x-2 text-blue-400 font-bold text-xs uppercase tracking-wider">
+    <div className="bg-white border border-slate-200/80 rounded-3xl p-8 space-y-6 max-w-2xl mx-auto shadow-saas">
+      <div className="flex items-center justify-between border-b border-slate-100 pb-4">
+        <div className="flex items-center space-x-2 text-blue-600 font-extrabold text-xs uppercase tracking-wider">
           <Sparkles className="w-4 h-4" />
           <span>Fill-in-the-Blank Exercise</span>
         </div>
-        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-800 text-slate-300">
+        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-slate-100 text-slate-700">
           {card.category}
         </span>
       </div>
 
       <div className="space-y-4">
-        <p className="text-sm font-semibold text-slate-300">
+        <p className="text-sm font-bold text-slate-800">
           Complete the sentence by typing the correct missing word:
         </p>
 
-        <div className="p-6 bg-slate-950 border border-slate-800 rounded-2xl text-center">
-          <span className="text-base font-semibold text-slate-200 leading-relaxed">
+        <div className="p-6 bg-slate-50 border border-slate-200/80 rounded-2xl text-center">
+          <span className="text-base font-bold text-slate-900 leading-relaxed font-sans">
             {card.front.sentence_with_blank || card.original_sentence.replace(card.accepted_correction.original, '[ _____ ]')}
           </span>
         </div>
@@ -67,59 +67,55 @@ export const FillInBlankMode: React.FC<StudyModeProps> = ({ card, onAnswerComple
                 value={userInputValue}
                 onChange={(e) => setUserInputValue(e.target.value)}
                 placeholder="Type the missing word..."
-                className="flex-1 px-4 py-3 bg-slate-950 border border-slate-700 rounded-xl text-white font-mono text-sm focus:outline-none focus:border-blue-500"
+                className="flex-1 px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 font-sans text-sm focus:outline-none focus:border-blue-500 shadow-2xs"
                 autoFocus
               />
               <button
                 type="submit"
                 disabled={!userInputValue.trim()}
-                className="px-6 py-3 bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white font-bold text-xs rounded-xl shadow-lg transition-all"
+                className="px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white font-extrabold text-xs rounded-xl shadow-xs transition-all cursor-pointer"
               >
                 Submit Answer
               </button>
             </div>
           </form>
         ) : (
-          <div className="space-y-4 pt-2">
-            {/* Feedback Banner */}
+          <div className="space-y-4">
+            {/* Result Notification */}
             <div
               className={`p-4 rounded-2xl border flex items-center space-x-3 ${
                 isCorrect
-                  ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300'
-                  : 'bg-rose-500/10 border-rose-500/30 text-rose-300'
+                  ? 'bg-emerald-50 border-emerald-200 text-emerald-800'
+                  : 'bg-rose-50 border-rose-200 text-rose-800'
               }`}
             >
-              {isCorrect ? (
-                <CheckCircle2 className="w-6 h-6 text-emerald-400 flex-shrink-0" />
-              ) : (
-                <XCircle className="w-6 h-6 text-rose-400 flex-shrink-0" />
-              )}
-              <div className="flex-1">
-                <span className="font-bold text-sm block">
-                  {isCorrect ? 'Excellent! Perfect Match!' : 'Incorrect Answer'}
+              {isCorrect ? <CheckCircle2 className="w-6 h-6 text-emerald-600 flex-shrink-0" /> : <XCircle className="w-6 h-6 text-rose-600 flex-shrink-0" />}
+              <div className="flex flex-col">
+                <span className="font-extrabold text-sm">
+                  {isCorrect ? 'Correct! Excellent Recall!' : 'Incorrect Answer'}
                 </span>
-                <span className="text-xs">
-                  Correct Answer: <strong className="font-mono text-white">{correctAnswer}</strong>
+                <span className="text-xs font-semibold">
+                  Correct Answer: <strong className="font-bold text-slate-900">{correctAnswer}</strong>
                 </span>
               </div>
             </div>
 
             {/* Child-Friendly Meaning Box */}
             {(card.back.child_friendly_definition || card.back.word_meaning) && (
-              <div className="p-4 bg-purple-950/40 border border-purple-500/30 rounded-2xl space-y-1.5">
-                <div className="flex items-center justify-between text-purple-300 font-bold text-xs">
+              <div className="p-4 bg-purple-50/70 border border-purple-100 rounded-2xl space-y-1.5">
+                <div className="flex items-center justify-between text-purple-900 font-extrabold text-xs">
                   <div className="flex items-center space-x-2">
-                    <BookOpen className="w-4 h-4 text-purple-400" />
+                    <BookOpen className="w-4 h-4 text-purple-600" />
                     <span>📖 Child-Friendly Meaning:</span>
                   </div>
                   {card.back.part_of_speech && (
-                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-purple-200 bg-purple-900/70 border border-purple-500/40 px-2 py-0.5 rounded-md">
+                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-purple-700 bg-purple-100 border border-purple-200 px-2 py-0.5 rounded-md">
                       🔤 {card.back.part_of_speech}
                     </span>
                   )}
                 </div>
-                <p className="text-xs text-purple-100 font-medium leading-relaxed">
-                  <strong className="text-white font-mono">{card.accepted_correction.proposed}</strong>:{' '}
+                <p className="text-xs text-purple-900 font-medium leading-relaxed">
+                  <strong className="text-slate-900 font-bold">{card.accepted_correction.proposed}</strong>:{' '}
                   {card.back.child_friendly_definition || card.back.word_meaning}
                 </p>
               </div>
@@ -127,41 +123,38 @@ export const FillInBlankMode: React.FC<StudyModeProps> = ({ card, onAnswerComple
 
             {/* Natural Example Sentence */}
             {(card.back.example_sentence || card.back.usage_example) && (
-              <div className="p-4 bg-blue-950/40 border border-blue-500/30 rounded-2xl space-y-1">
-                <div className="flex items-center space-x-2 text-blue-300 font-bold text-xs">
-                  <Sparkles className="w-4 h-4 text-blue-400" />
+              <div className="p-4 bg-blue-50/70 border border-blue-100 rounded-2xl space-y-1">
+                <div className="flex items-center space-x-2 text-blue-900 font-extrabold text-xs">
+                  <Sparkles className="w-4 h-4 text-blue-600" />
                   <span>📝 Natural Example Sentence:</span>
                 </div>
-                <p className="text-xs text-blue-100 font-medium italic leading-relaxed">
+                <p className="text-xs text-blue-900 font-medium italic leading-relaxed">
                   "{card.back.example_sentence || card.back.usage_example}"
                 </p>
               </div>
             )}
 
-
-
             {/* Explanation Box */}
-            <div className="p-4 bg-slate-950 border border-slate-800 rounded-2xl space-y-2">
-              <span className="text-xs font-bold text-indigo-400 uppercase tracking-wider block">
+            <div className="p-4 bg-slate-50 border border-slate-200/80 rounded-2xl space-y-2">
+              <span className="text-xs font-extrabold text-indigo-700 uppercase tracking-wider block">
                 Educational Rule & Context:
               </span>
-              <p className="text-xs text-slate-300 leading-relaxed">{card.rule}</p>
-              <p className="text-xs font-medium text-emerald-300 pt-1">
+              <p className="text-xs text-slate-700 leading-relaxed font-medium">{card.rule}</p>
+              <p className="text-xs font-bold text-emerald-700 pt-1">
                 "{card.corrected_sentence}"
               </p>
             </div>
 
-
             <div className="flex justify-end space-x-3 pt-2">
               <button
                 onClick={handleReset}
-                className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold rounded-xl"
+                className="px-4 py-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 text-xs font-bold rounded-xl cursor-pointer"
               >
                 Try Again
               </button>
               <button
                 onClick={onNext}
-                className="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold rounded-xl flex items-center space-x-1"
+                className="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-extrabold rounded-xl flex items-center space-x-1 shadow-xs cursor-pointer"
               >
                 <span>Next Card</span>
                 <ArrowRight className="w-4 h-4" />
@@ -196,23 +189,23 @@ export const MultipleChoiceMode: React.FC<StudyModeProps> = ({ card, onAnswerCom
   };
 
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 space-y-6 max-w-2xl mx-auto shadow-xl">
-      <div className="flex items-center justify-between border-b border-slate-800 pb-4">
-        <div className="flex items-center space-x-2 text-purple-400 font-bold text-xs uppercase tracking-wider">
+    <div className="bg-white border border-slate-200/80 rounded-3xl p-8 space-y-6 max-w-2xl mx-auto shadow-saas">
+      <div className="flex items-center justify-between border-b border-slate-100 pb-4">
+        <div className="flex items-center space-x-2 text-purple-600 font-extrabold text-xs uppercase tracking-wider">
           <HelpCircle className="w-4 h-4" />
           <span>Multiple Choice Quiz</span>
         </div>
-        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-800 text-slate-300">
+        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-slate-100 text-slate-700">
           {card.category}
         </span>
       </div>
 
       <div className="space-y-4">
-        <p className="text-sm font-semibold text-slate-200">
+        <p className="text-sm font-bold text-slate-800">
           {card.front.prompt || 'Select the correct correction for this sentence:'}
         </p>
 
-        <div className="p-4 bg-slate-950 border border-slate-800 rounded-2xl italic text-sm text-slate-300">
+        <div className="p-4 bg-slate-50 border border-slate-200/80 rounded-2xl italic text-sm text-slate-700 font-medium">
           "{card.original_sentence}"
         </div>
 
@@ -222,14 +215,14 @@ export const MultipleChoiceMode: React.FC<StudyModeProps> = ({ card, onAnswerCom
             const isThisCorrect = opt.trim().toLowerCase() === correctAnswer.trim().toLowerCase();
             const isSelected = selectedOption === opt;
 
-            let btnStyle = 'bg-slate-950 border-slate-800 hover:border-slate-700 text-slate-200';
+            let btnStyle = 'bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-800 font-semibold';
             if (submitted) {
               if (isThisCorrect) {
-                btnStyle = 'bg-emerald-500/20 border-emerald-500/50 text-emerald-200 font-bold';
+                btnStyle = 'bg-emerald-50 border-emerald-300 text-emerald-800 font-extrabold';
               } else if (isSelected) {
-                btnStyle = 'bg-rose-500/20 border-rose-500/50 text-rose-200 font-bold';
+                btnStyle = 'bg-rose-50 border-rose-300 text-rose-800 font-extrabold';
               } else {
-                btnStyle = 'bg-slate-950/50 border-slate-900 text-slate-500';
+                btnStyle = 'bg-slate-50 border-slate-200 text-slate-400';
               }
             }
 
@@ -238,11 +231,11 @@ export const MultipleChoiceMode: React.FC<StudyModeProps> = ({ card, onAnswerCom
                 key={idx}
                 onClick={() => handleSelect(opt)}
                 disabled={submitted}
-                className={`w-full p-4 rounded-2xl border text-left text-xs font-mono transition-all flex items-center justify-between ${btnStyle}`}
+                className={`w-full p-4 rounded-2xl border text-left text-xs font-sans transition-all flex items-center justify-between shadow-2xs cursor-pointer ${btnStyle}`}
               >
                 <span>{opt}</span>
-                {submitted && isThisCorrect && <CheckCircle2 className="w-4 h-4 text-emerald-400" />}
-                {submitted && isSelected && !isThisCorrect && <XCircle className="w-4 h-4 text-rose-400" />}
+                {submitted && isThisCorrect && <CheckCircle2 className="w-4 h-4 text-emerald-600" />}
+                {submitted && isSelected && !isThisCorrect && <XCircle className="w-4 h-4 text-rose-600" />}
               </button>
             );
           })}
@@ -250,19 +243,19 @@ export const MultipleChoiceMode: React.FC<StudyModeProps> = ({ card, onAnswerCom
 
         {/* Post-submission details */}
         {submitted && (
-          <div className="space-y-4 pt-4 border-t border-slate-800">
-            <div className="p-4 bg-indigo-950/40 border border-indigo-500/20 rounded-2xl space-y-1">
-              <span className="text-xs font-bold text-indigo-400 uppercase tracking-wider block">
+          <div className="space-y-4 pt-4 border-t border-slate-100">
+            <div className="p-4 bg-indigo-50/60 border border-indigo-100 rounded-2xl space-y-1">
+              <span className="text-xs font-extrabold text-indigo-900 uppercase tracking-wider block">
                 Educational Rule:
               </span>
-              <p className="text-xs text-slate-300 leading-relaxed">{card.rule}</p>
-              <p className="text-xs text-slate-400 pt-1">{card.explanation}</p>
+              <p className="text-xs text-slate-700 leading-relaxed font-medium">{card.rule}</p>
+              <p className="text-xs text-slate-500 pt-1">{card.explanation}</p>
             </div>
 
             <div className="flex justify-end">
               <button
                 onClick={onNext}
-                className="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold rounded-xl flex items-center space-x-1"
+                className="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-extrabold rounded-xl flex items-center space-x-1 shadow-xs cursor-pointer"
               >
                 <span>Next Challenge</span>
                 <ArrowRight className="w-4 h-4" />
@@ -291,29 +284,29 @@ export const TypeAnswerMode: React.FC<StudyModeProps> = ({ card, onAnswerComplet
   };
 
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 space-y-6 max-w-2xl mx-auto shadow-xl">
-      <div className="flex items-center justify-between border-b border-slate-800 pb-4">
-        <div className="flex items-center space-x-2 text-emerald-400 font-bold text-xs uppercase tracking-wider">
+    <div className="bg-white border border-slate-200/80 rounded-3xl p-8 space-y-6 max-w-2xl mx-auto shadow-saas">
+      <div className="flex items-center justify-between border-b border-slate-100 pb-4">
+        <div className="flex items-center space-x-2 text-emerald-600 font-extrabold text-xs uppercase tracking-wider">
           <Sparkles className="w-4 h-4" />
           <span>Type the Correct Form</span>
         </div>
-        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-800 text-slate-300">
+        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-slate-100 text-slate-700">
           Active Recall Practice
         </span>
       </div>
 
       <div className="space-y-4">
-        <p className="text-sm font-semibold text-slate-200">
+        <p className="text-sm font-bold text-slate-800">
           Type the precise correction for the highlighted mistake in this sentence:
         </p>
 
-        <div className="p-4 bg-slate-950 border border-slate-800 rounded-2xl space-y-2">
-          <p className="text-sm font-medium text-slate-300 italic">
+        <div className="p-4 bg-slate-50 border border-slate-200/80 rounded-2xl space-y-2">
+          <p className="text-sm font-medium text-slate-700 italic">
             "{card.original_sentence}"
           </p>
-          <div className="flex items-center space-x-2 text-xs font-mono text-rose-300">
+          <div className="flex items-center space-x-2 text-xs font-semibold text-rose-700">
             <span>Mistake identified:</span>
-            <span className="px-2 py-0.5 bg-rose-500/20 border border-rose-500/30 rounded font-bold">
+            <span className="px-2 py-0.5 bg-rose-50 border border-rose-200 rounded font-extrabold">
               {card.accepted_correction.original}
             </span>
           </div>
@@ -327,13 +320,13 @@ export const TypeAnswerMode: React.FC<StudyModeProps> = ({ card, onAnswerComplet
                 value={typedText}
                 onChange={(e) => setTypedText(e.target.value)}
                 placeholder={`Type the correct replacement for '${card.accepted_correction.original}'...`}
-                className="flex-1 px-4 py-3 bg-slate-950 border border-slate-700 rounded-xl text-white font-mono text-sm focus:outline-none focus:border-emerald-500"
+                className="flex-1 px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 font-sans text-sm focus:outline-none focus:border-emerald-500 shadow-2xs"
                 autoFocus
               />
               <button
                 type="submit"
                 disabled={!typedText.trim()}
-                className="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white font-bold text-xs rounded-xl shadow-lg"
+                className="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 text-white font-extrabold text-xs rounded-xl shadow-xs cursor-pointer"
               >
                 Check Answer
               </button>
@@ -344,32 +337,32 @@ export const TypeAnswerMode: React.FC<StudyModeProps> = ({ card, onAnswerComplet
             <div
               className={`p-4 rounded-2xl border flex items-center space-x-3 ${
                 isCorrect
-                  ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300'
-                  : 'bg-rose-500/10 border-rose-500/30 text-rose-300'
+                  ? 'bg-emerald-50 border-emerald-200 text-emerald-800'
+                  : 'bg-rose-50 border-rose-200 text-rose-800'
               }`}
             >
-              {isCorrect ? <CheckCircle2 className="w-6 h-6 text-emerald-400" /> : <XCircle className="w-6 h-6 text-rose-400" />}
+              {isCorrect ? <CheckCircle2 className="w-6 h-6 text-emerald-600 shrink-0" /> : <XCircle className="w-6 h-6 text-rose-600 shrink-0" />}
               <div>
-                <span className="font-bold text-sm block">
+                <span className="font-extrabold text-sm block">
                   {isCorrect ? 'Correct! Excellent Recall!' : 'Not Quite Right'}
                 </span>
-                <span className="text-xs font-mono">
+                <span className="text-xs font-semibold">
                   Your entry: "{typedText}" | Expected: "{targetCorrection}"
                 </span>
               </div>
             </div>
 
-            <div className="p-4 bg-slate-950 border border-slate-800 rounded-2xl space-y-1">
-              <span className="text-xs font-bold text-indigo-400 uppercase tracking-wider block">
+            <div className="p-4 bg-slate-50 border border-slate-200/80 rounded-2xl space-y-1">
+              <span className="text-xs font-extrabold text-indigo-700 uppercase tracking-wider block">
                 Rule & Explanation:
               </span>
-              <p className="text-xs text-slate-300">{card.rule}</p>
+              <p className="text-xs text-slate-700 font-medium">{card.rule}</p>
             </div>
 
             <div className="flex justify-end">
               <button
                 onClick={onNext}
-                className="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold rounded-xl flex items-center space-x-1"
+                className="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-extrabold rounded-xl flex items-center space-x-1 shadow-xs cursor-pointer"
               >
                 <span>Next Card</span>
                 <ArrowRight className="w-4 h-4" />
@@ -398,27 +391,27 @@ export const SentenceReconstructionMode: React.FC<StudyModeProps> = ({ card, onA
   };
 
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 space-y-6 max-w-2xl mx-auto shadow-xl">
-      <div className="flex items-center justify-between border-b border-slate-800 pb-4">
-        <div className="flex items-center space-x-2 text-amber-400 font-bold text-xs uppercase tracking-wider">
+    <div className="bg-white border border-slate-200/80 rounded-3xl p-8 space-y-6 max-w-2xl mx-auto shadow-saas">
+      <div className="flex items-center justify-between border-b border-slate-100 pb-4">
+        <div className="flex items-center space-x-2 text-amber-600 font-extrabold text-xs uppercase tracking-wider">
           <Sparkles className="w-4 h-4" />
           <span>Sentence Reconstruction Exercise</span>
         </div>
-        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-800 text-slate-300">
+        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-slate-100 text-slate-700">
           Sentence Structure
         </span>
       </div>
 
       <div className="space-y-4">
-        <p className="text-sm font-semibold text-slate-200">
+        <p className="text-sm font-bold text-slate-800">
           Reconstruct the original sentence into its finalized, grammatically corrected structure:
         </p>
 
-        <div className="p-4 bg-slate-950 border border-slate-800 rounded-2xl space-y-1">
-          <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">
+        <div className="p-4 bg-slate-50 border border-slate-200/80 rounded-2xl space-y-1">
+          <span className="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider block">
             Original Flawed Sentence:
           </span>
-          <p className="text-sm font-medium text-rose-300 italic">
+          <p className="text-sm font-medium text-rose-700 italic">
             "{card.original_sentence}"
           </p>
         </div>
@@ -430,13 +423,13 @@ export const SentenceReconstructionMode: React.FC<StudyModeProps> = ({ card, onA
               value={typedSentence}
               onChange={(e) => setTypedSentence(e.target.value)}
               placeholder="Type the full reconstructed sentence here..."
-              className="w-full p-4 bg-slate-950 border border-slate-700 rounded-2xl text-white font-sans text-sm focus:outline-none focus:border-amber-500 leading-relaxed resize-none"
+              className="w-full p-4 bg-white border border-slate-200 rounded-2xl text-slate-800 font-sans text-sm focus:outline-none focus:border-amber-500 leading-relaxed resize-none shadow-2xs"
             />
             <div className="flex justify-end">
               <button
                 type="submit"
                 disabled={!typedSentence.trim()}
-                className="px-6 py-3 bg-amber-600 hover:bg-amber-500 disabled:opacity-50 text-white font-bold text-xs rounded-xl shadow-lg"
+                className="px-6 py-3 bg-amber-600 hover:bg-amber-700 disabled:opacity-50 text-white font-extrabold text-xs rounded-xl shadow-xs cursor-pointer"
               >
                 Validate Reconstruction
               </button>
@@ -447,32 +440,32 @@ export const SentenceReconstructionMode: React.FC<StudyModeProps> = ({ card, onA
             <div
               className={`p-4 rounded-2xl border flex items-center space-x-3 ${
                 isCorrect
-                  ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300'
-                  : 'bg-amber-500/10 border-amber-500/30 text-amber-300'
+                  ? 'bg-emerald-50 border-emerald-200 text-emerald-800'
+                  : 'bg-amber-50 border-amber-200 text-amber-800'
               }`}
             >
-              {isCorrect ? <CheckCircle2 className="w-6 h-6 text-emerald-400" /> : <Lightbulb className="w-6 h-6 text-amber-400" />}
+              {isCorrect ? <CheckCircle2 className="w-6 h-6 text-emerald-600 shrink-0" /> : <Lightbulb className="w-6 h-6 text-amber-600 shrink-0" />}
               <div>
-                <span className="font-bold text-sm block">
+                <span className="font-extrabold text-sm block">
                   {isCorrect ? 'Perfect Sentence Reconstruction!' : 'Target Corrected Sentence Comparison:'}
                 </span>
-                <span className="text-xs font-semibold text-white block pt-0.5">
+                <span className="text-xs font-semibold text-slate-900 block pt-0.5">
                   "{card.corrected_sentence}"
                 </span>
               </div>
             </div>
 
-            <div className="p-4 bg-slate-950 border border-slate-800 rounded-2xl space-y-1">
-              <span className="text-xs font-bold text-indigo-400 uppercase tracking-wider block">
+            <div className="p-4 bg-slate-50 border border-slate-200/80 rounded-2xl space-y-1">
+              <span className="text-xs font-extrabold text-indigo-700 uppercase tracking-wider block">
                 Educational Rule:
               </span>
-              <p className="text-xs text-slate-300">{card.rule}</p>
+              <p className="text-xs text-slate-700 font-medium">{card.rule}</p>
             </div>
 
             <div className="flex justify-end">
               <button
                 onClick={onNext}
-                className="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold rounded-xl flex items-center space-x-1"
+                className="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-extrabold rounded-xl flex items-center space-x-1 shadow-xs cursor-pointer"
               >
                 <span>Next Challenge</span>
                 <ArrowRight className="w-4 h-4" />

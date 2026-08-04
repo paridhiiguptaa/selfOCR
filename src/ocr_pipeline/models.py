@@ -21,9 +21,19 @@ class TextRegion:
     fallback_triggered: bool = False
     fallback_model: Optional[str] = None
     unpadded_bbox: Optional[Tuple[int, int, int, int]] = None
-    candidates: List[Dict[str, Any]] = field(default_factory=list) # List of {"text": str, "confidence": float}
+    candidates: List[Dict[str, Any]] = field(default_factory=list) # List of {"text": str, "confidence": float, "scale": str, ...}
     ocr_confidence: float = 1.0
     reconstruction_confidence: float = 1.0
+    structural_tag: str = "Text"      # "Heading", "Definition", "Activity", "Experiment", "Observation", "Procedure", "Conclusion", "QA", "Bullet", "Text"
+    fused_text: str = ""
+    selected_scale: str = "original"
+    adaptation_score_boost: float = 0.0
+    subject_prior_weight: float = 1.0
+    paragraph_id: Optional[int] = None
+    ensemble_candidates: List[Dict[str, Any]] = field(default_factory=list)
+    vlm_verified_text: str = ""
+    verification_changes: List[Dict[str, Any]] = field(default_factory=list)
+    aggregation_score: float = 1.0
 
     @property
     def center(self) -> Tuple[float, float]:
@@ -50,6 +60,15 @@ class DocumentPage:
     height: int
     is_pdf: bool = False
     document_classification: str = "mixed_content" # "predominantly_printed", "predominantly_handwritten", "mixed_content"
+    detected_subject: str = "General"
+    subject_confidence: float = 0.50
+    subject_keywords: List[str] = field(default_factory=list)
+    user_id: Optional[str] = None
+    educational_structures: Dict[str, int] = field(default_factory=dict)
+    paragraph_count: int = 0
+    vlm_verification_stats: Dict[str, Any] = field(default_factory=dict)
+
+
 
 @dataclass
 class PageTelemetry:
@@ -236,5 +255,70 @@ class FlashcardDeck:
             "study_progress": self.study_progress,
             "cards": [c.to_dict() for c in self.cards]
         }
+
+
+@dataclass
+class IngestionOutput:
+    """Output contract for Phase 1: Ingestion & Rendering."""
+    pages: List[DocumentPage]
+    total_pages: int
+    duration_sec: float
+
+
+@dataclass
+class PreprocessingOutput:
+    """Output contract for Phase 2: Preprocessing & Orientation."""
+    corrected_image: np.ndarray
+    preprocessed_image: np.ndarray
+    orientation_meta: Dict[str, Any]
+    preprocessing_meta: Dict[str, Any]
+    document_classification: str
+    duration_sec: float
+
+
+@dataclass
+class LayoutOutput:
+    """Output contract for Phase 3: Layout Detection & Reading Order."""
+    regions: List[TextRegion]
+    layout_meta: Dict[str, Any]
+    duration_sec: float
+
+
+@dataclass
+class PrimaryOCROutput:
+    """Output contract for Phase 4: Primary OCR Recognition."""
+    full_markdown: str
+    regions: List[TextRegion]
+    vlm_meta: Dict[str, Any]
+    duration_sec: float
+
+
+@dataclass
+class ConfidenceOutput:
+    """Output contract for Phase 5: Confidence Evaluation & Fallback."""
+    final_regions: List[TextRegion]
+    conf_stats: Dict[str, Any]
+    duration_sec: float
+
+
+@dataclass
+class TranscriptionOutput:
+    """Output contract for Phase 6: Baseline Final Transcription Assembly."""
+    plain_text: str
+    markdown: str
+    duration_sec: float
+
+
+@dataclass
+class EnhancementOutput:
+    """Output contract for Phase 7 & 8: Optional Enhancement Pipeline."""
+    detected_subject: Dict[str, Any]
+    enhanced_regions: List[TextRegion]
+    ensemble_telemetry: List[Dict[str, Any]]
+    vlm_verification_telemetry: List[Dict[str, Any]]
+    educational_structures: Dict[str, int]
+    duration_sec: float
+    status: str = "completed"
+
 
 

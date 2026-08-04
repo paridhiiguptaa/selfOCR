@@ -1,0 +1,172 @@
+{
+  "deck_id": "deck_e3719ed5b9",
+  "source_document_id": "doc_0b9f22f6",
+  "source_document_title": "hw_noise_04_contextual_homophone",
+  "exported_document_text": "The boy rode the bicycle to school. She read the book.",
+  "created_at": "2026-08-03T20:27:25.287940Z",
+  "total_flashcards": 2,
+  "categories_distribution": {
+    "Grammar Correction": 2
+  },
+  "difficulty_distribution": {
+    "Easy": 2,
+    "Medium": 0,
+    "Hard": 0
+  },
+  "estimated_study_time_min": 3,
+  "mastery_percentage": 0.0,
+  "study_progress": {
+    "cards_completed": 0,
+    "cards_mastered": 0,
+    "cards_bookmarked": 0,
+    "last_studied_at": null
+  },
+  "cards": [
+    {
+      "id": "fc_5593c544",
+      "category": "Grammar Correction",
+      "card_style": "grammar_explanation",
+      "original_sentence": "The boy rode the bicycle to school",
+      "corrected_sentence": "The boy rode the bicycle to school",
+      "front": {
+        "title": "Grammar Error Spotter",
+        "prompt": "Analyze the sentence below. Identify the grammatical error before revealing the rule:",
+        "context_sentence": "The boy rode the bicycle to school",
+        "highlighted_error": "boy road",
+        "options": [
+          "Change 'boy road' to 'boy rode'",
+          "Remove 'boy road' entirely",
+          "Move 'boy road' to end of sentence"
+        ],
+        "study_type": "grammar_spotter"
+      },
+      "back": {
+        "correct_answer": "Change 'boy road' to 'boy rode'",
+        "part_of_speech": "noun",
+        "child_friendly_definition": "Describes or represents 'boy rode' as used in this sentence.",
+        "dictionary_meaning": "Describes or represents 'boy rode' as used in this sentence.",
+        "usage_example": "The student noticed a very interesting boy rode during the afternoon science lesson.",
+        "example_sentence": "The student noticed a very interesting boy rode during the afternoon science lesson.",
+        "phonetic_hint": "/boy rode/",
+        "synonyms": [],
+        "antonyms": [],
+        "error_found": "boy road",
+        "corrected_form": "boy rode",
+        "explanation": "Contextual correction: use \"rode\" instead of \"road\" when describing riding a vehicle or animal. Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+        "rule": "Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+        "original_sentence": "The boy rode the bicycle to school",
+        "corrected_sentence": "The boy rode the bicycle to school",
+        "extra_examples": [],
+        "tip": "Check for subject-verb agreement and tense consistency."
+      },
+      "accepted_correction": {
+        "original": "boy road",
+        "proposed": "boy rode"
+      },
+      "explanation": "Contextual correction: use \"rode\" instead of \"road\" when describing riding a vehicle or animal. Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+      "rule": "Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+      "learning_objective": "Recognize and correct grammatical errors involving 'boy road' -> 'boy rode'.",
+      "difficulty": "Easy",
+      "confidence_score": 0.96,
+      "source_document_id": "doc_0b9f22f6",
+      "source_document_title": "hw_noise_04_contextual_homophone",
+      "created_at": "2026-08-03T20:27:24.191389Z",
+      "tags": [
+        "Academic Vocabulary",
+        "Grammar Correction"
+      ],
+      "child_friendly_definition": "Describes or represents 'boy rode' as used in this sentence.",
+      "dictionary_meaning": "A term functioning as an noun in context.",
+      "contextual_meaning": "In context (noun): Describes or represents 'boy rode' as used in this sentence.",
+      "example_sentence": "The student noticed a very interesting boy rode during the afternoon science lesson.",
+      "part_of_speech": "noun",
+      "synonyms": [],
+      "antonyms": [],
+      "difficulty_level": "Easy",
+      "pronunciation": "/boy rode/",
+      "detected_pos": "noun",
+      "identified_word_sense": "boy rode.noun.fallback",
+      "official_dictionary_definition": "A term functioning as an noun in context.",
+      "simplified_child_definition": "Describes or represents 'boy rode' as used in this sentence.",
+      "generated_example_sentence": "The student noticed a very interesting boy rode during the afternoon science lesson.",
+      "dictionary_source": "Contextual Inference",
+      "requires_manual_verification": true,
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    },
+    {
+      "id": "fc_ef197b27",
+      "category": "Grammar Correction",
+      "card_style": "grammar_explanation",
+      "original_sentence": "She read the book",
+      "corrected_sentence": "She read d the book",
+      "front": {
+        "title": "Grammar Error Spotter",
+        "prompt": "Analyze the sentence below. Identify the grammatical error before revealing the rule:",
+        "context_sentence": "She read the book",
+        "highlighted_error": "She red",
+        "options": [
+          "Change 'She red' to 'She read'",
+          "Remove 'She red' entirely",
+          "Move 'She red' to end of sentence"
+        ],
+        "study_type": "grammar_spotter"
+      },
+      "back": {
+        "correct_answer": "Change 'She red' to 'She read'",
+        "part_of_speech": "noun",
+        "child_friendly_definition": "Describes or represents 'She read' as used in this sentence.",
+        "dictionary_meaning": "Describes or represents 'She read' as used in this sentence.",
+        "usage_example": "The student noticed a very interesting She read during the afternoon science lesson.",
+        "example_sentence": "The student noticed a very interesting She read during the afternoon science lesson.",
+        "phonetic_hint": "/she read/",
+        "synonyms": [],
+        "antonyms": [],
+        "error_found": "She red",
+        "corrected_form": "She read",
+        "explanation": "Contextual correction: use \"read\" instead of \"red\" when describing reading a book or text. Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+        "rule": "Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+        "original_sentence": "She read the book",
+        "corrected_sentence": "She read d the book",
+        "extra_examples": [],
+        "tip": "Check for subject-verb agreement and tense consistency."
+      },
+      "accepted_correction": {
+        "original": "She red",
+        "proposed": "She read"
+      },
+      "explanation": "Contextual correction: use \"read\" instead of \"red\" when describing reading a book or text. Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+      "rule": "Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+      "learning_objective": "Recognize and correct grammatical errors involving 'She red' -> 'She read'.",
+      "difficulty": "Easy",
+      "confidence_score": 0.96,
+      "source_document_id": "doc_0b9f22f6",
+      "source_document_title": "hw_noise_04_contextual_homophone",
+      "created_at": "2026-08-03T20:27:25.287940Z",
+      "tags": [
+        "Academic Vocabulary",
+        "Grammar Correction"
+      ],
+      "child_friendly_definition": "Describes or represents 'She read' as used in this sentence.",
+      "dictionary_meaning": "A term functioning as an noun in context.",
+      "contextual_meaning": "In context (noun): Describes or represents 'She read' as used in this sentence.",
+      "example_sentence": "The student noticed a very interesting She read during the afternoon science lesson.",
+      "part_of_speech": "noun",
+      "synonyms": [],
+      "antonyms": [],
+      "difficulty_level": "Easy",
+      "pronunciation": "/she read/",
+      "detected_pos": "noun",
+      "identified_word_sense": "she read.noun.fallback",
+      "official_dictionary_definition": "A term functioning as an noun in context.",
+      "simplified_child_definition": "Describes or represents 'She read' as used in this sentence.",
+      "generated_example_sentence": "The student noticed a very interesting She read during the afternoon science lesson.",
+      "dictionary_source": "Contextual Inference",
+      "requires_manual_verification": true,
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    }
+  ]
+}

@@ -629,6 +629,14 @@ class FlashcardGeneratorEngine:
             )
             raw_cards.append(card)
 
+        # 3b. Fallback: If no cards generated from suggestions, extract key vocabulary terms from document text
+        if len(raw_cards) == 0 and exported_text:
+            raw_cards = self._generate_text_vocabulary_flashcards(
+                exported_text=exported_text,
+                doc_id=doc_id,
+                document_title=document_title
+            )
+
         # 4. Calculate Distributions & Telemetry
         cat_dist: Dict[str, int] = {}
         diff_dist: Dict[str, int] = {"Easy": 0, "Medium": 0, "Hard": 0}
@@ -742,10 +750,128 @@ class FlashcardGeneratorEngine:
             if orig_sent:
                 return orig_sent, corr_sent
 
-        # Fallback if offsets are missing
         orig_sent = self._clean_sentence_spacing(f"The sentence contained '{orig_word}'.")
         corr_sent = self._clean_sentence_spacing(f"The sentence was corrected to '{prop_word}'.")
         return orig_sent, corr_sent
+
+    def _generate_text_vocabulary_flashcards(
+        self,
+        exported_text: str,
+        doc_id: str,
+        document_title: str
+    ) -> List[Flashcard]:
+        """
+        Fallback vocabulary flashcard generator when zero proofreading suggestions are provided.
+        Extracts key vocabulary words from document text and generates child-friendly study cards.
+        """
+        cards: List[Flashcard] = []
+        if not exported_text or not exported_text.strip():
+            return cards
+
+        words = re.findall(r'\b[A-Za-z]{3,}\b', exported_text)
+        lexical = ChildFriendlyLexicalEngine()
+        vocab_dict = lexical.CHILD_DICTIONARY
+
+        matched_words = []
+        seen = set()
+
+        # 1. Match against known dictionary words first
+        for w in words:
+            wl = w.lower()
+            if wl in vocab_dict and wl not in seen:
+                seen.add(wl)
+                matched_words.append(wl)
+                if len(matched_words) >= 10:
+                    break
+
+        # 2. If fewer than 5 words, add prominent content words (>4 chars, not functional)
+        if len(matched_words) < 5:
+            for w in words:
+                wl = w.lower()
+                if wl not in lexical.FUNCTIONAL_GRAMMAR_WORDS and wl not in seen and len(wl) >= 4:
+                    seen.add(wl)
+                    matched_words.append(wl)
+                    if len(matched_words) >= 8:
+                        break
+
+        # Build cards for extracted vocabulary words
+        now_iso = datetime.utcnow().isoformat() + "Z"
+        for idx, word in enumerate(matched_words, start=1):
+            info = VocabularyLearningEngine.process_correction(
+                orig_word=word,
+                prop_word=word,
+                corrected_sentence=f"We learned about {word} in class.",
+                category="Vocabulary & Spelling",
+                explanation=f"Key vocabulary word in {document_title}"
+            )
+            pos = info.get("detected_pos", "noun")
+            c_def = info.get("simplified_child_definition") or f"A key vocabulary term from {document_title}."
+            ex_sent = info.get("generated_example_sentence") or f"We learned about {word} during our class study."
+            syns = info.get("synonyms", [])
+            phon = info.get("pronunciation", f"/{word}/")
+            diff = "Easy" if len(word) <= 5 else ("Medium" if len(word) <= 8 else "Hard")
+            rule_text = f"Understand the usage and definition of key vocabulary word '{word}'."
+
+            front_data = {
+                "title": f"Vocabulary Explorer: {word.capitalize()}",
+                "prompt": f"What is the child-friendly definition and part of speech for '{word}'?",
+                "context_sentence": f"We learned about {word} in class.",
+                "target_word": word,
+                "highlight": word,
+                "hint": f"Part of speech: {pos}"
+            }
+            back_data = {
+                "target_word": word,
+                "part_of_speech": pos,
+                "definition": c_def,
+                "child_definition": c_def,
+                "example_sentence": ex_sent,
+                "explanation": f"Key vocabulary word extracted from {document_title}.",
+                "rule": rule_text,
+                "synonyms": syns,
+                "antonyms": info.get("antonyms", []),
+                "pronunciation": phon,
+                "dictionary_source": info.get("dictionary_source", "Vocabulary Engine")
+            }
+
+            c = Flashcard(
+                id=f"card_text_{doc_id}_{idx}",
+                category="Vocabulary & Spelling",
+                card_style="Vocabulary_Explorer",
+                original_sentence=f"We learned about {word} in class.",
+                corrected_sentence=f"We learned about {word} in class.",
+                front=front_data,
+                back=back_data,
+                accepted_correction={"original": word, "proposed": word},
+                explanation=f"Key vocabulary word extracted from {document_title}.",
+                rule=rule_text,
+                learning_objective=f"Master key vocabulary term '{word}'.",
+                difficulty=diff,
+                confidence_score=0.92,
+                source_document_id=doc_id,
+                source_document_title=document_title,
+                created_at=now_iso,
+                tags=["Vocabulary", "Spelling", pos.capitalize()],
+                child_friendly_definition=c_def,
+                dictionary_meaning=info.get("official_dictionary_definition", c_def),
+                contextual_meaning=f"In context ({pos}): {c_def}",
+                example_sentence=ex_sent,
+                part_of_speech=pos,
+                synonyms=syns,
+                antonyms=info.get("antonyms", []),
+                difficulty_level=diff,
+                pronunciation=phon,
+                detected_pos=pos,
+                identified_word_sense=info.get("identified_word_sense", f"{word}.{pos}"),
+                official_dictionary_definition=info.get("official_dictionary_definition", c_def),
+                simplified_child_definition=c_def,
+                generated_example_sentence=ex_sent,
+                dictionary_source=info.get("dictionary_source", "Vocabulary Engine"),
+                requires_manual_verification=info.get("requires_manual_verification", False)
+            )
+            cards.append(c)
+
+        return cards
 
 
     def _build_single_flashcard(

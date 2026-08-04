@@ -1,0 +1,150 @@
+{
+  "deck_id": "deck_bfbd97e686",
+  "source_document_id": "doc_a9c721d0",
+  "source_document_title": "tc_06_capitalization_and_punct",
+  "exported_document_text": "Ans: Yes I have seen the rainbow?",
+  "created_at": "2026-08-04T22:39:54.867050Z",
+  "total_flashcards": 2,
+  "categories_distribution": {
+    "Capitalization": 2
+  },
+  "difficulty_distribution": {
+    "Easy": 2,
+    "Medium": 0,
+    "Hard": 0
+  },
+  "estimated_study_time_min": 3,
+  "mastery_percentage": 0.0,
+  "study_progress": {
+    "cards_completed": 0,
+    "cards_mastered": 0,
+    "cards_bookmarked": 0,
+    "last_studied_at": null
+  },
+  "cards": [
+    {
+      "id": "fc_ff492b2b",
+      "category": "Capitalization",
+      "card_style": "capitalization_rule",
+      "original_sentence": "Ans: Yes I have seen the rainbow",
+      "corrected_sentence": "Ans: Y es I have seen the rainbow",
+      "front": {
+        "title": "Capitalization Mastery",
+        "prompt": "Identify the word that requires proper capitalization in this sentence:",
+        "context_sentence": "Ans: Yes I have seen the rainbow",
+        "target_word": "ans: y",
+        "study_type": "capitalization"
+      },
+      "back": {
+        "correct_answer": "Ans: Y",
+        "part_of_speech": "noun",
+        "child_friendly_definition": "Describes or represents 'Ans: Y' as used in this sentence.",
+        "dictionary_meaning": "Describes or represents 'Ans: Y' as used in this sentence.",
+        "usage_example": "The student noticed a very interesting Ans: Y during the afternoon science lesson.",
+        "example_sentence": "The student noticed a very interesting Ans: Y during the afternoon science lesson.",
+        "explanation": "Capitalize first letter of answer Capitalization Rule: Always capitalize proper nouns, the pronoun 'I', and the first word of a sentence.",
+        "rule": "Capitalization Rule: Always capitalize proper nouns, the pronoun 'I', and the first word of a sentence.",
+        "original_sentence": "Ans: Yes I have seen the rainbow",
+        "corrected_sentence": "Ans: Y es I have seen the rainbow",
+        "extra_examples": [],
+        "tip": "Proper nouns and sentence origins must always be capitalized."
+      },
+      "accepted_correction": {
+        "original": "ans: y",
+        "proposed": "Ans: Y"
+      },
+      "explanation": "Capitalize first letter of answer Capitalization Rule: Always capitalize proper nouns, the pronoun 'I', and the first word of a sentence.",
+      "rule": "Capitalization Rule: Always capitalize proper nouns, the pronoun 'I', and the first word of a sentence.",
+      "learning_objective": "Master standard capitalization rules for 'Ans: Y'.",
+      "difficulty": "Easy",
+      "confidence_score": 0.9,
+      "source_document_id": "doc_a9c721d0",
+      "source_document_title": "tc_06_capitalization_and_punct",
+      "created_at": "2026-08-04T22:39:54.859049Z",
+      "tags": [
+        "Capitalization"
+      ],
+      "child_friendly_definition": "Describes or represents 'Ans: Y' as used in this sentence.",
+      "dictionary_meaning": "A term functioning as an noun in context.",
+      "contextual_meaning": "In context (noun): Describes or represents 'Ans: Y' as used in this sentence.",
+      "example_sentence": "The student noticed a very interesting Ans: Y during the afternoon science lesson.",
+      "part_of_speech": "noun",
+      "synonyms": [],
+      "antonyms": [],
+      "difficulty_level": "Easy",
+      "pronunciation": "/ans: y/",
+      "detected_pos": "noun",
+      "identified_word_sense": "ans: y.noun.fallback",
+      "official_dictionary_definition": "A term functioning as an noun in context.",
+      "simplified_child_definition": "Describes or represents 'Ans: Y' as used in this sentence.",
+      "generated_example_sentence": "The student noticed a very interesting Ans: Y during the afternoon science lesson.",
+      "dictionary_source": "Contextual Inference",
+      "requires_manual_verification": true,
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    },
+    {
+      "id": "fc_1e72fd90",
+      "category": "Capitalization",
+      "card_style": "capitalization_rule",
+      "original_sentence": "Ans: Yes I have seen the rainbow",
+      "corrected_sentence": "Ans: Yes I have seen the ra Inbow",
+      "front": {
+        "title": "Capitalization Mastery",
+        "prompt": "Identify the word that requires proper capitalization in this sentence:",
+        "context_sentence": "Ans: Yes I have seen the rainbow",
+        "target_word": "i",
+        "study_type": "capitalization"
+      },
+      "back": {
+        "correct_answer": "I",
+        "part_of_speech": "pronoun",
+        "child_friendly_definition": "",
+        "dictionary_meaning": "",
+        "usage_example": "",
+        "example_sentence": "",
+        "explanation": "Capitalize standalone pronoun \"i\" to \"I\" Capitalization Rule: Always capitalize proper nouns, the pronoun 'I', and the first word of a sentence.",
+        "rule": "Capitalization Rule: Always capitalize proper nouns, the pronoun 'I', and the first word of a sentence.",
+        "original_sentence": "Ans: Yes I have seen the rainbow",
+        "corrected_sentence": "Ans: Yes I have seen the ra Inbow",
+        "extra_examples": [],
+        "tip": "Proper nouns and sentence origins must always be capitalized."
+      },
+      "accepted_correction": {
+        "original": "i",
+        "proposed": "I"
+      },
+      "explanation": "Capitalize standalone pronoun \"i\" to \"I\" Capitalization Rule: Always capitalize proper nouns, the pronoun 'I', and the first word of a sentence.",
+      "rule": "Capitalization Rule: Always capitalize proper nouns, the pronoun 'I', and the first word of a sentence.",
+      "learning_objective": "Master standard capitalization rules for 'I'.",
+      "difficulty": "Easy",
+      "confidence_score": 0.96,
+      "source_document_id": "doc_a9c721d0",
+      "source_document_title": "tc_06_capitalization_and_punct",
+      "created_at": "2026-08-04T22:39:54.867050Z",
+      "tags": [
+        "Capitalization"
+      ],
+      "child_friendly_definition": "",
+      "dictionary_meaning": "",
+      "contextual_meaning": "In context (pronoun): ",
+      "example_sentence": "",
+      "part_of_speech": "pronoun",
+      "synonyms": [],
+      "antonyms": [],
+      "difficulty_level": "Easy",
+      "pronunciation": "",
+      "detected_pos": "pronoun",
+      "identified_word_sense": "grammar_rule",
+      "official_dictionary_definition": "",
+      "simplified_child_definition": "",
+      "generated_example_sentence": "",
+      "dictionary_source": "Grammar Engine Rule",
+      "requires_manual_verification": false,
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    }
+  ]
+}

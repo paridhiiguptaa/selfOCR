@@ -1,3 +1,4 @@
+import time
 import cv2
 import numpy as np
 from typing import List, Tuple, Dict, Any, Optional
@@ -85,6 +86,9 @@ class ConfidenceEvaluator:
             recovered_regions: List[TextRegion] = []
             conf_sum = 0.0
             quality_sum = 0.0
+            recovery_start_time = time.time()
+            max_recovery_budget_sec = 5.0
+            max_fallback_invocations = 3
 
             for region in regions:
                 crop = crop_box(image, region.bbox)
@@ -104,10 +108,20 @@ class ConfidenceEvaluator:
                     recovered_regions.append(region)
                     continue
 
-                # Low quality or gibberish detected -> Trigger Multi-Tier Recovery
+                # Check budget / max retry limit
+                time_elapsed = time.time() - recovery_start_time
+                if stats["fallback_invocations"] >= max_fallback_invocations or time_elapsed > max_recovery_budget_sec:
+                    if stats["fallback_invocations"] == max_fallback_invocations:
+                        logger.info("[CONFIDENCE RECOVERY] Max fallback retry limit reached. Retaining primary OCR text.")
+                    conf_sum += region.confidence
+                    quality_sum += q_score
+                    recovered_regions.append(region)
+                    continue
+
+                # Low quality or empty text detected -> Trigger Recovery
                 logger.info(
-                    f"Low quality/uncalibrated region detected (Quality {q_score:.2f}, Gibberish={is_gibberish}) "
-                    f"in Region #{region.region_id} ('{region.text}'). Triggering multi-tier recovery."
+                    f"[CONFIDENCE RECOVERY] Low quality/uncalibrated region detected (Quality {q_score:.2f}, Gibberish={is_gibberish}) "
+                    f"in Region #{region.region_id} ('{region.text}'). Triggering recovery pass."
                 )
                 stats["fallback_invocations"] += 1
 
@@ -116,37 +130,38 @@ class ConfidenceEvaluator:
                 best_quality = q_score
                 best_model = region.fallback_model
 
-                # Tier 1: Dedicated Handwriting TrOCR Engine (for handwriting/low-quality crops)
+                # Tier 1: Fast Crop OCR Engine
                 try:
-                    hw_text, hw_conf = self.handwriting_ocr.recognize_handwriting_crop(crop)
-                    if hw_text.strip():
-                        dummy_reg = TextRegion(region_id=region.region_id, bbox=region.bbox, text=hw_text, confidence=hw_conf, ink_density=region.ink_density)
-                        hw_q, _ = self.quality_estimator.evaluate_region_quality(dummy_reg, crop=crop)
-                        if hw_q > best_quality:
-                            best_text = hw_text
-                            best_conf = hw_conf
-                            best_quality = hw_q
-                            best_model = "HandwritingTrOCR_Tier1"
+                    t1_text, t1_conf = self.crop_ocr.recognize_crop(crop)
+                    if t1_text.strip():
+                        dummy_reg = TextRegion(region_id=region.region_id, bbox=region.bbox, text=t1_text, confidence=t1_conf, ink_density=region.ink_density)
+                        t1_q, _ = self.quality_estimator.evaluate_region_quality(dummy_reg, crop=crop)
+                        if t1_q > best_quality:
+                            best_text = t1_text
+                            best_conf = t1_conf
+                            best_quality = t1_q
+                            best_model = "CropOCR_Tier1"
                 except Exception as e:
-                    logger.warning(f"Tier 1 handwriting recovery failed for Region #{region.region_id}: {e}")
+                    logger.warning(f"Tier 1 recovery failed for Region #{region.region_id}: {e}")
 
                 # Tier 2: Enhanced Preprocessing Crop Re-run
-                try:
-                    enhanced_crop = self.preprocessor.sharpen_unsharp_mask(crop, amount=2.0)
-                    t2_text, t2_conf = self.crop_ocr.recognize_crop(enhanced_crop)
-                    if t2_text.strip():
-                        dummy_reg = TextRegion(region_id=region.region_id, bbox=region.bbox, text=t2_text, confidence=t2_conf, ink_density=region.ink_density)
-                        t2_q, _ = self.quality_estimator.evaluate_region_quality(dummy_reg, crop=enhanced_crop)
-                        if t2_q > best_quality:
-                            best_text = t2_text
-                            best_conf = t2_conf
-                            best_quality = t2_q
-                            best_model = "CropOCR_EnhancedTier2"
-                except Exception as e:
-                    logger.warning(f"Tier 2 recovery failed for Region #{region.region_id}: {e}")
+                if best_quality < self.config.min_quality_score_threshold:
+                    try:
+                        enhanced_crop = self.preprocessor.sharpen_unsharp_mask(crop, amount=2.0)
+                        t2_text, t2_conf = self.crop_ocr.recognize_crop(enhanced_crop)
+                        if t2_text.strip():
+                            dummy_reg = TextRegion(region_id=region.region_id, bbox=region.bbox, text=t2_text, confidence=t2_conf, ink_density=region.ink_density)
+                            t2_q, _ = self.quality_estimator.evaluate_region_quality(dummy_reg, crop=enhanced_crop)
+                            if t2_q > best_quality:
+                                best_text = t2_text
+                                best_conf = t2_conf
+                                best_quality = t2_q
+                                best_model = "CropOCR_EnhancedTier2"
+                    except Exception as e:
+                        logger.warning(f"Tier 2 recovery failed for Region #{region.region_id}: {e}")
 
-                # Tier 3: GOT-OCR 2.0 Fallback
-                if self.config.enable_got_fallback:
+                # Tier 3: GOT-OCR 2.0 Fallback (Only if enabled and GPU is active)
+                if self.config.enable_got_fallback and self.got_fallback.device == "cuda":
                     try:
                         fallback_text, fallback_conf = self.got_fallback.reprocess_region(crop)
                         if fallback_text.strip():

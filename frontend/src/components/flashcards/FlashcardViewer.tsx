@@ -40,11 +40,11 @@ export const FlashcardViewer: React.FC<FlashcardViewerProps> = ({
   const getDifficultyBadge = (diff: string) => {
     switch (diff) {
       case 'Easy':
-        return 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20';
+        return 'bg-emerald-50 text-emerald-700 border-emerald-200';
       case 'Hard':
-        return 'bg-rose-500/10 text-rose-400 border-rose-500/20';
+        return 'bg-rose-50 text-rose-700 border-rose-200';
       default:
-        return 'bg-amber-500/10 text-amber-400 border-amber-500/20';
+        return 'bg-amber-50 text-amber-700 border-amber-200';
     }
   };
 
@@ -53,13 +53,13 @@ export const FlashcardViewer: React.FC<FlashcardViewerProps> = ({
       {/* Top Card Controls & Telemetry Header */}
       <div className="flex items-center justify-between px-2">
         <div className="flex items-center space-x-2">
-          <span className="text-xs font-bold text-slate-400">
+          <span className="text-xs font-extrabold text-slate-700">
             Card {cardIndex + 1} of {totalCards}
           </span>
-          <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold border ${getDifficultyBadge(card.difficulty)}`}>
+          <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-extrabold border ${getDifficultyBadge(card.difficulty)}`}>
             {card.difficulty}
           </span>
-          <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+          <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-blue-50 text-blue-700 border border-blue-100">
             {card.category}
           </span>
         </div>
@@ -67,10 +67,10 @@ export const FlashcardViewer: React.FC<FlashcardViewerProps> = ({
         <div className="flex items-center space-x-2">
           <button
             onClick={() => onToggleBookmark(card.id)}
-            className={`p-2 rounded-xl border transition-all ${
+            className={`p-2 rounded-xl border transition-all cursor-pointer ${
               card.is_bookmarked
-                ? 'bg-amber-500/20 border-amber-500/40 text-amber-400'
-                : 'bg-slate-900 border-slate-800 text-slate-400 hover:text-white'
+                ? 'bg-amber-50 border-amber-200 text-amber-600'
+                : 'bg-white border-slate-200 text-slate-500 hover:text-slate-900 hover:bg-slate-50 shadow-2xs'
             }`}
             title="Bookmark Flashcard"
           >
@@ -78,13 +78,13 @@ export const FlashcardViewer: React.FC<FlashcardViewerProps> = ({
           </button>
           <button
             onClick={() => onToggleMastered(card.id)}
-            className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-xl border text-xs font-bold transition-all ${
+            className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-xl border text-xs font-extrabold transition-all cursor-pointer ${
               card.is_mastered
-                ? 'bg-emerald-500/20 border-emerald-500/40 text-emerald-300'
-                : 'bg-slate-900 border-slate-800 text-slate-400 hover:text-white'
+                ? 'bg-emerald-50 border-emerald-200 text-emerald-700 shadow-2xs'
+                : 'bg-white border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-50 shadow-2xs'
             }`}
           >
-            <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+            <CheckCircle2 className="w-4 h-4 text-emerald-600" />
             <span>{card.is_mastered ? 'Mastered' : 'Mark Mastered'}</span>
           </button>
         </div>
@@ -106,7 +106,7 @@ export const FlashcardViewer: React.FC<FlashcardViewerProps> = ({
         >
           {/* FRONT SIDE */}
           <div
-            className="absolute inset-0 w-full h-full rounded-3xl bg-slate-900/95 border border-slate-800 p-8 flex flex-col justify-between shadow-2xl overflow-y-auto"
+            className="absolute inset-0 w-full h-full rounded-3xl bg-white border border-slate-200/80 p-8 flex flex-col justify-between shadow-saas overflow-y-auto"
             style={{
               backfaceVisibility: 'hidden',
               WebkitBackfaceVisibility: 'hidden',
@@ -114,27 +114,27 @@ export const FlashcardViewer: React.FC<FlashcardViewerProps> = ({
             }}
           >
             {/* Front Header */}
-            <div className="flex items-center justify-between border-b border-slate-800/80 pb-4">
-              <div className="flex items-center space-x-2 text-indigo-400 text-xs font-bold uppercase tracking-wider">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-4">
+              <div className="flex items-center space-x-2 text-blue-600 text-xs font-extrabold uppercase tracking-wider">
                 <Sparkles className="w-4 h-4" />
                 <span>{card.front.title || 'Learning Challenge'}</span>
               </div>
-              <span className="text-xs text-slate-500 font-mono">Tap card to flip answer 🔄</span>
+              <span className="text-xs text-slate-400 font-medium">Tap card to flip answer 🔄</span>
             </div>
 
             {/* Front Body Challenge */}
             <div className="my-4 space-y-4">
-              <p className="text-base font-semibold text-slate-200">
+              <p className="text-base font-bold text-slate-800 leading-relaxed">
                 {card.front.prompt || card.learning_objective}
               </p>
 
               {/* Context Sentence Box */}
               {card.original_sentence && (
-                <div className="p-4 bg-slate-950 border border-slate-800/80 rounded-2xl space-y-2">
-                  <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">
+                <div className="p-4 bg-slate-50 border border-slate-200/80 rounded-2xl space-y-2">
+                  <span className="text-[11px] font-extrabold text-slate-500 uppercase tracking-wider block">
                     Original Document Context:
                   </span>
-                  <p className="text-sm font-medium text-slate-300 italic leading-relaxed">
+                  <p className="text-sm font-medium text-slate-700 italic leading-relaxed">
                     "{card.original_sentence}"
                   </p>
                 </div>
@@ -142,17 +142,17 @@ export const FlashcardViewer: React.FC<FlashcardViewerProps> = ({
 
               {/* Front Specific Challenge Helpers */}
               {card.card_style === 'spelling' && (
-                <div className="p-3 bg-indigo-500/10 border border-indigo-500/20 rounded-xl flex items-center justify-between text-xs text-indigo-300 font-mono">
+                <div className="p-3.5 bg-indigo-50 border border-indigo-100 rounded-xl flex items-center justify-between text-xs text-indigo-900 font-semibold">
                   <span>Misspelled Word in Document:</span>
-                  <span className="font-bold text-rose-300 bg-rose-950/40 border border-rose-500/30 px-2.5 py-1 rounded-lg">
+                  <span className="font-bold text-rose-700 bg-rose-50 border border-rose-200 px-2.5 py-1 rounded-lg">
                     {card.accepted_correction.original}
                   </span>
                 </div>
               )}
 
               {card.card_style === 'fill_in_blank' && card.front.sentence_with_blank && (
-                <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl text-center">
-                  <span className="text-base font-extrabold text-blue-200 font-mono">
+                <div className="p-4 bg-blue-50 border border-blue-100 rounded-xl text-center">
+                  <span className="text-base font-extrabold text-blue-900 font-sans">
                     {card.front.sentence_with_blank}
                   </span>
                 </div>
@@ -160,12 +160,12 @@ export const FlashcardViewer: React.FC<FlashcardViewerProps> = ({
             </div>
 
             {/* Front Footer */}
-            <div className="flex items-center justify-between pt-4 border-t border-slate-800/80 text-xs text-slate-400">
+            <div className="flex items-center justify-between pt-4 border-t border-slate-100 text-xs text-slate-500 font-medium">
               <div className="flex items-center space-x-1.5">
-                <BookOpen className="w-3.5 h-3.5 text-slate-500" />
+                <BookOpen className="w-3.5 h-3.5 text-slate-400" />
                 <span>Objective: {card.learning_objective}</span>
               </div>
-              <div className="flex items-center space-x-1 font-semibold text-indigo-400">
+              <div className="flex items-center space-x-1 font-bold text-blue-600">
                 <span>Click to Flip</span>
                 <RotateCw className="w-3.5 h-3.5" />
               </div>
@@ -174,7 +174,7 @@ export const FlashcardViewer: React.FC<FlashcardViewerProps> = ({
 
           {/* BACK SIDE */}
           <div
-            className="absolute inset-0 w-full h-full rounded-3xl bg-gradient-to-b from-slate-900 via-slate-900 to-indigo-950/70 border border-indigo-500/30 p-8 flex flex-col justify-between shadow-2xl overflow-y-auto"
+            className="absolute inset-0 w-full h-full rounded-3xl bg-white border border-slate-200/80 p-8 flex flex-col justify-between shadow-saas overflow-y-auto"
             style={{
               backfaceVisibility: 'hidden',
               WebkitBackfaceVisibility: 'hidden',
@@ -182,29 +182,29 @@ export const FlashcardViewer: React.FC<FlashcardViewerProps> = ({
             }}
           >
             {/* Back Header */}
-            <div className="flex items-center justify-between border-b border-indigo-500/20 pb-4">
-              <div className="flex items-center space-x-2 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-4">
+              <div className="flex items-center space-x-2 text-emerald-600 text-xs font-extrabold uppercase tracking-wider">
                 <CheckCircle2 className="w-4 h-4" />
                 <span>Correct Form & Word Meaning</span>
               </div>
-              <span className="text-xs text-slate-500 font-mono">Tap card to return front 🔄</span>
+              <span className="text-xs text-slate-400 font-medium">Tap card to return front 🔄</span>
             </div>
 
             {/* Back Body */}
             <div className="my-4 space-y-4">
               {/* Correct Answer Highlight */}
-              <div className="p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl flex items-center justify-between">
+              <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-2xl flex items-center justify-between">
                 <div>
-                  <span className="text-[11px] font-bold text-emerald-400 uppercase tracking-wider block">
+                  <span className="text-[11px] font-extrabold text-emerald-700 uppercase tracking-wider block">
                     Correct Form:
                   </span>
-                  <span className="text-lg font-black text-white font-mono">
+                  <span className="text-xl font-extrabold text-slate-900 font-sans">
                     {card.back.correct_answer || card.accepted_correction.proposed}
                   </span>
                 </div>
                 <div className="text-right">
-                  <span className="text-[10px] text-slate-400 block">Original Mistake:</span>
-                  <span className="text-xs line-through text-rose-400 font-mono">
+                  <span className="text-[10px] text-slate-500 font-bold block">Original Mistake:</span>
+                  <span className="text-xs line-through text-rose-600 font-bold">
                     {card.accepted_correction.original}
                   </span>
                 </div>
@@ -212,27 +212,27 @@ export const FlashcardViewer: React.FC<FlashcardViewerProps> = ({
 
               {/* CHILD-FRIENDLY DICTIONARY MEANING BOX */}
               {(card.back.child_friendly_definition || card.back.word_meaning) && (
-                <div className="p-4 bg-purple-950/40 border border-purple-500/30 rounded-2xl space-y-2">
-                  <div className="flex items-center justify-between text-purple-300 font-bold text-xs">
+                <div className="p-4 bg-purple-50/70 border border-purple-100 rounded-2xl space-y-2">
+                  <div className="flex items-center justify-between text-purple-900 font-extrabold text-xs">
                     <div className="flex items-center space-x-2">
-                      <BookOpen className="w-4 h-4 text-purple-400" />
+                      <BookOpen className="w-4 h-4 text-purple-600" />
                       <span>Child-Friendly Meaning (Ages 8–14):</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       {(card.back.detected_pos || card.back.part_of_speech) && (
-                        <span className="text-[10px] font-extrabold uppercase tracking-wider text-purple-200 bg-purple-900/70 border border-purple-500/40 px-2.5 py-0.5 rounded-md">
+                        <span className="text-[10px] font-extrabold uppercase tracking-wider text-purple-700 bg-purple-100 border border-purple-200 px-2.5 py-0.5 rounded-md">
                           🔤 {card.back.detected_pos || card.back.part_of_speech}
                         </span>
                       )}
                       {(card.back.phonetic_hint || card.pronunciation) && (
-                        <span className="text-[11px] font-mono text-purple-300 bg-purple-900/40 px-2 py-0.5 rounded-md border border-purple-500/20">
+                        <span className="text-[11px] font-mono text-purple-700 bg-purple-100/60 px-2 py-0.5 rounded-md border border-purple-200">
                           {card.back.phonetic_hint || card.pronunciation}
                         </span>
                       )}
                     </div>
                   </div>
-                  <p className="text-xs text-purple-100 font-medium leading-relaxed">
-                    <strong className="text-white font-mono">{card.accepted_correction.proposed}</strong>:{' '}
+                  <p className="text-xs text-purple-900 font-medium leading-relaxed">
+                    <strong className="text-slate-900 font-bold">{card.accepted_correction.proposed}</strong>:{' '}
                     {card.back.child_friendly_definition || card.back.word_meaning}
                   </p>
                 </div>
@@ -240,42 +240,42 @@ export const FlashcardViewer: React.FC<FlashcardViewerProps> = ({
 
               {/* MANUAL VERIFICATION WARNING BADGE */}
               {(card.requires_manual_verification || card.back.requires_manual_verification) && (
-                <div className="p-3 bg-amber-950/50 border border-amber-500/40 rounded-2xl flex items-center space-x-2 text-amber-200 text-xs font-semibold">
-                  <AlertCircle className="w-4 h-4 text-amber-400 shrink-0" />
+                <div className="p-3 bg-amber-50 border border-amber-200 rounded-2xl flex items-center space-x-2 text-amber-800 text-xs font-semibold">
+                  <AlertCircle className="w-4 h-4 text-amber-600 shrink-0" />
                   <span>⚠️ Meaning confidence below 70%. Requires manual verification.</span>
                 </div>
               )}
 
               {/* AUTHORITATIVE OFFICIAL DICTIONARY SOURCE & SENSE */}
               {(card.back.official_dictionary_definition || card.official_dictionary_definition) && (
-                <div className="p-3.5 bg-indigo-950/30 border border-indigo-500/30 rounded-2xl space-y-1.5">
+                <div className="p-3.5 bg-indigo-50/50 border border-indigo-100 rounded-2xl space-y-1.5">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="font-bold text-indigo-300 flex items-center space-x-1.5">
+                    <span className="font-extrabold text-indigo-900 flex items-center space-x-1.5">
                       <span>📚 Official Lexical Definition</span>
                       {card.back.identified_word_sense && (
-                        <span className="text-[10px] font-mono text-indigo-400 bg-indigo-900/40 px-1.5 py-0.5 rounded">
+                        <span className="text-[10px] font-mono text-indigo-700 bg-indigo-100 px-1.5 py-0.5 rounded">
                           [{card.back.identified_word_sense}]
                         </span>
                       )}
                     </span>
-                    <span className="text-[10px] font-semibold text-emerald-400 bg-emerald-950/60 border border-emerald-500/30 px-2 py-0.5 rounded-full">
+                    <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">
                       ✓ Verified Source: {card.back.dictionary_source || card.dictionary_source || "Learner Dictionary"}
                     </span>
                   </div>
-                  <p className="text-xs text-slate-300 italic leading-relaxed">
+                  <p className="text-xs text-slate-700 italic leading-relaxed">
                     "{card.back.official_dictionary_definition || card.official_dictionary_definition}"
                   </p>
                 </div>
               )}
 
-              {/* NATURAL 8-20 WORD EXAMPLE SENTENCE */}
+              {/* NATURAL EXAMPLE SENTENCE */}
               {(card.back.example_sentence || card.back.usage_example) && (
-                <div className="p-4 bg-blue-950/40 border border-blue-500/30 rounded-2xl space-y-1.5">
-                  <div className="flex items-center space-x-2 text-blue-300 font-bold text-xs">
-                    <Sparkles className="w-4 h-4 text-blue-400" />
+                <div className="p-4 bg-blue-50/70 border border-blue-100 rounded-2xl space-y-1.5">
+                  <div className="flex items-center space-x-2 text-blue-900 font-extrabold text-xs">
+                    <Sparkles className="w-4 h-4 text-blue-600" />
                     <span>📝 Natural Context Example Sentence:</span>
                   </div>
-                  <p className="text-xs text-blue-100 font-medium italic leading-relaxed">
+                  <p className="text-xs text-blue-900 font-medium italic leading-relaxed">
                     "{card.back.example_sentence || card.back.usage_example}"
                   </p>
                 </div>
@@ -283,13 +283,13 @@ export const FlashcardViewer: React.FC<FlashcardViewerProps> = ({
 
               {/* SYNONYMS & ANTONYMS */}
               {((card.back.synonyms && card.back.synonyms.length > 0) || (card.back.antonyms && card.back.antonyms.length > 0)) && (
-                <div className="p-3.5 bg-slate-950 border border-slate-800 rounded-2xl flex items-center justify-between text-xs gap-4">
+                <div className="p-3.5 bg-slate-50 border border-slate-200/80 rounded-2xl flex items-center justify-between text-xs gap-4">
                   {card.back.synonyms && card.back.synonyms.length > 0 && (
                     <div className="flex items-center space-x-2">
-                      <span className="font-bold text-teal-400">🤝 Synonyms:</span>
+                      <span className="font-extrabold text-teal-700">🤝 Synonyms:</span>
                       <div className="flex flex-wrap gap-1">
                         {card.back.synonyms.map((syn, idx) => (
-                          <span key={idx} className="bg-teal-950/60 border border-teal-500/30 text-teal-200 px-2 py-0.5 rounded text-[11px]">
+                          <span key={idx} className="bg-teal-50 border border-teal-200 text-teal-800 px-2 py-0.5 rounded text-[11px] font-semibold">
                             {syn}
                           </span>
                         ))}
@@ -299,10 +299,10 @@ export const FlashcardViewer: React.FC<FlashcardViewerProps> = ({
 
                   {card.back.antonyms && card.back.antonyms.length > 0 && (
                     <div className="flex items-center space-x-2">
-                      <span className="font-bold text-rose-400">↔️ Antonyms:</span>
+                      <span className="font-extrabold text-rose-700">↔️ Antonyms:</span>
                       <div className="flex flex-wrap gap-1">
                         {card.back.antonyms.map((ant, idx) => (
-                          <span key={idx} className="bg-rose-950/60 border border-rose-500/30 text-rose-200 px-2 py-0.5 rounded text-[11px]">
+                          <span key={idx} className="bg-rose-50 border border-rose-200 text-rose-800 px-2 py-0.5 rounded text-[11px] font-semibold">
                             {ant}
                           </span>
                         ))}
@@ -313,53 +313,51 @@ export const FlashcardViewer: React.FC<FlashcardViewerProps> = ({
               )}
 
               {/* Corrected Full Sentence */}
-              <div className="p-4 bg-slate-950 border border-slate-800 rounded-2xl space-y-1">
-                <span className="text-[11px] font-bold text-indigo-400 uppercase tracking-wider block">
+              <div className="p-4 bg-slate-50 border border-slate-200/80 rounded-2xl space-y-1">
+                <span className="text-[11px] font-extrabold text-blue-700 uppercase tracking-wider block">
                   Original Document Context (Corrected):
                 </span>
-                <p className="text-sm font-semibold text-emerald-200 leading-relaxed">
+                <p className="text-sm font-semibold text-slate-800 leading-relaxed">
                   "{card.corrected_sentence}"
                 </p>
               </div>
 
               {/* Educational Rule & Explanation */}
-              <div className="p-4 bg-indigo-950/40 border border-indigo-500/20 rounded-2xl space-y-2">
-                <div className="flex items-center space-x-2 text-indigo-300 font-bold text-xs">
-                  <Award className="w-4 h-4 text-indigo-400" />
+              <div className="p-4 bg-indigo-50/60 border border-indigo-100 rounded-2xl space-y-2">
+                <div className="flex items-center space-x-2 text-indigo-900 font-extrabold text-xs">
+                  <Award className="w-4 h-4 text-indigo-600" />
                   <span>💡 Why Corrected & Educational Rule:</span>
                 </div>
-                <p className="text-xs text-indigo-100 font-medium leading-relaxed">
+                <p className="text-xs text-indigo-900 font-medium leading-relaxed">
                   {card.rule}
                 </p>
-                <p className="text-xs text-slate-300 leading-relaxed pt-1 border-t border-indigo-500/10">
+                <p className="text-xs text-slate-600 leading-relaxed pt-1 border-t border-indigo-100">
                   {card.explanation}
                 </p>
               </div>
 
-
               {/* Extra Learning Tip */}
               {card.back.tip && (
-                <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-xl flex items-start space-x-2 text-xs text-amber-200">
-                  <Lightbulb className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
+                <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl flex items-start space-x-2 text-xs text-amber-800">
+                  <Lightbulb className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
                   <span>{card.back.tip}</span>
                 </div>
               )}
             </div>
 
-
             {/* Back Footer Tags */}
-            <div className="flex items-center justify-between pt-3 border-t border-slate-800 text-xs">
+            <div className="flex items-center justify-between pt-3 border-t border-slate-100 text-xs">
               <div className="flex flex-wrap gap-1.5">
                 {card.tags.map((tag, idx) => (
                   <span
                     key={idx}
-                    className="px-2 py-0.5 rounded-md bg-slate-800 border border-slate-700 text-[10px] font-semibold text-slate-300"
+                    className="px-2 py-0.5 rounded-md bg-slate-100 border border-slate-200 text-[10px] font-bold text-slate-600"
                   >
                     #{tag}
                   </span>
                 ))}
               </div>
-              <span className="text-[11px] text-slate-400 font-medium">
+              <span className="text-[11px] text-slate-500 font-bold">
                 Confidence: {Math.round(card.confidence_score * 100)}%
               </span>
             </div>
@@ -372,14 +370,14 @@ export const FlashcardViewer: React.FC<FlashcardViewerProps> = ({
         <button
           onClick={onPrev}
           disabled={cardIndex === 0}
-          className="px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 disabled:opacity-40 text-slate-300 text-xs font-bold border border-slate-800 transition-all"
+          className="px-5 py-2.5 rounded-xl bg-white hover:bg-slate-50 disabled:opacity-40 text-slate-700 text-xs font-bold border border-slate-200 shadow-xs transition-all cursor-pointer"
         >
           ← Previous
         </button>
 
         <button
           onClick={handleFlip}
-          className="flex items-center space-x-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white text-xs font-extrabold shadow-lg shadow-indigo-500/20 transition-all"
+          className="flex items-center space-x-2 px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-extrabold shadow-md shadow-blue-500/20 transition-all cursor-pointer"
         >
           <RotateCw className="w-4 h-4" />
           <span>{isFlipped ? 'Show Front' : 'Flip to Answer'}</span>
@@ -388,7 +386,7 @@ export const FlashcardViewer: React.FC<FlashcardViewerProps> = ({
         <button
           onClick={onNext}
           disabled={cardIndex === totalCards - 1}
-          className="flex items-center space-x-1 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 disabled:opacity-40 text-white text-xs font-bold border border-indigo-500 transition-all"
+          className="flex items-center space-x-1 px-5 py-2.5 rounded-xl bg-white hover:bg-slate-50 disabled:opacity-40 text-slate-700 text-xs font-bold border border-slate-200 shadow-xs transition-all cursor-pointer"
         >
           <span>Next Card</span>
           <ChevronRight className="w-4 h-4" />

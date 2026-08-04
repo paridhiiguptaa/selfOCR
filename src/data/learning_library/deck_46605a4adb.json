@@ -1,0 +1,110 @@
+{
+  "deck_id": "deck_46605a4adb",
+  "source_document_id": "doc_f642d42f",
+  "source_document_title": "tc_13_notebook_reconstruction_activity",
+  "exported_document_text": "Fill a bucket with water. Take an empty bottle with its mouth facing downwards.",
+  "created_at": "2026-08-04T21:45:29.702504Z",
+  "total_flashcards": 1,
+  "categories_distribution": {
+    "Sentence Structure": 1
+  },
+  "difficulty_distribution": {
+    "Easy": 0,
+    "Medium": 0,
+    "Hard": 1
+  },
+  "estimated_study_time_min": 2,
+  "mastery_percentage": 0.0,
+  "study_progress": {
+    "cards_completed": 0,
+    "cards_mastered": 0,
+    "cards_bookmarked": 0,
+    "last_studied_at": null
+  },
+  "cards": [
+    {
+      "id": "fc_52ae7166",
+      "category": "Sentence Structure",
+      "card_style": "sentence_reconstruction",
+      "original_sentence": "Fill a bucket with water. Take an empty bottle with its mouth facing downwards",
+      "corrected_sentence": "Fill a bucket with water. Take an empty bottle with its mouth facing downwards. le with its mouth facing downwards",
+      "front": {
+        "title": "Sentence Reconstruction",
+        "prompt": "Rebuild the corrected sentence from its original flawed version:",
+        "original_sentence": "Fill a bucket with water. Take an empty bottle with its mouth facing downwards",
+        "scrambled_tokens": [
+          "Fill",
+          "a",
+          "bucket",
+          "with",
+          "water.",
+          "Take",
+          "an",
+          "empty",
+          "bottle",
+          "with",
+          "its",
+          "mouth",
+          "facing",
+          "downwards.",
+          "le",
+          "with",
+          "its",
+          "mouth",
+          "facing",
+          "downwards"
+        ],
+        "study_type": "reconstruction"
+      },
+      "back": {
+        "correct_answer": "Fill a bucket with water. Take an empty bottle with its mouth facing downwards. le with its mouth facing downwards",
+        "part_of_speech": "noun",
+        "child_friendly_definition": "Describes or represents 'Fill a bucket with water. Take an empty bottle with its mouth facing downwards.' as used in this sentence.",
+        "dictionary_meaning": "Describes or represents 'Fill a bucket with water. Take an empty bottle with its mouth facing downwards.' as used in this sentence.",
+        "usage_example": "The student noticed a very interesting Fill a bucket with water. Take an empty bottle with its mouth.",
+        "example_sentence": "The student noticed a very interesting Fill a bucket with water. Take an empty bottle with its mouth.",
+        "explanation": "Hierarchical contextual document reconstruction under topic 'Properties of Matter & States of Matter'. Sentence Structure Rule: Organize clauses logically for clear syntactic flow.",
+        "rule": "Sentence Structure Rule: Organize clauses logically for clear syntactic flow.",
+        "original_sentence": "Fill a bucket with water. Take an empty bottle with its mouth facing downwards",
+        "corrected_sentence": "Fill a bucket with water. Take an empty bottle with its mouth facing downwards. le with its mouth facing downwards",
+        "extra_examples": [],
+        "tip": "Focus on clear subject-verb arrangement."
+      },
+      "accepted_correction": {
+        "original": "Eil Jueket with water Take ang tempt braille",
+        "proposed": "Fill a bucket with water. Take an empty bottle with its mouth facing downwards."
+      },
+      "explanation": "Hierarchical contextual document reconstruction under topic 'Properties of Matter & States of Matter'. Sentence Structure Rule: Organize clauses logically for clear syntactic flow.",
+      "rule": "Sentence Structure Rule: Organize clauses logically for clear syntactic flow.",
+      "learning_objective": "Reconstruct flawed sentence patterns into clear, well-formed statements.",
+      "difficulty": "Hard",
+      "confidence_score": 0.95,
+      "source_document_id": "doc_f642d42f",
+      "source_document_title": "tc_13_notebook_reconstruction_activity",
+      "created_at": "2026-08-04T21:45:29.702504Z",
+      "tags": [
+        "Academic Vocabulary",
+        "Sentence Structure"
+      ],
+      "child_friendly_definition": "Describes or represents 'Fill a bucket with water. Take an empty bottle with its mouth facing downwards.' as used in this sentence.",
+      "dictionary_meaning": "A term functioning as an noun in context.",
+      "contextual_meaning": "In context (noun): Describes or represents 'Fill a bucket with water. Take an empty bottle with its mouth facing downwards.' as used in this sentence.",
+      "example_sentence": "The student noticed a very interesting Fill a bucket with water. Take an empty bottle with its mouth.",
+      "part_of_speech": "noun",
+      "synonyms": [],
+      "antonyms": [],
+      "difficulty_level": "Hard",
+      "pronunciation": "/fill a bucket with water. take an empty bottle with its mouth facing downwards./",
+      "detected_pos": "noun",
+      "identified_word_sense": "fill a bucket with water. take an empty bottle with its mouth facing downwards..noun.fallback",
+      "official_dictionary_definition": "A term functioning as an noun in context.",
+      "simplified_child_definition": "Describes or represents 'Fill a bucket with water. Take an empty bottle with its mouth facing downwards.' as used in this sentence.",
+      "generated_example_sentence": "The student noticed a very interesting Fill a bucket with water. Take an empty bottle with its mouth.",
+      "dictionary_source": "Contextual Inference",
+      "requires_manual_verification": true,
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    }
+  ]
+}

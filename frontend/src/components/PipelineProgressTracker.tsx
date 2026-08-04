@@ -1,117 +1,106 @@
 import React from 'react';
-import { CheckCircle2, Loader2, Circle, AlertTriangle } from 'lucide-react';
-
-interface StageInfo {
-  name: string;
-}
+import { CheckCircle2, Loader2, AlertCircle, Sparkles } from 'lucide-react';
 
 interface PipelineProgressTrackerProps {
   currentStageIndex: number;
   isCompleted: boolean;
-  error?: string | null;
+  error: string | null;
 }
-
-export const stagesList: StageInfo[] = [
-  { name: 'Uploading document & validating format' },
-  { name: 'Converting PDF pages to high-res images (300 DPI)' },
-  { name: 'Automatic 0°/90°/180°/270° orientation detection' },
-  { name: 'Fine-angle deskewing & 4-corner perspective correction' },
-  { name: 'Non-destructive quality enhancement (CLAHE / Denoise)' },
-  { name: 'Text region bounding box detection (DBNet)' },
-  { name: 'Printed vs Handwritten stroke feature classification' },
-  { name: 'Printed text recognition engine (PaddleOCR)' },
-  { name: 'Handwritten text recognition engine (Hugging Face TrOCR)' },
-  { name: 'Natural reading order & multi-column layout analysis' },
-  { name: 'Confidence scoring & low-confidence fallback recovery' },
-  { name: 'Reconstructing Plain Text & Markdown transcriptions' },
-];
 
 export const PipelineProgressTracker: React.FC<PipelineProgressTrackerProps> = ({
   currentStageIndex,
   isCompleted,
   error,
 }) => {
-  const percent = isCompleted
+  const stages = [
+    'Uploading document',
+    'Converting PDF to images',
+    'Orientation detection & rotation',
+    'Deskewing & perspective correction',
+    'Image quality enhancement (CLAHE)',
+    'Surya layout & reading order analysis',
+    'Primary OCR recognition (Qwen VLM / Crop)',
+    'Confidence evaluation & region fallback',
+    'Baseline document structure reconstruction',
+    'Educational subject detection',
+    'Optional multi-model ensemble & VLM verification',
+    'Final transcription assembly & export'
+  ];
+
+  const progressPercent = isCompleted
     ? 100
-    : Math.min(99, Math.round(((currentStageIndex + 1) / stagesList.length) * 100));
+    : Math.round(((currentStageIndex + 1) / stages.length) * 100);
 
   return (
-    <div className="bg-slate-800/90 border border-slate-700/80 rounded-2xl p-6 mb-8 shadow-xl">
-      <div className="flex items-center justify-between mb-4">
-        <div>
-          <h3 className="text-base font-bold text-white flex items-center space-x-2">
-            {!isCompleted && !error && <Loader2 className="w-5 h-5 text-blue-400 animate-spin" />}
-            {isCompleted && <CheckCircle2 className="w-5 h-5 text-emerald-400" />}
-            {error && <AlertTriangle className="w-5 h-5 text-rose-400" />}
+    <div className="w-full space-y-5 select-none">
+      {/* Overall Progress Bar */}
+      <div className="space-y-2">
+        <div className="flex items-center justify-between text-xs font-bold">
+          <span className="text-slate-800 flex items-center space-x-1.5">
+            <Sparkles className="w-4 h-4 text-blue-600 animate-pulse" />
             <span>
               {isCompleted
-                ? 'OCR Pipeline Processing Completed!'
+                ? 'OCR Pipeline Complete (100%)'
                 : error
                 ? 'Processing Interrupted'
-                : 'Executing OCR Pipeline...'}
+                : `Executing Step ${currentStageIndex + 1} of ${stages.length}: ${stages[currentStageIndex] || 'Processing...'}`}
             </span>
-          </h3>
-          <p className="text-xs text-slate-400 mt-0.5">
-            {isCompleted
-              ? 'All 12 pipeline stages executed successfully'
-              : stagesList[currentStageIndex]?.name || 'Initializing...'}
-          </p>
+          </span>
+          <span className="text-blue-600 font-extrabold">{progressPercent}%</span>
         </div>
 
-        <div className="text-right">
-          <span className="text-2xl font-black text-blue-400 font-mono">{percent}%</span>
+        <div className="w-full bg-slate-100 h-3 rounded-full overflow-hidden border border-slate-200/60 p-0.5">
+          <div
+            className={`h-full rounded-full transition-all duration-300 ${
+              error
+                ? 'bg-rose-500'
+                : isCompleted
+                ? 'bg-emerald-500'
+                : 'bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500'
+            }`}
+            style={{ width: `${progressPercent}%` }}
+          />
         </div>
       </div>
 
-      {/* Progress Bar */}
-      <div className="w-full h-2.5 bg-slate-900 rounded-full overflow-hidden mb-6 border border-slate-700/60">
-        <div
-          className={`h-full transition-all duration-500 rounded-full ${
-            error
-              ? 'bg-rose-500'
-              : isCompleted
-              ? 'bg-emerald-500'
-              : 'bg-gradient-to-r from-blue-500 to-indigo-500'
-          }`}
-          style={{ width: `${percent}%` }}
-        />
-      </div>
-
-      {/* Grid of Stages */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5">
-        {stagesList.map((stage, idx) => {
-          let status: 'completed' | 'current' | 'pending' | 'failed' = 'pending';
-          if (error && idx === currentStageIndex) {
-            status = 'failed';
-          } else if (isCompleted || idx < currentStageIndex) {
-            status = 'completed';
-          } else if (idx === currentStageIndex) {
-            status = 'current';
-          }
+      {/* Stage Items Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 pt-2">
+        {stages.map((stage, idx) => {
+          const isDone = isCompleted || idx < currentStageIndex;
+          const isCurrent = !isCompleted && !error && idx === currentStageIndex;
 
           return (
             <div
               key={idx}
-              className={`flex items-center space-x-2.5 p-2.5 rounded-xl border text-xs transition-all ${
-                status === 'completed'
-                  ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300'
-                  : status === 'current'
-                  ? 'bg-blue-500/15 border-blue-500/50 text-blue-200 font-semibold glow-blue'
-                  : status === 'failed'
-                  ? 'bg-rose-500/10 border-rose-500/30 text-rose-300'
-                  : 'bg-slate-900/40 border-slate-800 text-slate-500'
+              className={`p-3 rounded-2xl border text-xs font-semibold flex items-center space-x-3 transition-all duration-150 ${
+                isDone
+                  ? 'bg-emerald-50/60 border-emerald-200 text-emerald-900'
+                  : isCurrent
+                  ? 'bg-blue-50 border-blue-300 text-blue-900 shadow-xs ring-1 ring-blue-400/40'
+                  : 'bg-slate-50/50 border-slate-200 text-slate-400'
               }`}
             >
-              {status === 'completed' && <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />}
-              {status === 'current' && <Loader2 className="w-4 h-4 text-blue-400 animate-spin flex-shrink-0" />}
-              {status === 'pending' && <Circle className="w-4 h-4 text-slate-600 flex-shrink-0" />}
-              {status === 'failed' && <AlertTriangle className="w-4 h-4 text-rose-400 flex-shrink-0" />}
-
-              <span className="truncate">{stage.name}</span>
+              <div className="flex-shrink-0">
+                {isDone ? (
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                ) : isCurrent ? (
+                  <Loader2 className="w-4 h-4 text-blue-600 animate-spin" />
+                ) : (
+                  <div className="w-4 h-4 rounded-full border border-slate-300 bg-white" />
+                )}
+              </div>
+              <span className="truncate">{stage}</span>
             </div>
           );
         })}
       </div>
+
+      {error && (
+        <div className="p-4 bg-rose-50 border border-rose-200 rounded-2xl flex items-center space-x-3 text-rose-800 text-xs font-semibold">
+          <AlertCircle className="w-5 h-5 text-rose-600 flex-shrink-0" />
+          <span>{error}</span>
+        </div>
+      )}
     </div>
   );
 };

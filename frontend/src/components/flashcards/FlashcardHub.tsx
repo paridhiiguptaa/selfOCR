@@ -18,6 +18,7 @@ import {
   Sparkles,
   Lock,
   Download,
+  GraduationCap,
   BookOpen,
   Layers,
   RotateCw,
@@ -61,8 +62,8 @@ export const FlashcardHub: React.FC<FlashcardHubProps> = ({
 
   // Handle Flashcard Deck Generation
   const handleGenerateDeck = async () => {
-    if (!exportedText || acceptedSuggestions.length === 0) {
-      setErrorMsg('No accepted proofreading corrections found to generate study flashcards.');
+    if (!exportedText || !exportedText.trim()) {
+      setErrorMsg('No document text available to generate study flashcards.');
       return;
     }
 
@@ -71,7 +72,7 @@ export const FlashcardHub: React.FC<FlashcardHubProps> = ({
     try {
       const res = await generateFlashcards(
         exportedText,
-        acceptedSuggestions,
+        acceptedSuggestions || [],
         documentTitle || 'Exported Document.pdf',
         undefined,
         includeRejected
@@ -87,12 +88,12 @@ export const FlashcardHub: React.FC<FlashcardHubProps> = ({
     }
   };
 
-  // Auto-generate deck when user enters tab if document is exported and deck is null
+  // Auto-generate deck when entering tab if document text is present and deck is null
   useEffect(() => {
-    if (isDocumentExported && !deck && !isGenerating && acceptedSuggestions.length > 0) {
+    if (exportedText && exportedText.trim() && !deck && !isGenerating) {
       handleGenerateDeck();
     }
-  }, [isDocumentExported]);
+  }, [exportedText]);
 
   // Load a deck from Library
   const handleSelectDeckFromLibrary = async (deckId: string) => {
@@ -178,25 +179,54 @@ export const FlashcardHub: React.FC<FlashcardHubProps> = ({
   // 1. LOCKED STATE (If Document has NOT been exported yet)
   if (!isDocumentExported) {
     return (
-      <div className="w-full p-12 bg-slate-900 border border-slate-800 rounded-3xl text-center flex flex-col items-center justify-center space-y-6 shadow-2xl">
-        <div className="p-4 rounded-3xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-400">
-          <Lock className="w-10 h-10" />
+      <div className="w-full p-8 sm:p-12 bg-white border border-slate-200/80 rounded-3xl text-center flex flex-col items-center justify-center space-y-8 shadow-saas">
+        <div className="w-14 h-14 rounded-2xl bg-blue-50 text-blue-600 border border-blue-100 flex items-center justify-center shadow-2xs">
+          <Lock className="w-7 h-7" />
         </div>
 
-        <div className="max-w-md space-y-2">
-          <h3 className="text-xl font-extrabold text-white tracking-tight">
-            AI Flashcards Locked Until Document Export
+        <div className="max-w-lg space-y-2">
+          <h3 className="text-xl font-extrabold text-slate-900 tracking-tight">
+            Educational Flashcards Workflow
           </h3>
-          <p className="text-xs text-slate-400 leading-relaxed">
-            Flashcards are created exclusively from your finalized, user-approved proofreading corrections.
-            Please complete your review and export your document first to unlock personalized study material.
+          <p className="text-xs text-slate-500 font-medium leading-relaxed">
+            Flashcards are created from your finalized proofreading corrections and document text. Follow the 3-step workflow below to generate your personalized active recall study decks.
           </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-center gap-3">
+        {/* 3-Step Horizontal Onboarding Workflow */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-3xl pt-2">
+          {/* Step 1 */}
+          <div className="p-4 rounded-2xl bg-slate-50/80 border border-slate-200/80 flex flex-col items-center text-center space-y-2">
+            <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 border border-blue-100 flex items-center justify-center font-bold">
+              <Sparkles className="w-5 h-5" />
+            </div>
+            <span className="text-xs font-extrabold text-slate-900">1. Review & Approve</span>
+            <p className="text-[11px] text-slate-500 font-medium">Approve grammar edits in Proofreading Studio</p>
+          </div>
+
+          {/* Step 2 */}
+          <div className="p-4 rounded-2xl bg-slate-50/80 border border-slate-200/80 flex flex-col items-center text-center space-y-2">
+            <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 border border-purple-100 flex items-center justify-center font-bold">
+              <Download className="w-5 h-5" />
+            </div>
+            <span className="text-xs font-extrabold text-slate-900">2. Export Document</span>
+            <p className="text-[11px] text-slate-500 font-medium">Download finalized text, markdown or JSON</p>
+          </div>
+
+          {/* Step 3 */}
+          <div className="p-4 rounded-2xl bg-slate-50/80 border border-slate-200/80 flex flex-col items-center text-center space-y-2">
+            <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 border border-emerald-100 flex items-center justify-center font-bold">
+              <GraduationCap className="w-5 h-5" />
+            </div>
+            <span className="text-xs font-extrabold text-slate-900">3. Unlock Flashcards</span>
+            <p className="text-[11px] text-slate-500 font-medium">Study active recall vocabulary cards</p>
+          </div>
+        </div>
+
+        <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
           <button
             onClick={onTriggerExport}
-            className="flex items-center space-x-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 text-white font-extrabold text-xs shadow-xl shadow-indigo-500/25 transition-all transform hover:scale-[1.02]"
+            className="flex items-center space-x-2 px-6 py-3 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs shadow-md shadow-blue-500/20 transition-all transform hover:-translate-y-0.5 cursor-pointer"
           >
             <Download className="w-4 h-4" />
             <span>Export Document & Unlock Flashcards</span>
@@ -209,11 +239,11 @@ export const FlashcardHub: React.FC<FlashcardHubProps> = ({
   // 2. GENERATING STATE
   if (isGenerating) {
     return (
-      <div className="w-full p-16 bg-slate-900 border border-slate-800 rounded-3xl text-center flex flex-col items-center justify-center space-y-4 shadow-xl">
-        <Sparkles className="w-10 h-10 text-indigo-400 animate-spin" />
-        <h3 className="text-lg font-bold text-white">Generating Personalized AI Flashcards...</h3>
-        <p className="text-xs text-slate-400 max-w-sm">
-          Extracting context sentences, categorizing mistake patterns, building active recall challenges, and estimating difficulty levels.
+      <div className="w-full p-16 bg-white border border-slate-200/80 rounded-3xl text-center flex flex-col items-center justify-center space-y-4 shadow-saas">
+        <Sparkles className="w-10 h-10 text-blue-600 animate-spin" />
+        <h3 className="text-lg font-extrabold text-slate-900">Generating Personalized Educational Flashcards...</h3>
+        <p className="text-xs text-slate-500 max-w-sm font-medium">
+          Extracting vocabulary definitions, context sentences, categorizing mistake patterns, and building study challenges.
         </p>
       </div>
     );
@@ -223,15 +253,15 @@ export const FlashcardHub: React.FC<FlashcardHubProps> = ({
   return (
     <div className="w-full space-y-6">
       {/* Navigation Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-4 bg-slate-900/90 p-3 rounded-2xl border border-slate-800 shadow-lg">
+      <div className="flex flex-wrap items-center justify-between gap-4 bg-slate-50/80 p-3 rounded-2xl border border-slate-200/80 shadow-2xs">
         {/* Left View Switcher */}
         <div className="flex items-center space-x-2">
           <button
             onClick={() => setActiveTab('study')}
-            className={`flex items-center space-x-2 px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+            className={`flex items-center space-x-2 px-4 py-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
               activeTab === 'study'
-                ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md'
-                : 'text-slate-400 hover:text-white hover:bg-slate-800'
+                ? 'bg-blue-600 text-white shadow-xs'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-white'
             }`}
           >
             <Sparkles className="w-4 h-4" />
@@ -239,10 +269,10 @@ export const FlashcardHub: React.FC<FlashcardHubProps> = ({
           </button>
           <button
             onClick={() => setActiveTab('dashboard')}
-            className={`flex items-center space-x-2 px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+            className={`flex items-center space-x-2 px-4 py-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
               activeTab === 'dashboard'
-                ? 'bg-slate-800 text-white border border-slate-700'
-                : 'text-slate-400 hover:text-white hover:bg-slate-800'
+                ? 'bg-blue-600 text-white shadow-xs'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-white'
             }`}
           >
             <Layers className="w-4 h-4" />
@@ -250,10 +280,10 @@ export const FlashcardHub: React.FC<FlashcardHubProps> = ({
           </button>
           <button
             onClick={() => setActiveTab('library')}
-            className={`flex items-center space-x-2 px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+            className={`flex items-center space-x-2 px-4 py-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
               activeTab === 'library'
-                ? 'bg-slate-800 text-white border border-slate-700'
-                : 'text-slate-400 hover:text-white hover:bg-slate-800'
+                ? 'bg-blue-600 text-white shadow-xs'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-white'
             }`}
           >
             <BookOpen className="w-4 h-4" />
@@ -263,29 +293,29 @@ export const FlashcardHub: React.FC<FlashcardHubProps> = ({
 
         {/* Right Re-Generate & Options */}
         <div className="flex items-center space-x-3">
-          <label className="flex items-center space-x-2 text-[11px] text-slate-400 cursor-pointer select-none">
+          <label className="flex items-center space-x-2 text-xs font-semibold text-slate-600 cursor-pointer select-none">
             <input
               type="checkbox"
               checked={includeRejected}
               onChange={(e) => setIncludeRejected(e.target.checked)}
-              className="rounded bg-slate-950 border-slate-700 text-indigo-600"
+              className="rounded bg-white border-slate-300 text-blue-600 focus:ring-blue-500"
             />
             <span>Include unaccepted suggestions</span>
           </label>
 
           <button
             onClick={handleGenerateDeck}
-            className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-semibold transition-colors"
+            className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 text-xs font-bold shadow-2xs transition-colors cursor-pointer"
           >
-            <RotateCw className="w-3.5 h-3.5" />
+            <RotateCw className="w-3.5 h-3.5 text-blue-600" />
             <span>Re-Generate Deck</span>
           </button>
         </div>
       </div>
 
       {errorMsg && (
-        <div className="p-4 bg-rose-500/10 border border-rose-500/30 rounded-2xl flex items-center space-x-3 text-rose-300 text-xs">
-          <AlertCircle className="w-5 h-5 text-rose-400 flex-shrink-0" />
+        <div className="p-4 bg-rose-50 border border-rose-200 rounded-2xl flex items-center space-x-3 text-rose-800 text-xs font-medium">
+          <AlertCircle className="w-5 h-5 text-rose-600 flex-shrink-0" />
           <span>{errorMsg}</span>
         </div>
       )}
@@ -307,65 +337,65 @@ export const FlashcardHub: React.FC<FlashcardHubProps> = ({
       {activeTab === 'study' && deck && (
         <div className="space-y-6">
           {/* Study Toolbar & Filters */}
-          <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4">
+          <div className="bg-slate-50/80 border border-slate-200/80 rounded-2xl p-3 flex flex-wrap items-center justify-between gap-4 shadow-2xs">
             {/* Study Mode Selector Pills */}
-            <div className="flex items-center space-x-1.5 overflow-x-auto pb-1 sm:pb-0">
+            <div className="flex items-center space-x-1.5 overflow-x-auto pb-1 sm:pb-0 no-scrollbar">
               <button
                 onClick={() => setStudyMode('standard')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                className={`px-3 py-1.5 rounded-xl text-xs transition-all cursor-pointer ${
                   studyMode === 'standard'
-                    ? 'bg-indigo-600 text-white shadow-md'
-                    : 'bg-slate-950 text-slate-400 hover:text-white'
+                    ? 'bg-blue-600 text-white font-extrabold shadow-xs'
+                    : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200 font-semibold'
                 }`}
               >
                 Standard Flip
               </button>
               <button
                 onClick={() => setStudyMode('fill_in_blank')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                className={`px-3 py-1.5 rounded-xl text-xs transition-all cursor-pointer ${
                   studyMode === 'fill_in_blank'
-                    ? 'bg-indigo-600 text-white shadow-md'
-                    : 'bg-slate-950 text-slate-400 hover:text-white'
+                    ? 'bg-blue-600 text-white font-extrabold shadow-xs'
+                    : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200 font-semibold'
                 }`}
               >
                 Fill-in-Blank
               </button>
               <button
                 onClick={() => setStudyMode('multiple_choice')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                className={`px-3 py-1.5 rounded-xl text-xs transition-all cursor-pointer ${
                   studyMode === 'multiple_choice'
-                    ? 'bg-indigo-600 text-white shadow-md'
-                    : 'bg-slate-950 text-slate-400 hover:text-white'
+                    ? 'bg-blue-600 text-white font-extrabold shadow-xs'
+                    : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200 font-semibold'
                 }`}
               >
                 Multiple Choice
               </button>
               <button
                 onClick={() => setStudyMode('type_answer')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                className={`px-3 py-1.5 rounded-xl text-xs transition-all cursor-pointer ${
                   studyMode === 'type_answer'
-                    ? 'bg-indigo-600 text-white shadow-md'
-                    : 'bg-slate-950 text-slate-400 hover:text-white'
+                    ? 'bg-blue-600 text-white font-extrabold shadow-xs'
+                    : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200 font-semibold'
                 }`}
               >
                 Type Answer
               </button>
               <button
                 onClick={() => setStudyMode('reconstruction')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                className={`px-3 py-1.5 rounded-xl text-xs transition-all cursor-pointer ${
                   studyMode === 'reconstruction'
-                    ? 'bg-indigo-600 text-white shadow-md'
-                    : 'bg-slate-950 text-slate-400 hover:text-white'
+                    ? 'bg-blue-600 text-white font-extrabold shadow-xs'
+                    : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200 font-semibold'
                 }`}
               >
                 Sentence Reconstruct
               </button>
               <button
                 onClick={() => setStudyMode('review')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                className={`px-3 py-1.5 rounded-xl text-xs transition-all cursor-pointer ${
                   studyMode === 'review'
-                    ? 'bg-indigo-600 text-white shadow-md'
-                    : 'bg-slate-950 text-slate-400 hover:text-white'
+                    ? 'bg-blue-600 text-white font-extrabold shadow-xs'
+                    : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200 font-semibold'
                 }`}
               >
                 Review Mode
@@ -376,7 +406,7 @@ export const FlashcardHub: React.FC<FlashcardHubProps> = ({
             <div className="flex items-center space-x-2">
               {/* Search Card Text Input */}
               <div className="relative">
-                <Search className="w-3.5 h-3.5 text-slate-500 absolute left-2.5 top-2.5" />
+                <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-2.5" />
                 <input
                   type="text"
                   value={searchQuery}
@@ -385,16 +415,16 @@ export const FlashcardHub: React.FC<FlashcardHubProps> = ({
                     setCardIndex(0);
                   }}
                   placeholder="Search cards..."
-                  className="pl-8 pr-3 py-1.5 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 w-32 sm:w-40"
+                  className="pl-8 pr-3 py-1.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-500 w-32 sm:w-40 font-medium"
                 />
               </div>
 
               <button
                 onClick={handleShuffle}
-                className="p-2 rounded-xl bg-slate-950 hover:bg-slate-800 border border-slate-800 text-slate-300 text-xs font-semibold flex items-center space-x-1"
+                className="p-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-xs font-bold flex items-center space-x-1 shadow-2xs transition-all cursor-pointer"
                 title="Shuffle Cards"
               >
-                <Shuffle className="w-3.5 h-3.5 text-indigo-400" />
+                <Shuffle className="w-3.5 h-3.5 text-blue-600" />
                 <span>Shuffle</span>
               </button>
 
@@ -405,7 +435,7 @@ export const FlashcardHub: React.FC<FlashcardHubProps> = ({
                   setSelectedCategory(e.target.value);
                   setCardIndex(0);
                 }}
-                className="px-3 py-1.5 bg-slate-950 border border-slate-800 rounded-xl text-xs font-semibold text-slate-300 focus:outline-none focus:border-indigo-500"
+                className="px-3 py-1.5 bg-white border border-slate-200 rounded-xl text-xs font-bold text-slate-700 focus:outline-none focus:border-blue-500 shadow-2xs"
               >
                 <option value="All">All Categories</option>
                 {Object.keys(deck.categories_distribution || {}).map((cat) => (
@@ -422,7 +452,7 @@ export const FlashcardHub: React.FC<FlashcardHubProps> = ({
                   setSelectedDifficulty(e.target.value);
                   setCardIndex(0);
                 }}
-                className="px-3 py-1.5 bg-slate-950 border border-slate-800 rounded-xl text-xs font-semibold text-slate-300 focus:outline-none focus:border-indigo-500"
+                className="px-3 py-1.5 bg-white border border-slate-200 rounded-xl text-xs font-bold text-slate-700 focus:outline-none focus:border-blue-500 shadow-2xs"
               >
                 <option value="All">All Difficulties</option>
                 <option value="Easy">Easy</option>

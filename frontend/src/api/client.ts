@@ -4,7 +4,10 @@ const API_BASE_URL = 'http://localhost:8000';
 
 export async function checkHealth(): Promise<boolean> {
   try {
-    const res = await fetch(`${API_BASE_URL}/health`);
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 4000);
+    const res = await fetch(`${API_BASE_URL}/health`, { signal: controller.signal });
+    clearTimeout(timeoutId);
     if (!res.ok) return false;
     const data = await res.json();
     return data.status === 'ok';
@@ -12,6 +15,7 @@ export async function checkHealth(): Promise<boolean> {
     return false;
   }
 }
+
 
 export async function previewPdf(file: File, dpi: number = 150) {
   const formData = new FormData();
@@ -31,6 +35,9 @@ export async function previewPdf(file: File, dpi: number = 150) {
   return res.json();
 }
 
+/** Wall-clock timeout for the OCR API call (5 minutes). */
+const OCR_FETCH_TIMEOUT_MS = 300_000;
+
 export async function processOcr(
   file: File,
   settings: PipelineSettings,
@@ -47,20 +54,20 @@ export async function processOcr(
     formData.append('trocr_model_name', settings.trocr_model_name);
   }
 
-  // Simulate real-time progress stage steps while fetch is in progress
+  // Pipeline stage names matching backend Core and Enhancement pipeline logging
   const stages = [
     'Uploading document',
     'Converting PDF to images',
     'Orientation detection & rotation',
     'Deskewing & perspective correction',
     'Image quality enhancement (CLAHE/Denoise)',
-    'Text region detection',
-    'Printed vs handwritten classification',
-    'Printed text recognition',
-    'Handwritten text recognition (TrOCR)',
-    'Layout reading order reconstruction',
-    'Confidence evaluation & fallback recovery',
-    'Generating final transcription payload'
+    'Surya layout & reading order analysis',
+    'Primary OCR recognition (Qwen VLM / Crop)',
+    'Confidence evaluation & region fallback',
+    'Baseline document structure reconstruction',
+    'Educational subject detection',
+    'Optional multi-model ensemble & VLM verification',
+    'Final transcription assembly & export'
   ];
 
   let currentStage = 0;
@@ -71,26 +78,58 @@ export async function processOcr(
         onProgress(currentStage, stages[currentStage]);
       }
     }
-  }, 1200);
+  }, 1800);
+
+  // AbortController for timeout — prevents indefinite hang when Uvicorn stalls/crashes
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => {
+    controller.abort();
+  }, OCR_FETCH_TIMEOUT_MS);
 
   try {
     if (onProgress) onProgress(0, stages[0]);
+
     const res = await fetch(`${API_BASE_URL}/api/ocr`, {
       method: 'POST',
       body: formData,
+      signal: controller.signal,
     });
 
+    clearTimeout(timeoutId);
     clearInterval(interval);
 
     if (!res.ok) {
-      const err = await res.json().catch(() => ({ detail: 'OCR Processing failed' }));
-      throw new Error(err.detail || 'OCR Processing failed');
+      // Try to parse rich structured error envelope from api.py
+      const err = await res.json().catch(() => ({
+        message: 'OCR processing failed',
+        stage: 'pipeline_execution',
+        exception_type: 'Error',
+        module_name: null,
+        file_path: null,
+        line_number: null
+      }));
+      const stageName = err.stage ? `[Failed at: ${err.stage}] ` : '';
+      const locInfo = err.file_path && err.line_number ? ` in ${err.module_name || 'module'} (${err.file_path}:${err.line_number})` : '';
+      const excType = err.exception_type ? `${err.exception_type}: ` : '';
+      const msg = `${stageName}${excType}${err.message || err.detail || `OCR processing failed (HTTP ${res.status})`}${locInfo}`;
+      throw new Error(msg);
     }
 
     if (onProgress) onProgress(stages.length - 1, stages[stages.length - 1]);
     return await res.json();
-  } catch (error) {
+
+  } catch (error: unknown) {
+    clearTimeout(timeoutId);
     clearInterval(interval);
+
+    // Distinguish timeout abort from other network errors
+    if (error instanceof DOMException && error.name === 'AbortError') {
+      throw new Error(
+        `OCR processing timed out after ${OCR_FETCH_TIMEOUT_MS / 60000} minutes. ` +
+        'The document may be too large or the server is unresponsive. Please try again.'
+      );
+    }
+
     throw error;
   }
 }

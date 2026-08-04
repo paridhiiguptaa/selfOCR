@@ -28,18 +28,18 @@ export const TextEditor: React.FC<TextEditorProps> = ({
   const charCount = activeText.length;
 
   return (
-    <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-2xl">
+    <div className="bg-white border border-slate-200/80 rounded-3xl p-6 shadow-saas">
       {/* Action Header & Copy Button */}
-      <div className="flex flex-wrap items-center justify-between gap-4 mb-4 pb-4 border-b border-slate-800">
+      <div className="flex flex-wrap items-center justify-between gap-4 mb-4 pb-4 border-b border-slate-100">
         <div className="flex items-center space-x-3">
           {/* Mode Switcher Buttons */}
-          <div className="flex bg-slate-950 p-1 rounded-xl border border-slate-800 text-xs">
+          <div className="flex bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs">
             <button
               onClick={() => setMode('plain')}
-              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-semibold transition-all ${
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-bold transition-all ${
                 mode === 'plain'
-                  ? 'bg-blue-600 text-white shadow-md'
-                  : 'text-slate-400 hover:text-white'
+                  ? 'bg-blue-600 text-white shadow-xs'
+                  : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               <FileText className="w-3.5 h-3.5" />
@@ -47,10 +47,10 @@ export const TextEditor: React.FC<TextEditorProps> = ({
             </button>
             <button
               onClick={() => setMode('markdown')}
-              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-semibold transition-all ${
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-bold transition-all ${
                 mode === 'markdown'
-                  ? 'bg-blue-600 text-white shadow-md'
-                  : 'text-slate-400 hover:text-white'
+                  ? 'bg-blue-600 text-white shadow-xs'
+                  : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               <Code2 className="w-3.5 h-3.5" />
@@ -59,7 +59,7 @@ export const TextEditor: React.FC<TextEditorProps> = ({
           </div>
 
           {/* Telemetry Pills */}
-          <div className="hidden sm:flex items-center space-x-3 text-xs text-slate-400">
+          <div className="hidden sm:flex items-center space-x-3 text-xs font-semibold text-slate-500">
             <span>{wordCount} words</span>
             <span>•</span>
             <span>{lineCount} lines</span>
@@ -71,10 +71,10 @@ export const TextEditor: React.FC<TextEditorProps> = ({
         {/* Copy to Clipboard Prominent Button */}
         <button
           onClick={handleCopy}
-          className={`flex items-center space-x-2 px-5 py-2.5 rounded-xl font-bold text-xs transition-all shadow-lg ${
+          className={`flex items-center space-x-2 px-4 py-2 rounded-xl font-extrabold text-xs transition-all shadow-xs cursor-pointer ${
             copied
-              ? 'bg-emerald-600 text-white border border-emerald-400 shadow-emerald-500/20'
-              : 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white border border-blue-400/30 shadow-blue-500/20'
+              ? 'bg-emerald-600 text-white'
+              : 'bg-blue-600 hover:bg-blue-700 text-white'
           }`}
         >
           {copied ? (
@@ -85,7 +85,7 @@ export const TextEditor: React.FC<TextEditorProps> = ({
           ) : (
             <>
               <Copy className="w-4 h-4" />
-              <span>Copy to Clipboard</span>
+              <span>Copy Text</span>
             </>
           )}
         </button>
@@ -95,9 +95,9 @@ export const TextEditor: React.FC<TextEditorProps> = ({
       <textarea
         value={activeText}
         onChange={(e) => onTextChange(e.target.value)}
-        rows={18}
+        rows={16}
         placeholder="Transcription output will appear here..."
-        className="w-full bg-slate-950 text-slate-100 p-4 rounded-xl border border-slate-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none font-mono text-sm leading-relaxed resize-y"
+        className="w-full bg-slate-50 text-slate-900 p-4 rounded-2xl border border-slate-200 focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none font-mono text-sm leading-relaxed resize-y"
       />
     </div>
   );

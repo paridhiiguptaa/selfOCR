@@ -24,20 +24,17 @@ export const ProofreadingLoading: React.FC<ProofreadingLoadingProps> = () => {
   }, [steps.length]);
 
   return (
-    <div className="w-full flex flex-col items-center justify-center p-12 bg-slate-900/90 rounded-2xl border border-slate-800 shadow-2xl min-h-[400px]">
-      <div className="relative mb-6">
-        <div className="absolute -inset-4 rounded-full bg-gradient-to-tr from-indigo-600 to-purple-600 blur-lg opacity-40 animate-pulse" />
-        <div className="relative p-4 bg-slate-950 rounded-2xl border border-slate-800 text-indigo-400">
-          <Sparkles className="w-8 h-8 animate-spin" />
-        </div>
+    <div className="w-full flex flex-col items-center justify-center p-12 bg-white rounded-3xl border border-slate-200/80 shadow-saas min-h-[400px]">
+      <div className="w-14 h-14 rounded-2xl bg-blue-50 text-blue-600 border border-blue-100 flex items-center justify-center shadow-2xs mb-6">
+        <Sparkles className="w-7 h-7 text-blue-600 animate-spin" />
       </div>
 
-      <h3 className="text-lg font-bold text-white mb-2 tracking-wide">
+      <h3 className="text-lg font-extrabold text-slate-900 mb-1 tracking-tight">
         AI Contextual Proofreading Engine Active
       </h3>
-      <p className="text-xs text-slate-400 mb-6">Analyzing document structure and transcription confidence</p>
+      <p className="text-xs text-slate-500 font-medium mb-6">Analyzing document structure and transcription confidence</p>
 
-      <div className="w-full max-w-md bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-3 font-mono text-xs">
+      <div className="w-full max-w-md bg-slate-50/80 p-5 rounded-2xl border border-slate-200/80 space-y-3 font-sans text-xs">
         {steps.map((msg, idx) => {
           const isDone = idx < step;
           const isCurrent = idx === step;
@@ -47,18 +44,18 @@ export const ProofreadingLoading: React.FC<ProofreadingLoadingProps> = () => {
               key={msg}
               className={`flex items-center space-x-3 transition-all ${
                 isDone
-                  ? 'text-emerald-400 font-semibold'
+                  ? 'text-emerald-700 font-bold'
                   : isCurrent
-                  ? 'text-indigo-300 font-bold animate-pulse'
-                  : 'text-slate-600'
+                  ? 'text-blue-700 font-extrabold'
+                  : 'text-slate-400 font-medium'
               }`}
             >
               {isDone ? (
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
               ) : isCurrent ? (
-                <Loader2 className="w-4 h-4 text-indigo-400 animate-spin flex-shrink-0" />
+                <Loader2 className="w-4 h-4 text-blue-600 animate-spin flex-shrink-0" />
               ) : (
-                <div className="w-4 h-4 rounded-full border border-slate-800 flex-shrink-0" />
+                <div className="w-4 h-4 rounded-full border border-slate-300 flex-shrink-0" />
               )}
               <span>{msg}</span>
             </div>

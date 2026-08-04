@@ -1,0 +1,99 @@
+{
+  "deck_id": "deck_01e06793e9",
+  "source_document_id": "doc_9c36cfe8",
+  "source_document_title": "tc_01_homophone_road",
+  "exported_document_text": "The boy rode the bicycle to school.",
+  "created_at": "2026-08-04T21:45:15.334509Z",
+  "total_flashcards": 1,
+  "categories_distribution": {
+    "Grammar Correction": 1
+  },
+  "difficulty_distribution": {
+    "Easy": 1,
+    "Medium": 0,
+    "Hard": 0
+  },
+  "estimated_study_time_min": 2,
+  "mastery_percentage": 0.0,
+  "study_progress": {
+    "cards_completed": 0,
+    "cards_mastered": 0,
+    "cards_bookmarked": 0,
+    "last_studied_at": null
+  },
+  "cards": [
+    {
+      "id": "fc_d022c366",
+      "category": "Grammar Correction",
+      "card_style": "grammar_explanation",
+      "original_sentence": "The boy rode the bicycle to school",
+      "corrected_sentence": "The boy rode the bicycle to school",
+      "front": {
+        "title": "Grammar Error Spotter",
+        "prompt": "Analyze the sentence below. Identify the grammatical error before revealing the rule:",
+        "context_sentence": "The boy rode the bicycle to school",
+        "highlighted_error": "boy road",
+        "options": [
+          "Change 'boy road' to 'boy rode'",
+          "Remove 'boy road' entirely",
+          "Move 'boy road' to end of sentence"
+        ],
+        "study_type": "grammar_spotter"
+      },
+      "back": {
+        "correct_answer": "Change 'boy road' to 'boy rode'",
+        "part_of_speech": "noun",
+        "child_friendly_definition": "Describes or represents 'boy rode' as used in this sentence.",
+        "dictionary_meaning": "Describes or represents 'boy rode' as used in this sentence.",
+        "usage_example": "The student noticed a very interesting boy rode during the afternoon science lesson.",
+        "example_sentence": "The student noticed a very interesting boy rode during the afternoon science lesson.",
+        "phonetic_hint": "/boy rode/",
+        "synonyms": [],
+        "antonyms": [],
+        "error_found": "boy road",
+        "corrected_form": "boy rode",
+        "explanation": "Contextual correction: use \"rode\" instead of \"road\" when describing riding a vehicle or animal. Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+        "rule": "Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+        "original_sentence": "The boy rode the bicycle to school",
+        "corrected_sentence": "The boy rode the bicycle to school",
+        "extra_examples": [],
+        "tip": "Check for subject-verb agreement and tense consistency."
+      },
+      "accepted_correction": {
+        "original": "boy road",
+        "proposed": "boy rode"
+      },
+      "explanation": "Contextual correction: use \"rode\" instead of \"road\" when describing riding a vehicle or animal. Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+      "rule": "Grammatical Rule: Maintain subject-verb agreement, consistent tense usage, and correct word forms.",
+      "learning_objective": "Recognize and correct grammatical errors involving 'boy road' -> 'boy rode'.",
+      "difficulty": "Easy",
+      "confidence_score": 0.96,
+      "source_document_id": "doc_9c36cfe8",
+      "source_document_title": "tc_01_homophone_road",
+      "created_at": "2026-08-04T21:45:15.334509Z",
+      "tags": [
+        "Academic Vocabulary",
+        "Grammar Correction"
+      ],
+      "child_friendly_definition": "Describes or represents 'boy rode' as used in this sentence.",
+      "dictionary_meaning": "A term functioning as an noun in context.",
+      "contextual_meaning": "In context (noun): Describes or represents 'boy rode' as used in this sentence.",
+      "example_sentence": "The student noticed a very interesting boy rode during the afternoon science lesson.",
+      "part_of_speech": "noun",
+      "synonyms": [],
+      "antonyms": [],
+      "difficulty_level": "Easy",
+      "pronunciation": "/boy rode/",
+      "detected_pos": "noun",
+      "identified_word_sense": "boy rode.noun.fallback",
+      "official_dictionary_definition": "A term functioning as an noun in context.",
+      "simplified_child_definition": "Describes or represents 'boy rode' as used in this sentence.",
+      "generated_example_sentence": "The student noticed a very interesting boy rode during the afternoon science lesson.",
+      "dictionary_source": "Contextual Inference",
+      "requires_manual_verification": true,
+      "is_mastered": false,
+      "is_bookmarked": false,
+      "needs_review": false
+    }
+  ]
+}

@@ -33,9 +33,10 @@ def start_backend():
     print("Starting FastAPI OCR Backend on http://127.0.0.1:8000...")
     cmd = [
         sys.executable, "-m", "uvicorn", "src.ocr_pipeline.api:app",
-        "--host", "127.0.0.1", "--port", "8000"
+        "--host", "127.0.0.1", "--port", "8000", "--timeout-keep-alive", "120"
     ]
     return subprocess.Popen(cmd, cwd=os.path.dirname(os.path.abspath(__file__)))
+
 
 def start_frontend():
     """Start Vite React frontend dev server on port 3000."""
@@ -58,6 +59,15 @@ def main():
     print("=" * 60)
     print("      LAUNCHING END-TO-END OCR PIPELINE WEB APPLICATION     ")
     print("=" * 60)
+
+    print("Executing pre-flight module import validation...")
+    try:
+        from src.ocr_pipeline.utils.startup_validator import validate_pipeline_imports
+        validate_pipeline_imports(fail_fast=True)
+    except Exception as e:
+        print(f"\n[FATAL STARTUP ERROR] Pre-flight import validation failed: {e}")
+        print("Application cannot start. Please resolve missing dependencies.\n")
+        sys.exit(1)
 
     backend_process = start_backend()
     frontend_process = start_frontend()

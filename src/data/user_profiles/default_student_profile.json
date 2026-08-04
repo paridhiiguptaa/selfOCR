@@ -1,0 +1,55 @@
+{
+  "user_id": "default_student",
+  "documents_processed": 0,
+  "corrections_accepted": 0,
+  "character_confusions": {
+    "v": {
+      "y": 0.35,
+      "u": 0.2
+    },
+    "y": {
+      "v": 0.35,
+      "g": 0.25
+    },
+    "g": {
+      "a": 0.3,
+      "q": 0.2
+    },
+    "a": {
+      "g": 0.3,
+      "o": 0.2,
+      "d": 0.25
+    },
+    "cl": {
+      "d": 0.4
+    },
+    "rn": {
+      "m": 0.4
+    },
+    "1": {
+      "l": 0.35,
+      "I": 0.3
+    },
+    "l": {
+      "1": 0.35,
+      "I": 0.25
+    },
+    "5": {
+      "S": 0.35,
+      "s": 0.25
+    },
+    "0": {
+      "O": 0.35,
+      "o": 0.3
+    }
+  },
+  "custom_vocabulary": {},
+  "writing_style": {
+    "avg_stroke_width": 2.5,
+    "avg_letter_spacing": 1.2,
+    "slant": "vertical",
+    "uppercase_frequency": 0.15
+  },
+  "systematic_errors": {},
+  "version": "1.0.0"
+}

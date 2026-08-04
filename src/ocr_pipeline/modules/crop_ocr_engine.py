@@ -10,10 +10,11 @@ from ..utils.logging_config import logger, Timer
 from .notebook_line_remover import NotebookLineRemover
 from .handwriting_post_corrector import HandwritingPostCorrector
 from .image_preprocessor import ImagePreprocessor
+from .multi_scale_ocr import MultiScaleImageGenerator, CandidateFusionModule
 
 class CropOCREngine:
     """
-    High-accuracy line-level OCR engine using EasyOCR for clean printed text
+    High-accuracy line-level OCR engine using Multi-Scale crop recognition, EasyOCR,
     and TrOCR Base Handwritten for cursive/notebook crops.
     """
 
@@ -27,6 +28,8 @@ class CropOCREngine:
         self.line_remover = NotebookLineRemover()
         self.post_corrector = HandwritingPostCorrector()
         self.preprocessor = ImagePreprocessor()
+        self.multiscale_generator = MultiScaleImageGenerator()
+        self.candidate_fusion = CandidateFusionModule()
 
     def _init_easyocr(self) -> bool:
         """Lazily initialize EasyOCR reader with thread safety for Windows CPU."""
@@ -107,7 +110,7 @@ class CropOCREngine:
                         raw_line = " ".join(texts)
                         corrected_line = self.post_corrector.correct(raw_line)
                         easyocr_result = (corrected_line, max(0.70, min(0.98, avg_conf)))
-                        # If EasyOCR extracts a clean line with decent confidence, return directly
+                        # If EasyOCR extracts a clean line with high confidence, return directly
                         if avg_conf > 0.40 or len(raw_line.split()) >= 2:
                             return easyocr_result
             except Exception as e:
@@ -135,6 +138,76 @@ class CropOCREngine:
 
         return "", 0.0
 
+    def recognize_crop_multiscale(
+        self,
+        crop: np.ndarray,
+        full_image: Optional[np.ndarray] = None,
+        bbox: Optional[Tuple[int, int, int, int]] = None,
+        subject_keywords: Optional[List[str]] = None,
+        adaptation_boosts: Optional[Dict[str, float]] = None
+    ) -> Dict[str, Any]:
+        """
+        Multi-scale OCR recognition pass with adaptive early exit and candidate fusion.
+        Returns:
+        {
+          "selected_text": str,
+          "confidence": float,
+          "selected_scale": str,
+          "candidates": List[Dict[str, Any]],
+          "multiscale_executed": bool
+        }
+        """
+        # Primary baseline pass
+        base_text, base_conf = self.recognize_crop(crop)
+
+        # Early exit if baseline text exists and confidence is acceptable
+        if base_conf >= 0.65 and base_text.strip():
+            return {
+                "selected_text": base_text,
+                "confidence": base_conf,
+                "selected_scale": "original",
+                "candidates": [{"scale": "original", "text": base_text, "confidence": base_conf}],
+                "multiscale_executed": False
+            }
+
+        # Multi-scale variations pass
+        scale_variations = self.multiscale_generator.generate_scales(crop, full_image, bbox)
+        candidates = []
+
+        if base_text.strip():
+            candidates.append({"scale": "original", "text": base_text, "confidence": base_conf})
+
+        for s_info in scale_variations:
+            scale_name = s_info["scale_name"]
+            if scale_name == "original":
+                continue
+
+            v_text, v_conf = self.recognize_crop(s_info["image"])
+            if v_text.strip():
+                candidates.append({"scale": scale_name, "text": v_text, "confidence": v_conf})
+
+        if not candidates:
+            return {
+                "selected_text": base_text,
+                "confidence": base_conf,
+                "selected_scale": "original",
+                "candidates": [],
+                "multiscale_executed": True
+            }
+
+        fused = self.candidate_fusion.evaluate_and_fuse(
+            candidates,
+            subject_keywords=subject_keywords,
+            adaptation_boosts=adaptation_boosts
+        )
+
+        return {
+            "selected_text": fused["selected_text"] or base_text,
+            "confidence": fused["fused_confidence"] or base_conf,
+            "selected_scale": fused["selected_scale"],
+            "candidates": fused["ranked_candidates"],
+            "multiscale_executed": True
+        }
 
     def recognize_page_crops(self, image: np.ndarray, bboxes: List[Tuple[int, int, int, int]]) -> List[Tuple[str, float]]:
         """Recognize text across all layout bounding boxes on a page."""
@@ -145,3 +218,4 @@ class CropOCREngine:
             text, conf = self.recognize_crop(crop)
             results.append((text, conf))
         return results
+
